@@ -1,0 +1,49 @@
+name = "xvp" # todo
+main = "_worker.js"
+compatibility_date = "2024-05-26"
+
+
+[unsafe.metadata.observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+[[routes]]
+pattern = "xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.vcip.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "business.blibli.com.xvp.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.xvp.bmkg.xyz"
+custom_domain = true
