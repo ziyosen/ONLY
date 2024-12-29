@@ -39,7 +39,7 @@ ask question and cloudflare ips: [https://t.me/seaker877](https://t.me/seaker877
 
 2. Alternatively, you can click the button below to deploy directly.
 
-   [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/tedjo877/molen)
+   [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/tedjo877/pg)
 
 3. Noneed add `nodejs_compat` at setting Compatibility flags
 
