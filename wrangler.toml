@@ -1,4 +1,4 @@
-name = "ben" # todo
+name = "cf" # todo
 main = "_worker.js"
 compatibility_date = "2024-05-26"
 
@@ -8,42 +8,41 @@ enabled = true
 
 [observability.logs]
 enabled = true
+
+
 [[routes]]
-pattern = "user.kere.us.kg"
+pattern = "kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.user.kere.us.kg"
+pattern = "ava.game.naver.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.user.kere.us.kg"
+pattern = "graph.instagram.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.user.kere.us.kg"
+pattern = "quiz.int.vidio.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "live.iflix.com.vcip.bmkg.xyz"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.user.kere.us.kg"
+pattern = "support.zoom.us.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.user.kere.us.kg"
+pattern = "blog.webex.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.user.kere.us.kg"
+pattern = "investors.spotify.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.user.kere.us.kg"
+pattern = "cache.netflix.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.user.kere.us.kg"
+pattern = "zaintest.vuclip.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.user.kere.us.kg"
+pattern = "io.ruangguru.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "business.blibli.com.user.kere.us.kg"
-custom_domain = true
-[[routes]]
-pattern = "api.midtrans.com.user.kere.us.kg"
+pattern = "api.midtrans.com.kang.cepu.us.kg"
 custom_domain = true
