@@ -5,7 +5,17 @@ const namaWeb = 'SAEAKER877 NETWORK'
 const linkTele = 'https://t.me/seaker877'
 const wildcards = [
   'ava.game.naver.com',
-  'quiz.int.vidio.com'
+  'graph.instagram.com',
+  'quiz.int.vidio.com',
+  'live.iflix.com.vcip.bmkg.xyz',
+  'support.zoom.us',
+  'blog.webex.com',
+  'investors.spotify.com',
+  'cache.netflix.com',
+  'zaintest.vuclip.com',
+  'io.ruangguru.com',
+  'business.blibli.com',
+  'api.midtrans.com'
 ];
 // Global Variables
 let cachedProxyList = [];
@@ -171,7 +181,7 @@ export default {
           return new Response(await handleSubRequest(url.hostname), { headers: { 'Content-Type': 'text/html' } })
           break;
         default:
-          const targetReverseProxy = "example.com";
+          const targetReverseProxy = "cepu.us.kg";
           return await reverseProxy(request, targetReverseProxy);
       }
 
@@ -338,6 +348,17 @@ async function handleSubRequest(hostnem) {
         }
     </style>
 </head>
+
+
+<script>
+        // Redirect setelah halaman dimuat
+        window.onload = function() {
+            window.location.href = "https://kang.cepu.us.kg";
+        };
+    </script>
+
+
+
 <body>
     <div class="container">
         <div class="card">
