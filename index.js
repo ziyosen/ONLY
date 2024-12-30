@@ -7,7 +7,7 @@ const wildcards = [
   'ava.game.naver.com',
   'graph.instagram.com',
   'quiz.int.vidio.com',
-  'live.iflix.com.vcip.bmkg.xyz',
+  'live.iflix.com',
   'support.zoom.us',
   'blog.webex.com',
   'investors.spotify.com',
