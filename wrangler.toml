@@ -23,7 +23,7 @@ custom_domain = true
 pattern = "quiz.int.vidio.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.vcip.bmkg.xyz"
+pattern = "live.iflix.com.kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "support.zoom.us.kang.cepu.us.kg"
