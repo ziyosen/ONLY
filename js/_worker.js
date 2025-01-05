@@ -153,7 +153,7 @@ var worker_default = {
           return new Response(await handleSubRequest(url.hostname), { headers: { "Content-Type": "text/html" } });
           break;
         default:
-          const targetReverseProxy = "cf.cepu.us.kg";
+          const targetReverseProxy = "cepu.us.kg";
           return await reverseProxy(request, targetReverseProxy);
       }
       return new Response(configs);
