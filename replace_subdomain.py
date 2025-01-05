@@ -7,27 +7,27 @@ import yaml
 def generate_random_subdomain(length=8):
     return ''.join(random.choices(string.ascii_lowercase + string.digits, k=length))
 
-# Fungsi untuk mengganti subdomain "user.cepu.us.kg" dengan subdomain acak di wrangler.toml
+# Fungsi untuk mengganti subdomain "ns1.cepu.us.kg" dengan subdomain acak di wrangler.toml
 def replace_subdomain_in_toml(toml_file, new_subdomain):
     with open(toml_file, 'r') as file:
         lines = file.readlines()
 
-    # Ganti "user.cepu.us.kg" dengan subdomain acak di setiap baris yang mengandung "user.cepu.us.kg"
+    # Ganti "ns1.cepu.us.kg" dengan subdomain acak di setiap baris yang mengandung "ns1.cepu.us.kg"
     updated_lines = []
     for line in lines:
-        if 'user.cepu.us.kg' in line:
-            line = line.replace('user.cepu.us.kg', f'{new_subdomain}.cepu.us.kg')
+        if 'ns1.cepu.us.kg' in line:
+            line = line.replace('ns1.cepu.us.kg', f'{new_subdomain}.cepu.us.kg')
         updated_lines.append(line)
 
     with open(toml_file, 'w') as file:
         file.writelines(updated_lines)
 
-# Fungsi untuk mengganti subdomain "user.cepu.us.kg" dengan subdomain acak di index.html
+# Fungsi untuk mengganti subdomain "ns1.cepu.us.kg" dengan subdomain acak di index.html
 def replace_subdomain_in_html(html_file, new_subdomain):
     with open(html_file, 'r') as file:
         content = file.read()
 
-    updated_content = content.replace('user.cepu.us.kg', f'{new_subdomain}.cepu.us.kg')
+    updated_content = content.replace('ns1.cepu.us.kg', f'{new_subdomain}.cepu.us.kg')
 
     with open(html_file, 'w') as file:
         file.write(updated_content)
