@@ -412,7 +412,12 @@ body {
   display: block;
   white-space: pre-wrap; /* Memastikan baris baru secara otomatis */
 }
-
+.menu {
+  display: block; /* Membuat setiap <span> berada di baris baru */
+  margin-bottom: 10px; /* Memberikan jarak antar elemen */
+  padding: 10px; /* Memberikan ruang dalam */
+  border-radius: 10px; /* Membuat lengkungan di setiap ujung */
+}
 .menu:nth-child(odd) {
   color: blue; /* Warna teks untuk baris ganjil */
   background-color: #f0f0f0; /* Warna latar belakang untuk baris ganjil */
