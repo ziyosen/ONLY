@@ -925,6 +925,7 @@ SHOW LINK SUB</button></center>
 
             <tr><td><label for="bug">BUG/WILDCARD:</label>
                 </td><td><select class="service-selector" id="bug">
+                    <option value="BUG.COM">NO BUG/WILDCARD</option>        
                     <option value="business.blibli.com">business.blibli.com</option>
                     <option value="ava.game.naver.com">ava.game.naver.com</option>
                     <option value="graph.instagram.com">graph.instagram.com</option>
@@ -1234,7 +1235,7 @@ function generateLinks() {
   if (configType.toLowerCase() === "shadowsocks") {
     // Buat URL Shadowsocks
     const configType = Math.random().toString(36).substring(2, 10); // Generate random string
-    link1 = `https://sub.bmkg.xyz/SS?sub1=${country}&count=${limit}&wildcard=${wildcard}`;
+    link1 = `https://sub.bmkg.xyz/SS?sub1=${country}&count=${limit}&wildcard=${bug}`;
   } else {
     // Buat URL default
     link1 = `https://kang.cepu.us.kg/vpn/${app}?type=${configType}&bug=${bug}&tls=${tls}&wildcard=${wildcard}&limit=${limit}&country=${country}`;
