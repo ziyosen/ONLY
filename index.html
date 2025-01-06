@@ -1390,48 +1390,15 @@ function uuidv4() {
     const filteredProxyElement = document.getElementById('filtered-proxy');
 
     // Tampilkan total proxy keseluruhan
-    const updateTotalProxies = () => {
-      totalProxyElement.innerHTML = `<strong>Total Proxy IP:</strong> ${allProxies.length}`;
-    };
+    totalProxyElement.innerHTML = ` `;
 
-    // Fungsi untuk memperbarui jumlah proxy yang difilter
+    // Fungsi untuk memperbarui jumlah proxy yang difilter dan menampilkan ID serta bendera
     const updateFilteredProxies = () => {
+      const id = filteredProxies.length > 0 ? filteredProxies[0].split(',')[2] : ''; // Ambil ID dari proxy pertama, asumsikan format 'ip,port,id,isp'
       filteredProxyElement.innerHTML = `
-        <strong>Total Proxy IP:</strong> ${filteredProxies.length} dari <strong>${allProxies.length}</strong>
+        <strong>Total Proxy :</strong> ${filteredProxies.length} dari <strong>${allProxies.length}</strong>
       `;
     };
-
-    // Fungsi untuk memfilter proxy berdasarkan id (kode negara)
-    const filterProxiesByCountry = () => {
-      const countries = new Set(); // Menyimpan id negara yang unik
-
-      // Mengambil id negara (kode negara) dari setiap proxy
-      allProxies.forEach(proxy => {
-        const proxyDetails = proxy.split(','); // Format: 'ip,port,id,kode_negara'
-        const countryId = proxyDetails[3]; // Mengambil id negara (kode negara)
-        countries.add(countryId); // Menambahkan id negara yang unik ke Set
-      });
-
-      // Memfilter proxy berdasarkan id negara yang ada di dalam data
-      filteredProxies = allProxies.filter(proxy => {
-        const proxyDetails = proxy.split(',');
-        const countryId = proxyDetails[3]; // Mengambil id negara (kode negara)
-        
-        // Misalnya: Memilih proxy berdasarkan id negara tertentu (contoh 'SG' untuk Singapura)
-        return countries.has(countryId);
-      });
-
-      updateFilteredProxies();  // Update jumlah proxy yang difilter
-    };
-
-    // Panggil fungsi untuk memperbarui tampilan saat halaman pertama kali dimuat
-    updateTotalProxies();
-    filterProxiesByCountry(); // Memfilter berdasarkan id negara yang ada
-
-  })
-  .catch(error => {
-    console.error('Error fetching proxy data:', error);
-  });
 
     // Fungsi untuk menampilkan bendera negara
     updateFilteredProxies();
