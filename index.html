@@ -417,7 +417,7 @@ body {
 .menu {
   display: flex; /* Mengubah elemen menjadi flexbox */
   align-items: center; /* Memposisikan elemen di tengah secara vertikal */
-  justify-content: center; /* Opsional: Memposisikan teks di tengah secara horizontal */
+  justify-content: space-between; /* Opsional: Memposisikan teks di tengah secara horizontal */
   flex-direction: column; /* Memastikan elemen tetap satu per satu */
   margin-bottom: 5px; /* Jarak antar elemen */
   padding: 5px; /* Memberikan ruang dalam */
@@ -425,6 +425,16 @@ body {
   text-align: center; /* Menjaga teks tetap rata tengah */
   
 }
+    
+.menu img {
+  margin-right: 10px; /* Jarak antara gambar dan teks */
+}
+
+.menu a {
+  font-family: 'Rajdhani', sans-serif;
+  text-decoration: none; /* Menghapus garis bawah pada teks */
+}
+
 
 .menu:nth-child(odd) {
   color: #fff; /* Warna teks untuk baris ganjil */
