@@ -930,7 +930,8 @@ SHOW LINK SUB</button></center>
     </table>
         </div>
     <div class="total-proxy" id="total-proxy"></div>
-    <div class="pagination" id="pagination"></div>
+   <div class="filtered-proxy" id="filtered-proxy"></div>
+ <div class="pagination" id="pagination"></div>
   </div> 
 
     <div class="popupnav" id="menu">
@@ -1389,35 +1390,45 @@ function uuidv4() {
     const filteredProxyElement = document.getElementById('filtered-proxy');
 
     // Tampilkan total proxy keseluruhan
-    totalProxyElement.innerHTML = `<strong>Total Proxies:</strong> ${allProxies.length}`;
+    totalProxyElement.innerHTML = ` `;
 
-    // Fungsi untuk memperbarui jumlah proxy yang difilter
+    // Fungsi untuk memperbarui jumlah proxy yang difilter dan menampilkan ID serta bendera
     const updateFilteredProxies = () => {
-      filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length}`;
+      const id = filteredProxies.length > 0 ? filteredProxies[0].split(',')[2] : ''; // Ambil ID dari proxy pertama, asumsikan format 'ip,port,id,isp'
+      filteredProxyElement.innerHTML = `
+        <strong>Total Proxy :</strong> ${filteredProxies.length} dari <strong>${allProxies.length}</strong>
+      `;
     };
-      // Set default items per page
-      let itemsPerPage = parseInt(perPageSelect.value, 15);
+
+    // Fungsi untuk menampilkan bendera negara
+    updateFilteredProxies();
+    let itemsPerPage = parseInt(perPageSelect.value, 15);
 
       // Fungsi untuk memperbarui jumlah item per halaman
       perPageSelect.addEventListener('change', () => {
         itemsPerPage = parseInt(perPageSelect.value, 15);
         renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
       });
-
-      // Fungsi untuk pencarian
-      searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        filteredProxies = allProxies.filter(proxy => {
-          const [ip, port, id, isp] = proxy.split(',');
-          return id.toLowerCase().includes(query);
-        });
-        renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
+    // Panggil fungsi untuk menampilkan bendera dan proxy
+    
+    
+    // Fungsi untuk pencarian
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      filteredProxies = allProxies.filter(proxy => {
+        const [ip, port, id, isp] = proxy.split(',');
+        return id.toLowerCase().includes(query);
       });
-
-      // Render proxies dengan pagination
+      updateFilteredProxies(); // Update jumlah proxy setelah pencarian
       renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
-    })
-    .catch(error => console.error("Error fetching proxy data:", error));
+ // Render proxy yang telah difilter
+    });
+
+    // Render proxies dengan pagination
+    renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
+
+  })
+  .catch(error => console.error("Error fetching proxy data:", error));
 
   // Fungsi untuk mengecek status proxy
   function checkProxyStatus(ip, port, statusElement) {
@@ -1501,7 +1512,7 @@ function uuidv4() {
         row.innerHTML = `
           <td>
             <span>${isp} | ${id}</span>
-            <span class="flag-icon flag-icon-${id.toLowerCase()}"></span> <!-- Display the flag -->
+            <span class="flag-icon flag-icon-${id.toLowerCase()}"></span> 
             </td>
           <td>
             <span id="status-${ip}-${port}">Loading...</span>
