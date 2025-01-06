@@ -1228,8 +1228,17 @@ function generateLinks() {
   var limit = document.getElementById("limit").value;
   var country = document.getElementById("country").value;
 
-  // Buat URL berdasarkan input
-  var link1 = `https://oeo4c2h7.cepu.us.kg/vpn/${app}?type=${configType}&bug=${bug}&tls=${tls}&wildcard=${wildcard}&limit=${limit}&country=${country}`;
+  let link1;
+
+  // Periksa apakah configType adalah Shadowsocks
+  if (configType.toLowerCase() === "shadowsocks") {
+    // Buat URL Shadowsocks
+    const configType = Math.random().toString(36).substring(2, 10); // Generate random string
+    link1 = `https://sub.bmkg.xyz/SS?sub1=${country}&count=${limit}&wildcard=${wildcard}`;
+  } else {
+    // Buat URL default
+    link1 = `https://kang.cepu.us.kg/vpn/${app}?type=${configType}&bug=${bug}&tls=${tls}&wildcard=${wildcard}&limit=${limit}&country=${country}`;
+  }
 
   // Tampilkan link pada input box
   document.getElementById("link1").value = link1;
@@ -1282,8 +1291,6 @@ document.addEventListener("DOMContentLoaded", function () {
   generateLinks();
 });
 
-
-      
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
