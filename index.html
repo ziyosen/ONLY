@@ -1391,24 +1391,10 @@ function uuidv4() {
     // Tampilkan total proxy keseluruhan
     totalProxyElement.innerHTML = `<strong>Total Proxies:</strong> ${allProxies.length}`;
 
-// Fungsi untuk memperbarui jumlah proxy yang difilter
-const updateFilteredProxies = () => {
-  filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length} dari ${allProxies.length}`;
-};
-
-// Fungsi untuk memfilter proxy dan memperbarui tampilan
-const filterProxies = () => {
-  // Misalnya, filter berdasarkan kriteria tertentu
-  filteredProxies = allProxies.filter(proxy => {
-    // Contoh filter: hanya memilih proxy yang memenuhi kriteria tertentu
-    return proxy.someCondition; // Ganti dengan kondisi filter yang sesuai
-  });
-
-  updateFilteredProxies(); // Memperbarui jumlah filtered proxy setelah filter
-};
-
-// Panggil fungsi filterProxies saat diperlukan
-filterProxies();
+    // Fungsi untuk memperbarui jumlah proxy yang difilter
+    const updateFilteredProxies = () => {
+      filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length}`;
+    };
       // Set default items per page
       let itemsPerPage = parseInt(perPageSelect.value, 15);
 
