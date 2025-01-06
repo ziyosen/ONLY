@@ -1378,10 +1378,13 @@ function uuidv4() {
 
   // URL untuk mendapatkan proxy list
   fetch("https://cf.cepu.us.kg/update_proxyip.txt")
-    .then(response => response.text())
-    .then(data => {
-      const allProxies = [...]; // Daftar proxy yang ada
-    let filteredProxies = [...]; // Daftar proxy yang sudah difilter (sebelum filter, sama dengan allProxies)
+  .then(response => response.text())
+  .then(data => {
+    // Pisahkan data proxy berdasarkan baris dan hilangkan baris kosong
+    const allProxies = data.split("\n").filter(line => line.trim() !== "");
+    let filteredProxies = [...allProxies]; // Salin array asli untuk filtering
+
+    // Mendapatkan elemen-elemen DOM
     const proxyList = document.getElementById('proxy-list');
     const pagination = document.getElementById('pagination');
     const perPageSelect = document.getElementById('items-per-page');
@@ -1389,52 +1392,76 @@ function uuidv4() {
     const totalProxyElement = document.getElementById('total-proxy');
     const filteredProxyElement = document.getElementById('filtered-proxy');
 
-    
-      totalProxyElement.innerHTML = `<strong>Total Proxies:</strong> ${allProxies.length}`;
+    // Tampilkan jumlah total proxy
+    totalProxyElement.innerHTML = `<strong>Total Proxy IP:</strong> ${allProxies.length}`;
 
     // Fungsi untuk memperbarui jumlah proxy yang difilter
     const updateFilteredProxies = () => {
-  filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length} dari ${allProxies.length}`;
-};
+      filteredProxyElement.innerHTML = `<strong>Filtered Proxy IP:</strong> ${filteredProxies.length} dari ${allProxies.length}`;
+    };
 
-      // Fungsi untuk memfilter proxy dan memperbarui tampilan
-const filterProxies = () => {
-  // Misalnya, filter berdasarkan kriteria tertentu
-  filteredProxies = allProxies.filter(proxy => {
-    // Contoh filter: hanya memilih proxy yang memenuhi kriteria tertentu
-    return proxy.someCondition; // Ganti dengan kondisi filter yang sesuai
-  });
+    // Fungsi untuk merender proxy dengan pagination
+    const renderProxies = (proxies, proxyList, pagination, itemsPerPage) => {
+      const itemsPerPageValue = parseInt(itemsPerPage, 10); // Ambil nilai dari items per page
+      const totalPages = Math.ceil(proxies.length / itemsPerPageValue); // Hitung jumlah total halaman
 
-  updateFilteredProxies(); // Memperbarui jumlah filtered proxy setelah filter
-};
-
-// Panggil fungsi filterProxies saat diperlukan
-filterProxies();
-
-      
-      // Set default items per page
-      let itemsPerPage = parseInt(perPageSelect.value, 15);
-
-      // Fungsi untuk memperbarui jumlah item per halaman
-      perPageSelect.addEventListener('change', () => {
-        itemsPerPage = parseInt(perPageSelect.value, 15);
-        renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
+      // Render proxy list
+      proxyList.innerHTML = ''; // Reset daftar proxy
+      proxies.slice(0, itemsPerPageValue).forEach(proxy => {
+        const proxyItem = document.createElement('div');
+        proxyItem.textContent = proxy; // Menampilkan proxy (IP atau informasi lain)
+        proxyList.appendChild(proxyItem);
       });
 
-      // Fungsi untuk pencarian
-      searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
-        filteredProxies = allProxies.filter(proxy => {
-          const [ip, port, id, isp] = proxy.split(',');
-          return id.toLowerCase().includes(query);
+      // Render pagination
+      pagination.innerHTML = ''; // Reset pagination
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => {
+          const startIndex = (i - 1) * itemsPerPageValue;
+          const endIndex = i * itemsPerPageValue;
+          proxyList.innerHTML = ''; // Reset daftar
+          proxies.slice(startIndex, endIndex).forEach(proxy => {
+            const proxyItem = document.createElement('div');
+            proxyItem.textContent = proxy;
+            proxyList.appendChild(proxyItem);
+          });
         });
-        renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
-      });
+        pagination.appendChild(pageButton);
+      }
+    };
 
-      // Render proxies dengan pagination
-      renderProxies(filteredProxies, proxyList, pagination, itemsPerPage);
-    })
-    .catch(error => console.error("Error fetching proxy data:", error));
+    // Panggil fungsi renderProxies setelah data pertama kali dimuat
+    renderProxies(filteredProxies, proxyList, pagination, perPageSelect.value);
+
+    // Fungsi untuk memfilter proxy berdasarkan kriteria tertentu
+    const filterProxies = () => {
+      filteredProxies = allProxies.filter(proxy => {
+        // Misalnya, filter berdasarkan kriteria tertentu (id dari proxy)
+        const [ip, port, id, isp] = proxy.split(',');
+        return id.toLowerCase().includes(searchInput.value.toLowerCase());
+      });
+      updateFilteredProxies(); // Memperbarui jumlah filtered proxy setelah filter
+      renderProxies(filteredProxies, proxyList, pagination, perPageSelect.value); // Merender ulang dengan hasil filter
+    };
+
+    // Event listener untuk pencarian
+    searchInput.addEventListener('input', () => {
+      filterProxies(); // Memanggil fungsi filter saat pengguna mengetik
+    });
+
+    // Event listener untuk perubahan jumlah item per halaman
+    perPageSelect.addEventListener('change', () => {
+      renderProxies(filteredProxies, proxyList, pagination, perPageSelect.value); // Merender ulang dengan jumlah item baru
+    });
+
+    // Update jumlah filtered proxies saat pertama kali dimuat
+    updateFilteredProxies();
+  })
+  .catch(error => {
+    console.error('Error fetching proxy data:', error);
+  });
 
   // Fungsi untuk mengecek status proxy
   function checkProxyStatus(ip, port, statusElement) {
