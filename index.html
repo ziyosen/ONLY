@@ -1390,12 +1390,39 @@ function uuidv4() {
     const filteredProxyElement = document.getElementById('filtered-proxy');
 
     // Tampilkan total proxy keseluruhan
-    totalProxyElement.innerHTML = `<strong>Total Proxies:</strong> ${allProxies.length}`;
+    const totalProxyElement = document.getElementById('total-proxy');
+    const filteredProxyElement = document.getElementById('filtered-proxy');
+
+    // Menampilkan total proxy saat reload pertama kali
+    totalProxyElement.innerHTML = `<strong>Total Proxy IP:</strong> ${allProxies.length}`;
 
     // Fungsi untuk memperbarui jumlah proxy yang difilter
     const updateFilteredProxies = () => {
-      filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length}`;
+      filteredProxyElement.innerHTML = `<strong>Filtered Proxy IP:</strong> ${filteredProxies.length} dari ${allProxies.length}`;
     };
+
+    // Panggil fungsi untuk memperbarui jumlah filtered proxies pertama kali
+    updateFilteredProxies();
+
+    // Fungsi untuk memfilter proxy dan memperbarui jumlah filtered
+    const filterProxies = () => {
+      // Misalnya, filter berdasarkan kriteria tertentu (ubah sesuai kebutuhan)
+      filteredProxies = allProxies.filter(proxy => {
+        // Gantilah dengan kondisi yang sesuai untuk filter Anda
+        return proxy.includes("kriteria_filter"); 
+      });
+
+      // Memperbarui jumlah filtered proxy setelah filter
+      updateFilteredProxies();
+    };
+
+    // Panggil filterProxies ketika Anda ingin memfilter (misalnya setelah pencarian)
+    // filterProxies(); // Un-comment ini jika Anda ingin memanggil fungsi filter
+
+  })
+  .catch(error => {
+    console.error("Error fetching proxy data:", error);
+  });
       // Set default items per page
       let itemsPerPage = parseInt(perPageSelect.value, 15);
 
