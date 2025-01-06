@@ -1135,7 +1135,7 @@ function uuidv4() {
     const updateFilteredProxies = () => {
       const id = filteredProxies.length > 0 ? filteredProxies[0].split(',')[2] : ''; // Ambil ID dari proxy pertama, asumsikan format 'ip,port,id,isp'
       filteredProxyElement.innerHTML = `
-        <strong>Total Proxy ${id} <span class="flag-icon flag-icon-${id.toLowerCase()}"></span>:</strong> ${filteredProxies.length} dari <strong>${allProxies.length}</strong>
+        <strong>Total Proxy :</strong> ${filteredProxies.length} dari <strong>${allProxies.length}</strong>
       `;
     };
 
