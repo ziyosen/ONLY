@@ -929,7 +929,8 @@ SHOW LINK SUB</button></center>
       <tbody id="proxy-list"></tbody>  
     </table>
         </div>
-    <div class="total-proxy" id="total-proxy"></div>
+    <div id="total-proxy"></div>
+    <div id="filtered-proxy"></div><br>
     <div class="pagination" id="pagination"></div>
   </div> 
 
@@ -1379,8 +1380,8 @@ function uuidv4() {
   fetch("https://cf.cepu.us.kg/update_proxyip.txt")
     .then(response => response.text())
     .then(data => {
-      const allProxies = data.split("\n").filter(line => line.trim() !== "");
-    let filteredProxies = [...allProxies]; // Salin array asli untuk filtering
+      const allProxies = [...]; // Daftar proxy yang ada
+    let filteredProxies = [...]; // Daftar proxy yang sudah difilter (sebelum filter, sama dengan allProxies)
     const proxyList = document.getElementById('proxy-list');
     const pagination = document.getElementById('pagination');
     const perPageSelect = document.getElementById('items-per-page');
@@ -1388,13 +1389,29 @@ function uuidv4() {
     const totalProxyElement = document.getElementById('total-proxy');
     const filteredProxyElement = document.getElementById('filtered-proxy');
 
-    // Tampilkan total proxy keseluruhan
-    totalProxyElement.innerHTML = `<strong>Total Proxies:</strong> ${allProxies.length}`;
+    
+      totalProxyElement.innerHTML = `<strong>Total Proxies:</strong> ${allProxies.length}`;
 
     // Fungsi untuk memperbarui jumlah proxy yang difilter
     const updateFilteredProxies = () => {
-      filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length}`;
-    };
+  filteredProxyElement.innerHTML = `<strong>Filtered Proxies:</strong> ${filteredProxies.length} dari ${allProxies.length}`;
+};
+
+      // Fungsi untuk memfilter proxy dan memperbarui tampilan
+const filterProxies = () => {
+  // Misalnya, filter berdasarkan kriteria tertentu
+  filteredProxies = allProxies.filter(proxy => {
+    // Contoh filter: hanya memilih proxy yang memenuhi kriteria tertentu
+    return proxy.someCondition; // Ganti dengan kondisi filter yang sesuai
+  });
+
+  updateFilteredProxies(); // Memperbarui jumlah filtered proxy setelah filter
+};
+
+// Panggil fungsi filterProxies saat diperlukan
+filterProxies();
+
+      
       // Set default items per page
       let itemsPerPage = parseInt(perPageSelect.value, 15);
 
