@@ -407,17 +407,22 @@ body {
     }
 
   .menu-container {
+    color: blue; /* Warna teks untuk baris ganjil */
+  background-color: rgba(32, 0, 66, 0.8); /* Warna latar belakang untuk baris ganjil */
   display: block;
   white-space: pre-wrap; /* Memastikan baris baru secara otomatis */
 }
 
 .menu:nth-child(odd) {
-  color: red; /* Warna untuk baris ganjil */
+  color: blue; /* Warna teks untuk baris ganjil */
+  background-color: #f0f0f0; /* Warna latar belakang untuk baris ganjil */
 }
 
 .menu:nth-child(even) {
-  color: blue; /* Warna untuk baris genap */
+  color: blue; /* Warna teks untuk baris genap */
+  background-color: #e0e0e0; /* Warna latar belakang untuk baris genap */
 }
+
 
 
     
@@ -899,7 +904,8 @@ SHOW LINK SUB</button></center>
   <span class="menu">Baris 2</span>
   <span class="menu">Baris 3</span>
   <span class="menu">Baris 4</span>
-</div>
+</div><button class="button7" id="close" onclick="hidePopup('sub-link')">Close</button>
+    
 </div></div>
 <div class="popup" id="sub-link">
 <div class="popup-content">
