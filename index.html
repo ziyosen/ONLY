@@ -1291,6 +1291,9 @@ function generateLinks() {
     link1 = `https://sub.bmkg.xyz/SS?sub1=${country}&count=${limit}&wildcard=${bug}`;
   } else {
     // Buat URL default
+    if (!bug) {
+      wildcard = "false"; // Atur wildcard menjadi false jika bug tidak diisi
+    }
     link1 = `https://kang.cepu.us.kg/vpn/${app}?type=${configType}&bug=${bug}&tls=${tls}&wildcard=${wildcard}&limit=${limit}&country=${country}`;
   }
 
