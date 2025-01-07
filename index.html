@@ -1436,7 +1436,7 @@ function uuidv4() {
   statusElement.innerHTML = '<div class="loading-icon"></div>';
 
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://tp1.bmkg.xyz/check?target=${ip}:${port}`;
+  const StatusURL = `https://ns1.bmkg.xyz/check?target=${ip}:${port}`;
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
