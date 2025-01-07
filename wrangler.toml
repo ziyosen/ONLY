@@ -10,7 +10,9 @@ enabled = true
 enabled = true
 
 
-
+[[routes]]
+pattern = "kang.cepu.us.kg"
+custom_domain = true
 [[routes]]
 pattern = "oeo4c2h7.cepu.us.kg"
 custom_domain = true
