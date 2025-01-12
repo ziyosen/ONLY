@@ -14,40 +14,40 @@ enabled = true
 pattern = "kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "freecf.cepu.us.kg"
+pattern = "woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.freecf.cepu.us.kg"
+pattern = "ava.game.naver.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.freecf.cepu.us.kg"
+pattern = "graph.instagram.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.freecf.cepu.us.kg"
+pattern = "quiz.int.vidio.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.freecf.cepu.us.kg"
+pattern = "live.iflix.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.freecf.cepu.us.kg"
+pattern = "support.zoom.us.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.freecf.cepu.us.kg"
+pattern = "blog.webex.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.freecf.cepu.us.kg"
+pattern = "investors.spotify.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.freecf.cepu.us.kg"
+pattern = "cache.netflix.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.freecf.cepu.us.kg"
+pattern = "zaintest.vuclip.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.freecf.cepu.us.kg"
+pattern = "ads.ruangguru.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.freecf.cepu.us.kg"
+pattern = "api.midtrans.com.woless.cepu.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "wong.ndeso.web.id"
