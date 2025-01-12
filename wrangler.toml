@@ -11,7 +11,7 @@ enabled = true
 
 
 [[routes]]
-pattern = "freecf.cepu.us.kg"
+pattern = "kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "freecf.cepu.us.kg"
