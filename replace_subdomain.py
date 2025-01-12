@@ -23,26 +23,27 @@ def read_subdomain_from_yaml(yaml_file):
     return None
 
 # Fungsi untuk mengganti subdomain di wrangler.toml
-def replace_subdomain_in_toml(toml_file, new_subdomain):
+def replace_subdomain_in_toml(toml_file, new_subdomain, old_subdomain):
     with open(toml_file, 'r') as file:
         lines = file.readlines()
 
     updated_lines = []
     for line in lines:
-        # Ganti hanya subdomain (xxx) dalam xxx.cepu.us.kg menjadi subdomain baru
-        line = re.sub(r'(\b\w+)(?=\.cepu\.us\.kg)', new_subdomain, line)
+        # Hanya mengganti subdomain yang sesuai (contoh: xxx.cepu.us.kg) dengan subdomain baru
+        if old_subdomain in line:
+            line = re.sub(r'\b' + re.escape(old_subdomain) + r'\b', new_subdomain, line)
         updated_lines.append(line)
 
     with open(toml_file, 'w') as file:
         file.writelines(updated_lines)
 
 # Fungsi untuk mengganti subdomain di index.html
-def replace_subdomain_in_html(html_file, new_subdomain):
+def replace_subdomain_in_html(html_file, new_subdomain, old_subdomain):
     with open(html_file, 'r') as file:
         content = file.read()
 
-    # Ganti hanya subdomain (xxx) dalam xxx.cepu.us.kg menjadi subdomain baru
-    updated_content = re.sub(r'(\b\w+)(?=\.cepu\.us\.kg)', new_subdomain, content)
+    # Hanya mengganti subdomain yang sesuai (contoh: xxx.cepu.us.kg) dengan subdomain baru
+    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.cepu\.us\.kg', new_subdomain + '.cepu.us.kg', content)
 
     with open(html_file, 'w') as file:
         file.write(updated_content)
@@ -62,6 +63,10 @@ def main():
     # Baca subdomain terakhir dari YAML
     last_subdomain = read_subdomain_from_yaml(yaml_file)
 
+    if last_subdomain is None:
+        print("No subdomain found in subdomain.yml!")
+        return
+
     # Pastikan subdomain terakhir ada dalam daftar
     if last_subdomain not in subdomain_list:
         print(f"Last subdomain '{last_subdomain}' not in subdomain list!")
@@ -73,8 +78,8 @@ def main():
     next_subdomain = subdomain_list[next_index]
 
     # Ganti subdomain di wrangler.toml dan index.html
-    replace_subdomain_in_toml(toml_file, next_subdomain)
-    replace_subdomain_in_html(html_file, next_subdomain)
+    replace_subdomain_in_toml(toml_file, next_subdomain, last_subdomain)
+    replace_subdomain_in_html(html_file, next_subdomain, last_subdomain)
 
     # Simpan subdomain yang digunakan ke file YAML
     save_subdomain_to_yaml(next_subdomain, yaml_file)
