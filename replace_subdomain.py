@@ -26,6 +26,12 @@ def replace_subdomain_in_toml(toml_file, new_subdomain):
     with open(toml_file, 'r') as file:
         lines = file.readlines()
 
+    print(f"Checking 'ns1.cepu.us.kg' in {toml_file}...")
+    if any('ns1.cepu.us.kg' in line for line in lines):
+        print("'ns1.cepu.us.kg' found in wrangler.toml")
+    else:
+        print("'ns1.cepu.us.kg' NOT found in wrangler.toml")
+
     updated_lines = []
     for line in lines:
         if 'ns1.cepu.us.kg' in line:
@@ -34,16 +40,24 @@ def replace_subdomain_in_toml(toml_file, new_subdomain):
 
     with open(toml_file, 'w') as file:
         file.writelines(updated_lines)
+    print(f"Updated {toml_file} with new subdomain: {new_subdomain}")
 
 # Fungsi untuk mengganti subdomain di index.html
 def replace_subdomain_in_html(html_file, new_subdomain):
     with open(html_file, 'r') as file:
         content = file.read()
 
+    print(f"Checking 'ns1.cepu.us.kg' in {html_file}...")
+    if 'ns1.cepu.us.kg' in content:
+        print("'ns1.cepu.us.kg' found in index.html")
+    else:
+        print("'ns1.cepu.us.kg' NOT found in index.html")
+
     updated_content = content.replace('ns1.cepu.us.kg', f'{new_subdomain}.cepu.us.kg')
 
     with open(html_file, 'w') as file:
         file.write(updated_content)
+    print(f"Updated {html_file} with new subdomain: {new_subdomain}")
 
 def main():
     yaml_file = 'subdomain.yml'
