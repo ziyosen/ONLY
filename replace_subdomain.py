@@ -62,13 +62,14 @@ def main():
     # Baca subdomain terakhir dari YAML
     last_subdomain = read_subdomain_from_yaml(yaml_file)
 
-    # Cari subdomain berikutnya berdasarkan urutan di daftar
-    if last_subdomain and last_subdomain in subdomain_list:
-        current_index = subdomain_list.index(last_subdomain)
-        next_index = (current_index + 1) % len(subdomain_list)
-    else:
-        next_index = 0  # Jika belum ada subdomain terakhir, mulai dari yang pertama
+    # Pastikan subdomain terakhir ada dalam daftar
+    if last_subdomain not in subdomain_list:
+        print(f"Last subdomain '{last_subdomain}' not in subdomain list!")
+        return
 
+    # Cari subdomain berikutnya berdasarkan urutan di daftar
+    current_index = subdomain_list.index(last_subdomain)
+    next_index = (current_index + 1) % len(subdomain_list)
     next_subdomain = subdomain_list[next_index]
 
     # Ganti subdomain di wrangler.toml dan index.html
