@@ -1473,13 +1473,13 @@ function uuidv4() {
       if (data.proxyip) {
         // Proxy status aktif
         statusElement.innerHTML = `
-          <span class="check-icon">&#10004;</span>(<span style="color: gold;">${latency} ms</span>)
+          <strong><span class="check-icon">&#10004;</span>-<span style="color: gold;">${latency} ms</span></strong>
         `;
         statusElement.style.color = 'green';
       } else {
         // Proxy status mati
         statusElement.innerHTML = `
-          <span class="error-icon">&#10006;</span> DEAD
+          <strong><span class="error-icon">&#10006;</span> DEAD</strong>
         `;
         statusElement.style.color = 'red';
       }
@@ -1487,7 +1487,7 @@ function uuidv4() {
     .catch(() => {
       // Menangani kesalahan jika API tidak merespon atau terjadi masalah jaringan
       statusElement.innerHTML = `
-        <span class="error-icon">&#10006;</span> Error
+        <strong><span class="error-icon">&#10006;</span> Error</strong>
       `;
       statusElement.style.color = 'cyan';
     });
@@ -1539,7 +1539,7 @@ function uuidv4() {
             <span class="flag-icon flag-icon-${id.toLowerCase()}"></span> 
             </td>
           <td>
-            <span id="status-${ip}-${port}">Loading...</span>
+            <span id="status-${ip}-${port}"><div class="loading-icon"></div></span>
           </td>
           <td><select class="service-selector">
           <option value="">NO WILDCARD</option>
