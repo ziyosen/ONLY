@@ -54,14 +54,21 @@
       animation: rainbow 2s infinite;
     }
 
-    .flag-circle {
+    .flag-container {
+  display: flex;
+  align-items: center; /* Menjajarkan konten secara vertikal */
+  gap: 8px; /* Jarak antara teks dan ikon */
+}
+
+.flag-circle {
   display: inline-block;
-  width: 20px; /* Atur ukuran bendera sesuai kebutuhan */
-  height: 20px; /* Pastikan tinggi sama dengan lebar untuk bentuk bulat */
-  border-radius: 30%; /* Membuat bentuk bulat */
-  overflow: hidden; /* Agar gambar bendera tidak keluar dari area */
+  width: 24px; /* Sesuaikan ukuran */
+  height: 24px; /* Sama dengan lebar untuk bentuk bulat */
+  border-radius: 40%; /* Membuat bulat */
+  overflow: hidden; /* Mencegah gambar keluar dari area */
   object-fit: cover; /* Menjaga proporsi gambar */
 }
+
 
       * {
         margin: 0;
@@ -1559,10 +1566,10 @@ function uuidv4() {
         // Create a row with innerHTML to make it more manageable
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>
+          <td><div class="flag-container">
             <span>${isp} | ${id}</span>
             <span class="flag-icon flag-icon-${id.toLowerCase()} flag-circle"></span>
-            </td>
+            </div></td>
           <td>
             <span id="status-${ip}-${port}"><div class="rainbow-text">LOADING...</div></span>
           </td>
