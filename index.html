@@ -1577,7 +1577,7 @@ function uuidv4() {
         const row = document.createElement('tr');
         row.innerHTML = `
           <td><div class="flag-container">
-            <span>${id}</span>
+            <span>${isp} || ${id}</span>
             <span class="flag-circle flag-icon flag-icon-${id.toLowerCase()}"></span>
             </div></td>
           <td>
