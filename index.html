@@ -28,8 +28,8 @@
   <style>
 
     :root {
-        --primary: #00ff88;
-        --secondary: #00ffff;
+        --primary: #000;
+        --secondary: #fff;
         --accent: #ff00ff;
         --dark: #080c14;
         --darker: #040608;
@@ -176,10 +176,32 @@
     border-color: #0056b3; /* Warna saat input terfokus */
     outline: none; /* Menghapus garis luar bawaan browser */
 }
-
 body {
-      background-color: #000; /* Hitam pekat (dark mode) */
-      color: #4CAF50; /* Teks hijau agar kontras dengan background */
+  background: linear-gradient(135deg, 
+    #1a1a1a, /* Warna gelap awal */
+    #6b2b6b 20%, 
+    #343494 40%, 
+    #236b7d 60%, 
+    #406b23 80%, 
+    #6b5d23);
+  background-size: 300% 300%; /* Untuk animasi gradient */
+  color: #fff; /* Teks putih agar kontras */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
+  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
+}
+
+/* Animasi untuk background */
+@keyframes rainbowBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    
+body111 {
+      background-color: rgba(63, 63, 63, 1); /* Hitam pekat (dark mode) */
+      color: #fff; /* Teks hijau agar kontras dengan background */
       margin: 0;
       font-family: Arial, sans-serif; /* Font sederhana dan bersih */
     }
@@ -189,25 +211,26 @@ body {
 }
     h1 {
       font-family: 'Rajdhani', sans-serif;
-    padding-top: 10px; /* To avoid content being hidden under the header */
+      padding-top: 10px; /* To avoid content being hidden under the header */
       margin-top: 10px;
       color: black;
             text-align: center;
-            font-size: 8vw;
+            font-size: 9vw;
             font-weight: bold;
-      text-shadow: 
+            text-shadow: 
                 0 0 5px rgba(0, 123, 255, 0.8),
                 0 0 10px rgba(0, 123, 255, 0.8),
                 0 0 20px rgba(0, 123, 255, 0.8),
                 0 0 30px rgba(0, 123, 255, 0.8),
                 0 0 40px rgba(0, 123, 255, 0.8);
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+    
+         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        text-shadow: 0 0 30px #000;
         position: relative;
         animation: titlePulse 3s ease-in-out infinite;
-      }
+    }
 
       @keyframes titlePulse {
         0%, 100% { transform: scale(1); filter: brightness(1); }
@@ -253,7 +276,7 @@ body {
         width: 100%;
         padding: 10px;
         font-size: 16px;
-        border: 2px solid #4CAF50; /* Border warna hijau */
+        border: 1px solid #fff; /* Border warna hijau */
         border-radius: 5px; /* Sudut membulat */
         background-color: #f9f9f9; /* Warna latar belakang */
         color: #333; /* Warna teks */
@@ -268,24 +291,48 @@ body {
     .service-selector option {
         padding: 10px;
     }  
-    .container, .content {
-      
+    .container12, .content12 {
+      background-color: rgba(0, 0, 0, 0.82);
       flex: 1;
-      padding-top: 80px; /* To avoid content being hidden under the header */
-      padding-bottom: 50px;
-      margin-top: 80px;
-      margin-bottom: 50px;/* To avoid content being hidden under the footer */
+      padding-top: 20px; /* To avoid content being hidden under the header */
+      padding-bottom: 20px;
+      margin-top: 90px;
+      margin-bottom: 30px;/* To avoid content being hidden under the footer */
       padding-left: 10px;
       padding-right: 10px;
       display: flex;
       flex-direction: column;
       max-width: 960px;
+      border: 1px solid #fff;
+      border-radius: 10px;
       align-items: center;
       position: relative;
       z-index: 1;
        }
 
-      
+      .container, .content {
+  background-color: rgba(0, 0, 0, 0.82);
+  flex: 1;
+  padding-top: 20px; /* To avoid content being hidden under the header */
+  padding-bottom: 20px;
+  margin-top: 95px;
+  margin-bottom: 50px; /* To avoid content being hidden under the footer */
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  /* Tambahkan efek glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+}
+
 
      
       
@@ -320,7 +367,7 @@ body {
       margin-bottom: 20px;
     }
 .filters > div,
-.button {
+.button, .button1, .button2, .button3  {
   position: relative; /* Pastikan tombol berada di atas elemen lainnya */
   z-index: 2; /* Tingkatkan prioritas tombol */
   pointer-events: auto; /* Aktifkan interaksi pointer */
@@ -347,16 +394,20 @@ body {
     width: 100%;
     overflow-x: auto; /* Mengaktifkan scroll horizontal */
     margin-bottom: 0px;
-    border: 1px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
+    border: 1px solid #000; /* Border dengan warna abu-abu */
     border-radius: 10px; /* Membuat sudut melengkung */
     padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: ; /* Warna latar belakang */
-}
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    
+    }
 
 
 
     th {
-      background-color: rgba(26, 4, 83, 0.81); /* Warna hijau */
+      background-color: rgba(37, 36, 36, 1); /* Warna hijau */
       color: white; /* Warna teks putih */
       font-weight: bold;
       padding: 10px;
@@ -369,22 +420,22 @@ body {
     td {
       padding: 10px;
       text-align: center;
-      background-color: rgba(26, 4, 83, 0.81); /* Warna hijau transparan */
+      background-color: rgba(37, 36, 36, 1); /* Warna hijau transparan */
       color: #fff; /* Warna teks */
       border-bottom: 1px solid #ddd; /* Garis pembatas antar baris */
       transition: background-color 0.3s ease; /* Efek transisi */
     }
 
     td:hover {
-      background-color: rgba(0, 19, 46, 0.86); /* Warna hijau lebih gelap saat dihover */
+      background-color: rgba(115, 115, 115, 1); /* Warna hijau lebih gelap saat dihover */
     }
 
     tr:nth-child(odd) td {
-      background-color: rgba(0, 45, 70, 0.81); /* Warna abu terang */
+      background-color: rgba(64, 64, 64, 1); /* Warna abu terang */
     }
 
     tr:hover td {
-      background-color: rgba(0, 0, 0, 0.38); /* Warna latar biru muda saat baris dihover */
+      background-color: rgba(115, 115, 115, 1); /* Warna latar biru muda saat baris dihover */
       color: #fff; /* Warna teks saat dihover */
     }
     .column-1 {
@@ -398,7 +449,7 @@ body {
     }
     
     /* General Button Styling */
-    .button {
+    .button, .button1, .button2, .button3  {
       white-space: nowrap; /* Mencegah teks melipat */
      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
   z-index: 2; /* Tingkatkan prioritas tombol */
@@ -406,7 +457,7 @@ body {
 
       padding: 10px 10px;
       margin: 10px 5px;
-      border: 1px solid #fff;
+      border: 0px solid #fff;
       border-radius: 5px;
       font-size: 14px;
       cursor: pointer;
@@ -414,18 +465,51 @@ body {
     }
 
     /* Button Colors */
-    .button { 
-      background-color: rgba(64, 4, 183, 0.97); 
-      color: white; 
-      border: 1px solid rgba(197, 51, 6, 0.89); 
-      border-radius: 8px; 
+    .button1 { 
+      margin: 10px;
+      padding: 10px 10px;
+      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      border-radius: 5px;
+      background-color: green;
+      color: #fff;
+      cursor: pointer;
       position: relative; /* Pastikan tombol berada di atas elemen lainnya */
   z-index: 2; /* Tingkatkan prioritas tombol */
   pointer-events: auto; /* Aktifkan interaksi pointer */
 
       
     }
-    
+    .button2 { 
+      margin: 10px;
+      padding: 10px 10px;
+      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      border-radius: 5px;
+      background-color: rgba(14, 116, 255, 0.97);
+      color: #fff;
+      cursor: pointer;
+      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
+  z-index: 2; /* Tingkatkan prioritas tombol */
+  pointer-events: auto; /* Aktifkan interaksi pointer */
+
+      
+    }
+    .button3 { 
+      margin: 10px;
+      padding: 10px 10px;
+      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      border-radius: 5px;
+      background-color: rgba(255, 61, 68, 0.97);
+      color: #fff;
+      cursor: pointer;
+      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
+  z-index: 2; /* Tingkatkan prioritas tombol */
+  pointer-events: auto; /* Aktifkan interaksi pointer */
+
+      
+    }
     /* Hover Effects */
     .button:hover { background-color: #2980b9; border: 1px solid rgba(197, 51, 6, 0.89); border-radius: 8px; }
     
@@ -436,7 +520,7 @@ body {
     }
 
     /* Shadow/Glow Effects */
-    .button {
+    .button, .button1, .button2, .button3  {
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     position: relative; /* Pastikan tombol berada di atas elemen lainnya */
   z-index: 2; /* Tingkatkan prioritas tombol */
@@ -599,7 +683,7 @@ body {
       padding: 12px 12px;
       border: 1px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
       border-radius: 10px;
-      background-color: rgba(0, 3, 63, 0.84);
+      background-color: rgba(0, 172, 128, 1);
       color: #fff;
       cursor: pointer;
     }
@@ -617,7 +701,7 @@ body {
       padding: 13px;
       width: 100px;
       max-width: 100px;
-      border: 2px solid #4CAF50;
+      border: 1px solid green;
       border-radius: 5px; 
     }
 
@@ -625,7 +709,7 @@ body {
       padding: 10px;
       width: 60px;
       max-width: 70px;
-      border: 2px solid #4CAF50;
+      border: 1px solid green;
       border-radius: 5px; 
     }
     /* Responsif */
@@ -670,7 +754,7 @@ body {
     top: 0;
     width: 300px; /* Tentukan lebar popup */
     height: 100%; /* Menjaga tinggi popup penuh */
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: ;
     justify-content: left;
     align-items: center;
     z-index: 100;
@@ -708,7 +792,7 @@ body {
       height: 100%;
       border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
       border-radius: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: ;
       justify-content: center;
       align-items: center;
       z-index: 100;
@@ -801,7 +885,7 @@ body {
 
     }
     .popupnav-content {
-      background-color: rgba(13, 1, 64, 0.92);
+      background-color: rgba(0, 0, 0, 0.82);
       padding: 10px;
       border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
       border-radius: 10px;
@@ -812,9 +896,9 @@ body {
   pointer-events: auto;
     }
     .popup-content {
-      background-color: rgba(0, 3, 63, 0.84);
+      background-color: rgba(0, 0, 0, 0.82);
       padding: 20px;
-      border: 1px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
+      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
       border-radius: 5px;
       text-align: center;
     
@@ -1598,7 +1682,7 @@ function uuidv4() {
           <option value="ads.ruangguru.com">io.ruangguru.com</option>
           <option value="api.midtrans.com">api.midtrans.com</option>
         </select></td>
-          <td><button class="button" onclick="showPopup('vtls${ip}-${port}')">VLESS TLS 443</button>
+          <td><button class="button1" onclick="showPopup('vtls${ip}-${port}')">VLESS TLS 443</button>
       <div class="popup" id="vtls${ip}-${port}">
       <div class="popup-content"><hr/><br>
       » ISP         : ${isp}<br>
@@ -1613,7 +1697,7 @@ function uuidv4() {
       <button class="button8" onclick="hidePopup('vtls${ip}-${port}')">Close</button> 
 </div>
 </div></td>
-          <td><button class="button" onclick="showPopup('trojan${ip}-${port}')">TROJAN TLS 443</button>
+          <td><button class="button2" onclick="showPopup('trojan${ip}-${port}')">TROJAN TLS 443</button>
       <div class="popup" id="trojan${ip}-${port}">
       <div class="popup-content"><hr/><br>
       » ISP         : ${isp}<br>
@@ -1628,7 +1712,7 @@ function uuidv4() {
       <button class="button8" onclick="hidePopup('trojan${ip}-${port}')">Close</button> 
     </div>
     </div></td>
-          <td><button class="button" onclick="showPopup('ss${ip}-${port}')">SHADOWSOCK</button>
+          <td><button class="button3" onclick="showPopup('ss${ip}-${port}')">SHADOWSOCK</button>
       <div class="popup" id="ss${ip}-${port}">
       <div class="popup-content"><hr/><br>
       » ISP         : ${isp}<br>
