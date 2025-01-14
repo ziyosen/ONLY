@@ -414,10 +414,10 @@ body {
     }
 
     /* Button Colors */
-    .button { 
-      background-color: rgba(64, 4, 183, 0.97); 
+    .button1 { 
+      background-color: red; 
       color: white; 
-      border: 1px solid rgba(197, 51, 6, 0.89); 
+      border: 0px solid rgba(197, 51, 6, 0.89); 
       border-radius: 8px; 
       position: relative; /* Pastikan tombol berada di atas elemen lainnya */
   z-index: 2; /* Tingkatkan prioritas tombol */
@@ -425,7 +425,28 @@ body {
 
       
     }
-    
+    .button2 { 
+      background-color: blue; 
+      color: white; 
+      border: 0px solid rgba(197, 51, 6, 0.89); 
+      border-radius: 8px; 
+      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
+  z-index: 2; /* Tingkatkan prioritas tombol */
+  pointer-events: auto; /* Aktifkan interaksi pointer */
+
+      
+    }
+    .button3 { 
+      background-color: gold; 
+      color: white; 
+      border: 0px solid rgba(197, 51, 6, 0.89); 
+      border-radius: 8px; 
+      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
+  z-index: 2; /* Tingkatkan prioritas tombol */
+  pointer-events: auto; /* Aktifkan interaksi pointer */
+
+      
+    }
     /* Hover Effects */
     .button:hover { background-color: #2980b9; border: 1px solid rgba(197, 51, 6, 0.89); border-radius: 8px; }
     
@@ -1598,7 +1619,7 @@ function uuidv4() {
           <option value="ads.ruangguru.com">io.ruangguru.com</option>
           <option value="api.midtrans.com">api.midtrans.com</option>
         </select></td>
-          <td><button class="button" onclick="showPopup('vtls${ip}-${port}')">VLESS TLS 443</button>
+          <td><button class="button1" onclick="showPopup('vtls${ip}-${port}')">VLESS TLS 443</button>
       <div class="popup" id="vtls${ip}-${port}">
       <div class="popup-content"><hr/><br>
       » ISP         : ${isp}<br>
@@ -1613,7 +1634,7 @@ function uuidv4() {
       <button class="button8" onclick="hidePopup('vtls${ip}-${port}')">Close</button> 
 </div>
 </div></td>
-          <td><button class="button" onclick="showPopup('trojan${ip}-${port}')">TROJAN TLS 443</button>
+          <td><button class="button2" onclick="showPopup('trojan${ip}-${port}')">TROJAN TLS 443</button>
       <div class="popup" id="trojan${ip}-${port}">
       <div class="popup-content"><hr/><br>
       » ISP         : ${isp}<br>
@@ -1628,7 +1649,7 @@ function uuidv4() {
       <button class="button8" onclick="hidePopup('trojan${ip}-${port}')">Close</button> 
     </div>
     </div></td>
-          <td><button class="button" onclick="showPopup('ss${ip}-${port}')">SHADOWSOCK</button>
+          <td><button class="button3" onclick="showPopup('ss${ip}-${port}')">SHADOWSOCK</button>
       <div class="popup" id="ss${ip}-${port}">
       <div class="popup-content"><hr/><br>
       » ISP         : ${isp}<br>
