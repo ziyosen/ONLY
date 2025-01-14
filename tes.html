@@ -176,8 +176,30 @@
     border-color: #0056b3; /* Warna saat input terfokus */
     outline: none; /* Menghapus garis luar bawaan browser */
 }
-
 body {
+  background: linear-gradient(135deg, 
+    #1a1a1a, /* Warna gelap awal */
+    #6b2b6b 20%, 
+    #343494 40%, 
+    #236b7d 60%, 
+    #406b23 80%, 
+    #6b5d23);
+  background-size: 300% 300%; /* Untuk animasi gradient */
+  color: #fff; /* Teks putih agar kontras */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
+  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
+}
+
+/* Animasi untuk background */
+@keyframes rainbowBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+    
+body111 {
       background-color: rgba(63, 63, 63, 1); /* Hitam pekat (dark mode) */
       color: #fff; /* Teks hijau agar kontras dengan background */
       margin: 0;
@@ -195,7 +217,7 @@ body {
             text-align: center;
             font-size: 8vw;
             font-weight: bold;
-      text-shadow: 
+            text-shadow: 
                 0 0 5px rgba(0, 123, 255, 0.8),
                 0 0 10px rgba(0, 123, 255, 0.8),
                 0 0 20px rgba(0, 123, 255, 0.8),
@@ -293,8 +315,8 @@ body {
   flex: 1;
   padding-top: 20px; /* To avoid content being hidden under the header */
   padding-bottom: 20px;
-  margin-top: 90px;
-  margin-bottom: 30px; /* To avoid content being hidden under the footer */
+  margin-top: 95px;
+  margin-bottom: 50px; /* To avoid content being hidden under the footer */
   padding-left: 10px;
   padding-right: 10px;
   display: flex;
