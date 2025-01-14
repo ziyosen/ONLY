@@ -53,6 +53,16 @@
       font-weight: bold;
       animation: rainbow 2s infinite;
     }
+
+    .flag-circle {
+  display: inline-block;
+  width: 40px; /* Atur ukuran bendera sesuai kebutuhan */
+  height: 40px; /* Pastikan tinggi sama dengan lebar untuk bentuk bulat */
+  border-radius: 50%; /* Membuat bentuk bulat */
+  overflow: hidden; /* Agar gambar bendera tidak keluar dari area */
+  object-fit: cover; /* Menjaga proporsi gambar */
+}
+
       * {
         margin: 0;
         padding: 0;
@@ -1551,7 +1561,7 @@ function uuidv4() {
         row.innerHTML = `
           <td>
             <span>${isp} | ${id}</span>
-            <span class="flag-icon flag-icon-${id.toLowerCase()}"></span> 
+            <span class="flag-icon flag-icon-${id.toLowerCase()} flag-circle"></span>
             </td>
           <td>
             <span id="status-${ip}-${port}"><div class="rainbow-text">LOADING...</div></span>
