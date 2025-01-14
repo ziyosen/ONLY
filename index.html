@@ -37,7 +37,22 @@
         --card-bg: rgba(8, 12, 20, 0.95);
         --glow: 0 0 20px rgba(0, 255, 136, 0.3);
       }
+@keyframes rainbow {
+      0% { color: red; }
+      14% { color: orange; }
+      28% { color: yellow; }
+      42% { color: green; }
+      57% { color: blue; }
+      71% { color: indigo; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
 
+    .rainbow-text {
+      font-size: 48px;
+      font-weight: bold;
+      animation: rainbow 2s infinite;
+    }
       * {
         margin: 0;
         padding: 0;
@@ -1539,7 +1554,7 @@ function uuidv4() {
             <span class="flag-icon flag-icon-${id.toLowerCase()}"></span> 
             </td>
           <td>
-            <span id="status-${ip}-${port}"><div class="loading-icon"></div></span>
+            <span id="status-${ip}-${port}"><div class="rainbow-text">LOADING...</div></span>
           </td>
           <td><select class="service-selector">
           <option value="">NO WILDCARD</option>
