@@ -56,18 +56,28 @@
 
     .flag-container {
   display: flex;
+  justify-content: center; /* Menjajarkan konten secara horizontal */
   align-items: center; /* Menjajarkan konten secara vertikal */
+  height: 100%; /* Atur tinggi sesuai kebutuhan */
+  text-align: center; /* Opsional, untuk memastikan teks sejajar */
   gap: 8px; /* Jarak antara teks dan ikon */
 }
+
 
 .flag-circle {
   display: inline-block;
   width: 30px; /* Sesuaikan ukuran */
   height: 30px; /* Sama dengan lebar untuk bentuk bulat */
-  border-radius: 100px; /* Membuat bulat */
-  /* overflow: hidden; /* Mencegah gambar keluar dari area */
-  /* object-fit: cover; /* Menjaga proporsi gambar */
+  border-radius: 50%; /* Membuat elemen berbentuk bulat */
+  background-size: cover; /* Menutupi area lingkaran */
+  background-position: center; /* Memusatkan gambar */
+  overflow: hidden; /* Mencegah isi keluar dari lingkaran */
 }
+
+.flag-icon {
+  display: inline-block;
+}
+
 
 
       * {
@@ -1568,7 +1578,7 @@ function uuidv4() {
         row.innerHTML = `
           <td><div class="flag-container">
             <span>${id}</span>
-            <span class="flag-icon flag-icon-${id.toLowerCase()} flag-circle"></span>
+            <span class="flag-circle flag-icon flag-icon-${id.toLowerCase()}"></span>
             </div></td>
           <td>
             <span id="status-${ip}-${port}"><div class="rainbow-text">LOADING...</div></span>
