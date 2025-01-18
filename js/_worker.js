@@ -17,6 +17,7 @@ var wildcards = [
   "cache.netflix.com",
   "zaintest.vuclip.com",
   "io.ruangguru.com",
+  "ads.ruangguru.com",
   "business.blibli.com",
   "api.midtrans.com"
 ];
@@ -363,7 +364,7 @@ async function handleSubRequest(hostnem) {
                     <select id="configType" class="form-control" required>
                         <option value="vless">VLESS</option>
                         <option value="trojan">TROJAN</option>
-                        <option value="shadowsocks">SHADOWSOCKS</option>
+                        <option value="ss">SHADOWSOCKS</option>
                     </select>
                 </div>
 
