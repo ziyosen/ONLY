@@ -2,8 +2,7 @@ name: Replace Subdomain Weekly
 
 on:
   schedule:
-    cron: '*/5 * * * *'
- # Jalankan setiap minggu pada pukul 00:00 UTC pada hari Minggu
+  - cron: '*/5 * * * *' # Jalankan setiap minggu pada pukul 00:00 UTC pada hari Minggu
   workflow_dispatch:
 
 jobs:
