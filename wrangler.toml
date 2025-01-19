@@ -14,43 +14,43 @@ enabled = true
 pattern = "kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "merapi.cepu.us.kg"
+pattern = "aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.merapi.cepu.us.kg"
+pattern = "ava.game.naver.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.merapi.cepu.us.kg"
+pattern = "graph.instagram.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.merapi.cepu.us.kg"
+pattern = "quiz.int.vidio.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.merapi.cepu.us.kg"
+pattern = "live.iflix.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.merapi.cepu.us.kg"
+pattern = "support.zoom.us.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.merapi.cepu.us.kg"
+pattern = "blog.webex.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.merapi.cepu.us.kg"
+pattern = "investors.spotify.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.merapi.cepu.us.kg"
+pattern = "cache.netflix.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.merapi.cepu.us.kg"
+pattern = "zaintest.vuclip.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.merapi.cepu.us.kg"
+pattern = "ads.ruangguru.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.merapi.cepu.us.kg"
+pattern = "io.ruangguru.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.merapi.cepu.us.kg"
+pattern = "api.midtrans.com.aconk.cepu.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "wong.ndeso.web.id"
