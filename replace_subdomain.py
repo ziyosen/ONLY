@@ -1,5 +1,5 @@
 import os
-import requests
+import yaml
 import re
 
 # Fungsi untuk membaca daftar subdomain dari file
