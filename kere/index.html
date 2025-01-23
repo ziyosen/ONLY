@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman Responsif</title>
+  <title>Interaksi Kolom</title>
   <style>
     * {
       margin: 0;
@@ -16,31 +16,19 @@
       line-height: 1.6;
     }
 
-    header {
-      background: #007BFF;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    footer {
-      background: #343A40;
-      color: white;
-      padding: 10px;
-      text-align: center;
-    }
-
     .container {
       display: flex;
       flex-wrap: wrap;
       padding: 20px;
-      gap: 20px; /* Tambahkan jarak horizontal dan vertikal antar kolom */
+      gap: 20px;
     }
 
     .column {
       flex: 1;
       min-width: 300px;
       padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
 
     .left {
@@ -51,35 +39,73 @@
       background: #E9ECEF;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column; /* Kolom ditumpuk vertikal */
-      }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
 
-      .column {
-        margin: 10px 0; /* Jarak atas dan bawah saat ditumpuk */
-      }
+    ul li {
+      padding: 10px;
+      margin: 5px 0;
+      background: #007BFF;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    ul li:hover {
+      background: #0056b3;
+    }
+
+    .data-display {
+      font-size: 16px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Halaman Responsif</h1>
-  </header>
-
   <div class="container">
     <div class="column left">
-      <h2>Kolom Kiri</h2>
-      <p>Konten untuk kolom kiri bisa ditempatkan di sini.</p>
+      <h2>Daftar Item</h2>
+      <ul id="itemList"></ul>
     </div>
     <div class="column right">
-      <h2>Kolom Kanan</h2>
-      <p>Konten untuk kolom kanan bisa ditempatkan di sini.</p>
+      <h2>Data Detail</h2>
+      <div id="dataDisplay" class="data-display">Klik item di sebelah kiri untuk melihat detail.</div>
     </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Semua Hak Dilindungi</p>
-  </footer>
+  <script>
+    // Data acak sebagai contoh
+    const data = [
+      { id: 1, name: 'Item 1', description: 'Deskripsi untuk Item 1' },
+      { id: 2, name: 'Item 2', description: 'Deskripsi untuk Item 2' },
+      { id: 3, name: 'Item 3', description: 'Deskripsi untuk Item 3' },
+      { id: 4, name: 'Item 4', description: 'Deskripsi untuk Item 4' },
+      { id: 5, name: 'Item 5', description: 'Deskripsi untuk Item 5' },
+    ];
+
+    // Ambil elemen HTML
+    const itemList = document.getElementById('itemList');
+    const dataDisplay = document.getElementById('dataDisplay');
+
+    // Tampilkan daftar item di kolom kiri
+    data.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item.name;
+      li.dataset.id = item.id; // Simpan ID item
+      itemList.appendChild(li);
+
+      // Event klik untuk setiap item
+      li.addEventListener('click', () => {
+        const selectedItem = data.find(d => d.id == li.dataset.id);
+        dataDisplay.innerHTML = `
+          <h3>${selectedItem.name}</h3>
+          <p>${selectedItem.description}</p>
+        `;
+      });
+    });
+  </script>
 </body>
 </html>
