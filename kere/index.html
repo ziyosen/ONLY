@@ -16,6 +16,20 @@
       line-height: 1.6;
     }
 
+    header {
+      background: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #343A40;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -65,47 +79,58 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Aplikasi Interaksi Kolom</h1>
+  </header>
+
   <div class="container">
     <div class="column left">
-      <h2>Daftar Item</h2>
+      <h2>Daftar List</h2>
       <ul id="itemList"></ul>
     </div>
     <div class="column right">
       <h2>Data Detail</h2>
-      <div id="dataDisplay" class="data-display">Klik item di sebelah kiri untuk melihat detail.</div>
+      <div id="dataDisplay" class="data-display"></div>
     </div>
   </div>
 
+  <footer>
+    <p>&copy; 2025 Aplikasi Interaksi Kolom. Semua Hak Dilindungi.</p>
+  </footer>
+
   <script>
-    // Data acak sebagai contoh
-    const data = [
-      { id: 1, name: 'Item 1', description: 'Deskripsi untuk Item 1' },
-      { id: 2, name: 'Item 2', description: 'Deskripsi untuk Item 2' },
-      { id: 3, name: 'Item 3', description: 'Deskripsi untuk Item 3' },
-      { id: 4, name: 'Item 4', description: 'Deskripsi untuk Item 4' },
-      { id: 5, name: 'Item 5', description: 'Deskripsi untuk Item 5' },
+    // Data list dan detailnya
+    const items = [
+      { id: 1, name: "List 1", description: "Ini adalah detail untuk List 1." },
+      { id: 2, name: "List 2", description: "Ini adalah detail untuk List 2." },
+      { id: 3, name: "List 3", description: "Ini adalah detail untuk List 3." },
+      { id: 4, name: "List 4", description: "Ini adalah detail untuk List 4." },
+      { id: 5, name: "List 5", description: "Ini adalah detail untuk List 5." },
     ];
 
-    // Ambil elemen HTML
+    // Elemen HTML
     const itemList = document.getElementById('itemList');
     const dataDisplay = document.getElementById('dataDisplay');
 
-    // Tampilkan daftar item di kolom kiri
-    data.forEach(item => {
+    // Fungsi untuk menampilkan data di kolom kanan
+    const showData = (id) => {
+      const selectedItem = items.find(item => item.id === id);
+      dataDisplay.textContent = selectedItem ? selectedItem.description : "Data tidak ditemukan.";
+    };
+
+    // Generate daftar list di kolom kiri
+    items.forEach(item => {
       const li = document.createElement('li');
       li.textContent = item.name;
-      li.dataset.id = item.id; // Simpan ID item
+      li.dataset.id = item.id;
       itemList.appendChild(li);
 
-      // Event klik untuk setiap item
-      li.addEventListener('click', () => {
-        const selectedItem = data.find(d => d.id == li.dataset.id);
-        dataDisplay.innerHTML = `
-          <h3>${selectedItem.name}</h3>
-          <p>${selectedItem.description}</p>
-        `;
-      });
+      // Tambahkan event listener untuk klik
+      li.addEventListener('click', () => showData(item.id));
     });
+
+    // Tampilkan data untuk item pertama saat halaman dimuat
+    showData(items[0].id);
   </script>
 </body>
 </html>
