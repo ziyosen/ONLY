@@ -1,1 +1,80 @@
-wkwk
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Responsif</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #343A40;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+    }
+
+    .left {
+      background: #F8F9FA;
+    }
+
+    .right {
+      background: #E9ECEF;
+    }
+
+    @media (max-width: 768px) {
+      .column {
+        flex-basis: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Halaman Responsif</h1>
+  </header>
+
+  <div class="container">
+    <div class="column left">
+      <h2>Kolom Kiri</h2>
+      <p>Konten untuk kolom kiri bisa ditempatkan di sini.</p>
+    </div>
+    <div class="column right">
+      <h2>Kolom Kanan</h2>
+      <p>Konten untuk kolom kanan bisa ditempatkan di sini.</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Semua Hak Dilindungi</p>
+  </footer>
+</body>
+</html>
