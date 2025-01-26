@@ -14,43 +14,43 @@ enabled = true
 pattern = "kang.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "tedjo.cepu.us.kg"
+pattern = "epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.tedjo.cepu.us.kg"
+pattern = "ava.game.naver.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.tedjo.cepu.us.kg"
+pattern = "graph.instagram.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.tedjo.cepu.us.kg"
+pattern = "quiz.int.vidio.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.tedjo.cepu.us.kg"
+pattern = "live.iflix.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.tedjo.cepu.us.kg"
+pattern = "support.zoom.us.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.tedjo.cepu.us.kg"
+pattern = "blog.webex.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.tedjo.cepu.us.kg"
+pattern = "investors.spotify.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.tedjo.cepu.us.kg"
+pattern = "cache.netflix.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.tedjo.cepu.us.kg"
+pattern = "zaintest.vuclip.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.tedjo.cepu.us.kg"
+pattern = "ads.ruangguru.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.tedjo.cepu.us.kg"
+pattern = "io.ruangguru.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.tedjo.cepu.us.kg"
+pattern = "api.midtrans.com.epoenk.cepu.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "wong.ndeso.web.id"
