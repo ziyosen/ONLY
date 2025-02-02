@@ -10,9 +10,7 @@ enabled = true
 enabled = true
 
 
-[[routes]]
-pattern = "kang.cepu.us.kg"
-custom_domain = true
+
 [[routes]]
 pattern = "lucky.cepu.us.kg"
 custom_domain = true
