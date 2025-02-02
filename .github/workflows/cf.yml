@@ -82,7 +82,7 @@ jobs:
         run: npm i
 
       - name: 📚 Wrangler publish
-        uses: cloudflare/wrangler-action@2.1.0  # Update to the latest version
+        uses: cloudflare/wrangler-action@2.0.0  # Update to the latest version
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           environment: ${{ env.WORKERS_ENV }}
