@@ -1574,29 +1574,42 @@ function uuidv4() {
   statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
   statusElement.style.color = 'green';
 
+  const startTime = performance.now();
   const StatusURL = `https://user.kere.us.kg/check?ip=${ip}:${port}`;
-  console.log("Fetching URL:", StatusURL);
 
   fetch(StatusURL)
-    .then(response => response.text()) // Ambil sebagai teks dulu
-    .then(text => {
-      console.log("Raw Response:", text); // Cek respons mentah di console
-      return JSON.parse(text); // Parsing manual ke JSON
+    .then(response => {
+      // Memastikan respons memiliki status yang OK
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json(); // Parsing response menjadi JSON
     })
     .then(data => {
-      console.log("Parsed JSON:", data); // Lihat JSON hasil parsing
+      const endTime = performance.now();
+      let latency = endTime - startTime;
+      latency = latency / 5; // Faktor pembagi untuk memperkecil nilai latency
+      const latencyString = Math.floor(latency);
 
-      if (data.status && data.status.includes("ACTIVE")) {
-        statusElement.innerHTML = `<strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${data.delay}</span></strong>`;
+      // Mengambil nilai delay dari respons API
+      const delay = data.delay || 'N/A';  // Jika tidak ada delay, set default N/A
+
+      // Memeriksa data dan menampilkan status proxy berdasarkan respons
+      if (data.status && data.status === "ACTIVE ✅") {
+        statusElement.innerHTML = `
+          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${delay}</span></strong>
+        `;
         statusElement.style.color = 'green';
       } else {
-        statusElement.innerHTML = `<strong><i class="fas fa-times-circle"></i> DEAD</strong>`;
+        statusElement.innerHTML = `
+          <strong><i class="fas fa-times-circle"></i> DEAD</strong>
+        `;
         statusElement.style.color = 'red';
       }
     })
     .catch(error => {
-      console.error("Fetch Error:", error);
-      statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
+      console.error("Error:", error);
+      statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error: ${error.message}</strong>`;
       statusElement.style.color = 'cyan';
     });
 }
