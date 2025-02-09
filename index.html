@@ -1583,19 +1583,19 @@ function uuidv4() {
     .then(response => response.json())
     .then(data => {
       const endTime = performance.now(); // Mencatat waktu akhir
-      let latency = endTime - startTime; // Menghitung latency dalam ms
+      let delay = endTime - startTime; // Menghitung latency dalam ms
 
       // Memperkecil nilai latency, misalnya dibagi dengan 10
-      latency = latency / 5; // Faktor pembagi untuk memperkecil nilai latency
+      delay = delay / 5; // Faktor pembagi untuk memperkecil nilai latency
 
       // Membuang bagian setelah desimal, hanya menyisakan nilai integer
-      const latencyString = Math.floor(latency); // Hanya ambil angka bulat (membuang bagian desimal)
+      const delayString = Math.floor(delay); // Hanya ambil angka bulat (membuang bagian desimal)
 
       // Memeriksa status proxy dan menampilkannya sesuai dengan status
-      if (data.proxyip) {
+      if (data.status) {
         // Proxy status aktif
         statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${latencyString}ms</span></strong>
+          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${delayString}ms</span></strong>
         `;
         statusElement.style.color = 'green';
       } else {
