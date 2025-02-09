@@ -1574,37 +1574,33 @@ function uuidv4() {
   statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
   statusElement.style.color = 'green';
 
-  const startTime = performance.now();
   const StatusURL = `https://user.kere.us.kg/check?ip=${ip}:${port}`;
-
-  console.log("Fetching:", StatusURL);
+  console.log("Fetching URL:", StatusURL);
 
   fetch(StatusURL)
-    .then(response => response.json())
+    .then(response => response.text()) // Ambil sebagai teks dulu
+    .then(text => {
+      console.log("Raw Response:", text); // Cek respons mentah di console
+      return JSON.parse(text); // Parsing manual ke JSON
+    })
     .then(data => {
-      console.log("API Response:", data);
-
-      const endTime = performance.now();
-      let latency = (endTime - startTime) / 5;
-      const latencyString = Math.floor(latency);
+      console.log("Parsed JSON:", data); // Lihat JSON hasil parsing
 
       if (data.status && data.status.includes("ACTIVE")) {
-        // Proxy aktif
         statusElement.innerHTML = `<strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${data.delay}</span></strong>`;
         statusElement.style.color = 'green';
       } else {
-        // Proxy mati
         statusElement.innerHTML = `<strong><i class="fas fa-times-circle"></i> DEAD</strong>`;
         statusElement.style.color = 'red';
       }
     })
     .catch(error => {
       console.error("Fetch Error:", error);
-
       statusElement.innerHTML = `<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>`;
       statusElement.style.color = 'cyan';
     });
 }
+
 
 
 
