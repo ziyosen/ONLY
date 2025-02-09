@@ -1576,26 +1576,26 @@ function uuidv4() {
   statusElement.style.color = 'green';
     
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://user.kere.us.kg/check?ip=${ip}:${port}`;
+  const StatusURL = `https://ns1.bmkg.xyz/check?target=${ip}:${port}`;
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
     .then(response => response.json())
     .then(data => {
       const endTime = performance.now(); // Mencatat waktu akhir
-      let delay = endTime - startTime; // Menghitung latency dalam ms
+      let latency = endTime - startTime; // Menghitung latency dalam ms
 
       // Memperkecil nilai latency, misalnya dibagi dengan 10
-      delay = delay / 5; // Faktor pembagi untuk memperkecil nilai latency
+      latency = latency / 5; // Faktor pembagi untuk memperkecil nilai latency
 
       // Membuang bagian setelah desimal, hanya menyisakan nilai integer
-      const delayString = Math.floor(delay); // Hanya ambil angka bulat (membuang bagian desimal)
+      const latencyString = Math.floor(latency); // Hanya ambil angka bulat (membuang bagian desimal)
 
       // Memeriksa status proxy dan menampilkannya sesuai dengan status
-      if (data.status) {
+      if (data.proxyip) {
         // Proxy status aktif
         statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${delayString}ms</span></strong>
+          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${latencyString}ms</span></strong>
         `;
         statusElement.style.color = 'green';
       } else {
