@@ -12,41 +12,41 @@ enabled = true
 
 
 [[routes]]
-pattern = "lucky.cepu.us.kg"
+pattern = "turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.lucky.cepu.us.kg"
+pattern = "ava.game.naver.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.lucky.cepu.us.kg"
+pattern = "graph.instagram.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.lucky.cepu.us.kg"
+pattern = "quiz.int.vidio.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.lucky.cepu.us.kg"
+pattern = "live.iflix.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.lucky.cepu.us.kg"
+pattern = "support.zoom.us.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.lucky.cepu.us.kg"
+pattern = "blog.webex.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.lucky.cepu.us.kg"
+pattern = "investors.spotify.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.lucky.cepu.us.kg"
+pattern = "cache.netflix.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.lucky.cepu.us.kg"
+pattern = "zaintest.vuclip.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.lucky.cepu.us.kg"
+pattern = "ads.ruangguru.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.lucky.cepu.us.kg"
+pattern = "io.ruangguru.com.turah.cepu.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.lucky.cepu.us.kg"
+pattern = "api.midtrans.com.turah.cepu.us.kg"
 custom_domain = true
