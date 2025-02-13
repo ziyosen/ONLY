@@ -1624,7 +1624,7 @@ function checkProxyStatus(ip, port, statusElement) {
       statusElement.style.fontWeight = 'bold';
     })
     .catch(error => {
-      console.error(`Error fetching proxy ${ip}:${port}:`, error);
+      console.error(`Error fetching proxy ${ip}-${port}:`, error);
       statusElement.innerHTML = '<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>';
       statusElement.style.color = 'cyan';
     });
