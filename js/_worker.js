@@ -1,6 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
-const proxyListURL = 'https://cf.cepu.us.kg/update_proxyip.txt';
+const proxyListURL = 'https://user.kere.us.kg/proxyList.txt';
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
