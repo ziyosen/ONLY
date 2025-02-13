@@ -1570,30 +1570,39 @@ function uuidv4() {
   .catch(error => console.error("Error fetching proxy data:", error));
 
   // Fungsi untuk mengecek status proxy
-function checkProxyStatus(ip, port, statusElement) {
+function checkProxyStatus(ip, port) {
+  const statusElement = document.getElementById(`status-${ip}-${port}`);
+
+  if (!statusElement) {
+    console.error(`Elemen status untuk ${ip}:${port} tidak ditemukan!`);
+    return;
+  }
+
   // Menampilkan indikator loading saat memeriksa status
-  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i> Loading...</strong>';
+  statusElement.innerHTML = '<div class="rainbow-text">LOADING...</div>';
   statusElement.style.color = 'blue';
 
   const StatusURL = `https://web.bmkg.xyz/check?ip=${ip}:${port}`;
 
-  // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL, { cache: 'no-store', keepalive: true })
     .then(response => response.json())
     .then(data => {
-      let status = data.status || 'UNKNOWN'; // Status proxy
-      let delay = data.delay || 'N/A'; // Latency sudah tersedia di API
-
-      console.log("Status:", status);
-      console.log("Delay:", delay);
-
-      // Memastikan delay tetap dalam format angka dengan "ms"
-      if (delay !== 'N/A') {
-        delay = delay.replace("ms", "").trim(); // Hapus "ms"
-        delay = isNaN(delay) ? "N/A" : delay + "ms"; // Jika bukan angka, set "N/A"
+      if (!data || !data.status) {
+        console.error(`Respons API tidak valid untuk ${ip}:${port}`, data);
+        statusElement.innerHTML = '<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>';
+        statusElement.style.color = 'cyan';
+        return;
       }
 
-      // Memperbarui elemen berdasarkan status proxy
+      let status = data.status.trim();
+      let delay = data.delay || 'N/A';
+
+      if (delay !== 'N/A') {
+        delay = delay.replace("ms", "").trim();
+        delay = isNaN(delay) ? "N/A" : `${delay}ms`;
+      }
+
+      // Menampilkan status berdasarkan respons API
       if (status === 'ACTIVE ✅') {
         statusElement.innerHTML = `<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(${delay})</span>`;
         statusElement.style.color = '#00FF00'; // Hijau
@@ -1611,10 +1620,9 @@ function checkProxyStatus(ip, port, statusElement) {
     .catch(error => {
       console.error(`Error fetching proxy ${ip}:${port}:`, error);
       statusElement.innerHTML = '<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>';
-      statusElement.style.color = 'cyan'; // Warna cyan untuk error
+      statusElement.style.color = 'cyan';
     });
 }
-
 
 
 
@@ -1666,7 +1674,7 @@ function checkProxyStatus(ip, port, statusElement) {
             <span class="flag-circle flag-icon flag-icon-${id.toLowerCase()}"></span>
             </div></td>
           <td>
-            <span id="status-${ip}:${port}"><div class="rainbow-text">LOADING...</div></span>
+            <span id="status-${ip}-${port}"><div class="rainbow-text">LOADING...</div></span>
           </td>
           <td><select class="service-selector">
           <option value="">NO WILDCARD</option>
