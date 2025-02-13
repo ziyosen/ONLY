@@ -1024,7 +1024,7 @@ function buildCountryFlag() {
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
+                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi dan tambahkan satuan kembali
                     console.log("Processed latency:", delay);  // Debugging log
                 } else {
                     delay = "N/A";
@@ -1118,7 +1118,7 @@ function buildCountryFlag() {
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
+                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi dan tambahkan satuan kembali
                     console.log("Processed latency:", delay);  // Debugging log
                 } else {
                     delay = "N/A";
