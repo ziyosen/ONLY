@@ -1571,63 +1571,65 @@ function uuidv4() {
 
   // Fungsi untuk mengecek status proxy
 function checkProxyStatus(ip, port) {
-    const id = `status-${ip.replace(/\./g, "_").replace(/:/g, "_")}`;
-    const statusElement = document.getElementById(id);
+  const statusId = `status-${ip.replace(/\./g, "_").replace(/:/g, "_")}`;  // Mengganti . dan : agar valid
+  const statusElement = document.getElementById(statusId);
 
-    if (!statusElement) {
-        console.error(`Elemen status untuk ${ip}:${port} tidak ditemukan!`);
-        return;
-    }
+  if (!statusElement) {
+    console.error(`Elemen status untuk ${ip}:${port} tidak ditemukan!`);
+    return;
+  }
 
-    // Tampilkan indikator loading
-    statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin"></i> Loading...</strong>';
-    statusElement.style.color = 'blue';
+  // Tampilkan indikator loading
+  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin"></i> Loading...</strong>';
+  statusElement.style.color = 'blue';
 
-    const StatusURL = `https://web.bmkg.xyz/check?ip=${ip}:${port}`;
-    console.log(`Fetching data from: ${StatusURL}`); // Debug URL
+  const StatusURL = `https://web.bmkg.xyz/check?ip=${ip}:${port}`;
+  console.log(`Fetching data from: ${StatusURL}`); // Debug URL
 
-    fetch(StatusURL, { cache: 'no-store', keepalive: true })
-        .then(response => {
-            console.log("Response status:", response.status); // Debug HTTP status
-            return response.json();
-        })
-        .then(data => {
-            console.log("API Response:", data); // Debug data yang diterima
+  fetch(StatusURL, { cache: 'no-store', keepalive: true })
+    .then(response => {
+      console.log("Response status:", response.status); // Debug HTTP status
+      return response.json();
+    })
+    .then(data => {
+      console.log("API Response:", data); // Debug data yang diterima
 
-            if (!data || typeof data !== "object") {
-                throw new Error("Data tidak valid");
-            }
+      if (!data || typeof data !== "object") {
+        throw new Error("Data tidak valid");
+      }
 
-            const status = data.status || 'UNKNOWN';
-            let delay = data.delay || 'N/A';
+      const status = data.status || 'UNKNOWN';
+      let delay = data.delay || 'N/A';
 
-            if (typeof delay === "string" && delay.includes("ms")) {
-                delay = parseFloat(delay.replace("ms", "").trim());
-            }
-            if (isNaN(delay)) {
-                delay = "N/A";
-            } else {
-                delay = Math.round(delay) + "ms";
-            }
+      // Proses delay menjadi angka jika ada
+      if (typeof delay === "string" && delay.includes("ms")) {
+        delay = parseFloat(delay.replace("ms", "").trim());
+      }
+      if (isNaN(delay)) {
+        delay = "N/A";
+      } else {
+        delay = Math.round(delay) + "ms";
+      }
 
-            // Update status di halaman
-            if (status === 'ACTIVE ✅') {
-                statusElement.innerHTML = `<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(${delay})</span>`;
-                statusElement.style.color = '#00FF00';
-            } else if (status === 'DEAD ❌') {
-                statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
-                statusElement.style.color = '#FF3333';
-            } else {
-                statusElement.innerHTML = `<strong>${status}</strong>`;
-                statusElement.style.color = 'orange';
-            }
-        })
-        .catch(error => {
-            console.error("Fetch error:", error);
-            statusElement.innerHTML = '<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>';
-            statusElement.style.color = 'cyan';
-        });
+      // Update status di halaman
+      if (status === 'ACTIVE ✅') {
+        statusElement.innerHTML = `<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(${delay})</span>`;
+        statusElement.style.color = '#00FF00'; // Hijau untuk aktif
+      } else if (status === 'DEAD ❌') {
+        statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
+        statusElement.style.color = '#FF3333'; // Merah untuk mati
+      } else {
+        statusElement.innerHTML = `<strong>${status}</strong>`;
+        statusElement.style.color = 'orange'; // Warna untuk status lainnya
+      }
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+      statusElement.innerHTML = '<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>';
+      statusElement.style.color = 'cyan';  // Cyan untuk error
+    });
 }
+
 
 // Panggil fungsi untuk uji coba
 
