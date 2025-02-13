@@ -1571,31 +1571,29 @@ function uuidv4() {
 
   // Fungsi untuk mengecek status proxy
 function checkProxyStatus(ip, port, statusElement) {
-  // Menampilkan indikator loading
+  // Menampilkan indikator loading saat memeriksa status
   statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i> Loading...</strong>';
   statusElement.style.color = 'blue';
 
   const StatusURL = `https://web.bmkg.xyz/check?ip=${ip}:${port}`;
-  console.log(`Fetching: ${StatusURL}`); // Debug URL API
 
+  // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL, { cache: 'no-store', keepalive: true })
-    .then(response => {
-      console.log(`Response status: ${response.status}`); // Debug status HTTP
-      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
-      console.log("API Response:", data); // Debug respons API
+      let status = data.status || 'UNKNOWN'; // Status proxy
+      let delay = data.delay || 'N/A'; // Latency sudah tersedia di API
 
-      const status = data.status || 'UNKNOWN';
-      let delay = data.delay || 'N/A';
+      console.log("Status:", status);
+      console.log("Delay:", delay);
 
+      // Memastikan delay tetap dalam format angka dengan "ms"
       if (delay !== 'N/A') {
-        delay = parseFloat(delay.replace("ms", "").trim());
-        if (!isNaN(delay)) delay = Math.round(delay) + "ms";
+        delay = delay.replace("ms", "").trim(); // Hapus "ms"
+        delay = isNaN(delay) ? "N/A" : delay + "ms"; // Jika bukan angka, set "N/A"
       }
 
-      // Memperbarui elemen berdasarkan status
+      // Memperbarui elemen berdasarkan status proxy
       if (status === 'ACTIVE ✅') {
         statusElement.innerHTML = `<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(${delay})</span>`;
         statusElement.style.color = '#00FF00'; // Hijau
@@ -1604,18 +1602,19 @@ function checkProxyStatus(ip, port, statusElement) {
         statusElement.style.color = '#FF3333'; // Merah
       } else {
         statusElement.innerHTML = `<strong>${status}</strong>`;
-        statusElement.style.color = 'gray'; // Abu-abu
+        statusElement.style.color = 'gray'; // Abu-abu untuk status UNKNOWN
       }
 
       statusElement.style.fontSize = '13px';
       statusElement.style.fontWeight = 'bold';
     })
     .catch(error => {
-      console.error("Fetch Error:", error);
+      console.error(`Error fetching proxy ${ip}:${port}:`, error);
       statusElement.innerHTML = '<strong><i class="fas fa-exclamation-triangle"></i> Error</strong>';
-      statusElement.style.color = 'cyan';
+      statusElement.style.color = 'cyan'; // Warna cyan untuk error
     });
 }
+
 
 
 
