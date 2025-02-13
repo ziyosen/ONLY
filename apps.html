@@ -1588,11 +1588,14 @@ function checkProxyStatus(ip, port) {
 
   fetch(StatusURL, { cache: 'no-store', keepalive: true })
     .then(response => {
-      console.log("Response status:", response.status); // Debug HTTP status
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
       return response.json();
     })
     .then(data => {
-      console.log("API Response:", data); // Debug data yang diterima
+      // Debugging log: cek struktur data
+      console.log("API Response:", data);
 
       if (!data || typeof data !== "object") {
         throw new Error("Data tidak valid");
@@ -1629,6 +1632,7 @@ function checkProxyStatus(ip, port) {
       statusElement.style.color = 'cyan';  // Cyan untuk error
     });
 }
+
 
 
 // Panggil fungsi untuk uji coba
