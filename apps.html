@@ -1586,7 +1586,13 @@ function checkProxyStatus(ip, port) {
 
     // Mengambil data dari API untuk memeriksa status proxy
     fetch(StatusURL)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                // Jika respons API tidak berhasil
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             // Pastikan status dan delay ada di data
             const delay = (data.delay && data.delay !== '0.ms') ? data.delay : "N/A"; // Jika delay "0.ms", tampilkan "N/A"
@@ -1613,14 +1619,16 @@ function checkProxyStatus(ip, port) {
                 statusElement.style.color = 'gray';
             }
         })
-        .catch(() => {
+        .catch(error => {
             // Menangani kesalahan jika API tidak merespon atau terjadi masalah jaringan
+            console.error(`Error fetching data: ${error.message}`);
             statusElement.innerHTML = `
-                <strong><i class="fas fa-exclamation-triangle"></i> Error</strong>
+                <strong><i class="fas fa-exclamation-triangle"></i> Error: ${error.message}</strong>
             `;
             statusElement.style.color = 'cyan';
         });
 }
+
 
 
 // Panggil fungsi untuk uji coba
