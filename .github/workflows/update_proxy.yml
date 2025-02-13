@@ -2,7 +2,7 @@ name: Update Proxy IP
 
 on:
   schedule:
-    - cron: '0 17 * * 0'  # Setiap hari pukul 00:00 WIB (17:00 UTC)
+    - cron: "0 */6 * * *" # Setiap hari pukul 00:00 WIB (17:00 UTC)
   workflow_dispatch:  # Memungkinkan untuk menjalankan manual melalui GitHub UI
 
 jobs:
@@ -23,10 +23,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
 
-    - name: Update proxy ip
+    - name: Update proxy IP
       env:
         IP_FILE: 'proxyip.txt'  # File proxy yang akan diperiksa
-        API_URL: 'https://p01--boiling-frame--kw6dd7bjv2nr.code.run/check?ip={ip}&host=speed.cloudflare.com&port={port}&tls=true'
+        API_URL: 'https://api.bmkg.xyz/check?ip={ip}:{port}'
       run: |
         python update_proxy.py
 
@@ -51,3 +51,4 @@ jobs:
           git commit -m "Update proxy IP status"
           git push
         fi
+
