@@ -2,8 +2,8 @@ name: Update Proxy IP
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Setiap hari pukul 00:00 WIB (17:00 UTC)
-  workflow_dispatch:  # Memungkinkan untuk menjalankan manual melalui GitHub UI
+    - cron: "0 */6 * * *"  # Auto run setiap 6 jam sekali
+  workflow_dispatch:  # Bisa dijalankan manual dari GitHub UI
 
 jobs:
   update-proxies:
@@ -23,32 +23,32 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests
 
+    - name: Debug check proxyip.txt
+      run: cat proxyip.txt || echo "proxyip.txt tidak ditemukan atau kosong"
+
     - name: Update proxy IP
       env:
-        IP_FILE: 'proxyip.txt'  # File proxy yang akan diperiksa
+        IP_FILE: 'proxyip.txt'
         API_URL: 'https://api.bmkg.xyz/check?ip={ip}:{port}'
-      run: |
-        python update_proxy.py
+      run: python update_proxy.py
 
     - name: Ensure update_proxyip.txt exists
       run: |
-        if [ -f "update_proxyip.txt" ]; then
-          echo "File update_proxyip.txt exists."
+        if [ -s "update_proxyip.txt" ]; then
+          echo "File update_proxyip.txt has content."
         else
-          echo "File update_proxyip.txt not found!"
-          exit 1  # Menghentikan proses jika file tidak ditemukan
+          echo "File update_proxyip.txt is empty or not found!"
+          exit 1
         fi
 
     - name: Commit and push changes
       run: |
         git config --local user.name "github-actions[bot]"
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git add update_proxyip.txt
-        git add error.txt
+        git add update_proxyip.txt error.txt
         if git diff --cached --exit-code; then
           echo "No changes to commit"
         else
           git commit -m "Update proxy IP status"
           git push
         fi
-
