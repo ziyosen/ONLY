@@ -1571,13 +1571,7 @@ function uuidv4() {
 
   // Fungsi untuk mengecek status proxy
 function checkProxyStatus(ip, port) {
-    const id = `status-${ip.replace(/\./g, "_").replace(/:/g, "_")}`;
-    const statusElement = document.getElementById(id);
-
-    if (!statusElement) {
-        console.error(`Elemen status untuk ${ip}:${port} tidak ditemukan!`);
-        return;
-    }
+    
 
     // Tampilkan indikator loading
     statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i> Loading...</strong>';
