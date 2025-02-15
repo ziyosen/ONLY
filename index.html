@@ -1688,7 +1688,7 @@ function uuidv4() {
       » Country     :${id}&nbsp;<span class="flag-icon flag-icon-${id.toLowerCase()}"></span><br>
       » IP:PORT      : ${ip}-${port}<br>
       <hr/>VLESS PATH SIMPLE<br>
-      PATH: /${id}${cons}<br>
+      PATH: /Free-CF-Proxy-${id}${cons}<br>
       <button class="copy-vless">COPY VLESS SIMPLE</button>
       <br><hr/>VLESS PATH RIBET<br>
       PATH: /${ip}-${port}<br><button class="copy-vless-clash">COPY VLESS RIBET</button>
@@ -1703,7 +1703,7 @@ function uuidv4() {
       » Country     :${id}&nbsp;<span class="flag-icon flag-icon-${id.toLowerCase()}"></span><br>
       » IP:PORT      : ${ip}-${port}<br>
       <hr/>TROJAN PATH SIMPLE<br>
-      PATH: /${id}${cons}<br>
+      PATH: /Free-CF-Proxy-${id}${cons}<br>
       <button class="copy-trojan">COPY TROJAN SIMPLE</button>
       <br><hr/>TROJAN PATH RIBET<br>
       PATH: /${ip}-${port}<br><button class="copy-trojan-clash877">COPY RIBET RIBET</button> 
@@ -1718,7 +1718,7 @@ function uuidv4() {
       » Country     :${id}&nbsp;<span class="flag-icon flag-icon-${id.toLowerCase()}"></span><br>
       » IP:PORT      : ${ip}-${port}<br>
       <hr/>SHADOWSOCK PATH SIMPLE<br>
-      PATH: /${id}${cons}<br>
+      PATH: /Free-CF-Proxy-${id}${cons}<br>
       <button class="copy-ss">COPY SHADOWSOCK SIMPLE</button>
       <br><hr/>SHADOWSOCK PATH RIBET<br>
       PATH: /${ip}-${port}<br>
@@ -1735,7 +1735,7 @@ function uuidv4() {
     const host = "turah.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
-    const VLESS = `vless://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2F${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
+    const VLESS = `vless://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
     navigator.clipboard.writeText(VLESS);
     Swal.fire({
       title: 'Berhasil!',
@@ -1773,7 +1773,7 @@ row.querySelector('.copy-trojan').addEventListener('click', () => {
     const host = "turah.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
-    const TROJAN = `trojan://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2F${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
+    const TROJAN = `trojan://${uuidv4()}@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
     navigator.clipboard.writeText(TROJAN);
     Swal.fire({
       title: 'Berhasil!',
@@ -1812,7 +1812,7 @@ row.querySelector('.copy-ss').addEventListener('click', () => {
     const host = "turah.cepu.us.kg";
 const selectedService = row.querySelector('.service-selector').value || host;
 const domain = selectedService === host ? host : `${selectedService}.${host}`;
-    const SS = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2F${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
+    const SS = `ss://bm9uZTo1ZDJlYmQyYS05Y2I5LTRkMWItYWY1NS04NjE3ZDNlODFmMzk%3D@${selectedService}:443?encryption=none&type=ws&host=${domain}&path=%2FFree-CF-Proxy-${id}${cons}&security=tls&sni=${domain}#(${selectedService})+${id}+${isp}`;
     navigator.clipboard.writeText(SS);
     Swal.fire({
       title: 'Berhasil!',
