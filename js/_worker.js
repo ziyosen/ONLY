@@ -164,7 +164,7 @@ export default {
         }
 
         // Match path dengan format ip:port atau ip=port
-        const ipPortMatch = url.pathname.match(/^\/(.+[:=-]\d+)$/);
+        const ipPortMatch = url.pathname.match(/^\/Free-CF-Proxy-(.+[:=-]\d+)$/);
 
         if (ipPortMatch) {
           proxyIP = ipPortMatch[1].replace(/[=:-]/, ":"); // Standarisasi menjadi ip:port
