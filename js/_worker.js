@@ -402,8 +402,18 @@ async function handleSubRequest(hostnem) {
     <div class="container">
         <div class="card">
             <h1 class="title">${namaWeb}</h1>
-<center><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <button style="background-color: #cde033; color: black; border: none; padding: 6px 12px; cursor: pointer; font-family: 'Rajdhani', sans-serif; border-radius: 5px;">Home Page</button></a></center>
+<center><div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
+               <div style="display: flex; align-items: center; gap: 5px;">
+  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
+  </a>
+  <a href="${telegramku}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://kang.cepu.us.kg/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
+  </a><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50">
+  </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://kang.cepu.us.kg/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
+  </a></div></center>
                        <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
