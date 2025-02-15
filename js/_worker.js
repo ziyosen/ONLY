@@ -2201,14 +2201,14 @@ function buildCountryFlag() {
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
               <div style="display: flex; width: 90%;"><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/mobile.png
 " alt="menu" width="50"></a><a href="/api" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/subscribe.png
-" alt="menu" width="50"></a>
+" alt="menu" width="60"></a>
                 <input type="text" 
                   id="search-bar" 
                   placeholder="Search by IP, CountryCode, or ISP"
                   value="${searchQuery}" 
                   style="flex: 1; margin-top: 5px; height: 45px;"/>
                 <button id="search-button"><img src="https://kang.cepu.us.kg/img/search.png
-" alt="menu" width="50"></button>
+" alt="menu" width="30"></button>
               </div>
               ${searchQuery
                 ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostName}')">
