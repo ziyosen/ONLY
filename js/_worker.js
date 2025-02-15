@@ -2207,7 +2207,8 @@ function buildCountryFlag() {
                   placeholder="Search by IP, CountryCode, or ISP"
                   value="${searchQuery}" 
                   style="flex: 1; margin-top: 5px; height: 45px;"/>
-                <button id="search-button" class="button7">Search</button>
+                <button id="search-button"><img src="https://kang.cepu.us.kg/img/search.png
+" alt="menu" width="50"></button>
               </div>
               ${searchQuery
                 ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostName}')">
