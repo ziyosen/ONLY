@@ -2199,7 +2199,9 @@ function buildCountryFlag() {
 <header><h1 class="quantum-title">${namaWeb}</h1></header>
     <div class="quantum-container">
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
-              <div style="display: flex; width: 90%;"><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/mobile.png
+               <div style="display: flex; align-items: center; gap: 10px;">
+  
+  <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/mobile.png
 " alt="menu" width="50"></a><a href="/api" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/subscribe.png
 " alt="menu" width="75"></a>
                 <input type="text" 
