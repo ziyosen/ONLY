@@ -2204,7 +2204,7 @@ function buildCountryFlag() {
     <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
   </a>
   <a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/subscribe.png" alt="menu" width="85" style="margin-top: 10px;">
+    <img src="https://kang.cepu.us.kg/img/linksub.png" alt="menu" width="50" style="margin-top: 10px;">
   </a>
   <input type="text" 
          id="search-bar" 
