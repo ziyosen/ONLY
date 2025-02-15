@@ -2201,7 +2201,7 @@ function buildCountryFlag() {
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
               <div style="display: flex; width: 90%;"><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/mobile.png
 " alt="menu" width="50"></a><a href="/api" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kang.cepu.us.kg/img/subscribe.png
-" alt="menu" width="85"></a>
+" alt="menu" width="75"></a>
                 <input type="text" 
                   id="search-bar" 
                   placeholder="Search by IP, CountryCode, or ISP"
