@@ -2224,14 +2224,11 @@ function buildCountryFlag() {
   <button id="search-button">
     <img src="https://kang.cepu.us.kg/img/search.png" alt="menu" width="40">
   </button>
-</div>
-
-              ${searchQuery
-                ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostName}')">
-                  Home Page
+</div>   ${searchQuery
+                ? `<button id="home-button" onclick="goToHomePage('${hostName}')">
+                  <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
                 </button>`
-                : ''}
-            </div>            
+                : ''}            </div>            
             <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kere.us.kg/img/tele.png
 " alt="menu" width="50"></a>
   <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
