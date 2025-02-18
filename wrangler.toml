@@ -10,7 +10,9 @@ enabled = true
 enabled = true
 
 
-
+[[routes]]
+pattern = "subapi.cepu.us.kg"
+custom_domain = true
 [[routes]]
 pattern = "goreng.cepu.us.kg"
 custom_domain = true
