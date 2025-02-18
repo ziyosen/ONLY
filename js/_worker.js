@@ -413,7 +413,7 @@ async function handleSubRequest(hostnem) {
     <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50">
   </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
     <img src="https://kang.cepu.us.kg/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
-  </a></div></center>
+  </a></div></center><br/><br/>
                        <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
