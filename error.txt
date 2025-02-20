@@ -1,7 +1,10 @@
-Error checking 85.159.230.232:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=85.159.230.232:8443
-Error checking 37.27.27.91:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=37.27.27.91:2053
-Error checking 141.95.161.241:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=141.95.161.241:8443
-Error checking 137.74.150.126:2053: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-Error checking 103.102.231.228:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=103.102.231.228:2053
-Error checking 45.129.2.97:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=45.129.2.97:8443
-Error checking 147.45.74.37:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=147.45.74.37:2053
+Error checking 138.2.74.219:28616: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=138.2.74.219:28616
+Error checking 72.10.173.78:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=72.10.173.78:8443
+Error checking 168.119.247.199:443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=168.119.247.199:443
+Error checking 139.59.139.10:443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=139.59.139.10:443
+Error checking 85.192.63.54:443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=85.192.63.54:443
+Error checking 38.180.215.190:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=38.180.215.190:2053
+Error checking 5.188.181.202:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=5.188.181.202:2053
+Error checking 193.84.2.14:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=193.84.2.14:8443
+Error checking 51.178.207.66:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=51.178.207.66:8443
+Error checking 119.149.211.6:22021: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=119.149.211.6:22021
