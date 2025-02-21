@@ -3793,9 +3793,15 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
     let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
     const UUIDS = `${generateUUIDv4()}`;
-    const ports = tls ? '443' : '80';
-    const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
-    if (type === 'vless') {
+        const ports = tls ? '443' : '80';
+const snio = tls ? `"tls": {
+    "disable_sni": false,
+    "enabled": true,
+    "insecure": true,
+    "server_name": "${wildcrd}"
+  },` : '';
+	  
+	  if (type === 'vless') {
       bmkg+= `        "${ispName}",\n`
       conf += `
     {
