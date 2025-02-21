@@ -405,14 +405,14 @@ async function handleSubRequest(hostnem) {
 <center><div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
                <div style="display: flex; align-items: center; gap: 5px;">
   <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
   </a>
   <a href="${telegramku}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
+    <img src="https://bmkg.xyz/img/tele.png" alt="menu" width="50" style="margin-top: 5px;">
   </a><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50">
   </a><a href="${telegrambot}" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
+    <img src="https://bmkg.xyz/img/bot.png" alt="menu" width="50" style="margin-top: 5px;">
   </a></div></center><br/><br/>                       <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
@@ -2210,10 +2210,10 @@ function buildCountryFlag() {
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
               <div style="display: flex; align-items: center; gap: 5px;">
   <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/mobile.png" alt="menu" width="50">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
   </a>
   <a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://kang.cepu.us.kg/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;">
   </a>
   <input type="text" 
          id="search-bar" 
@@ -2221,11 +2221,11 @@ function buildCountryFlag() {
          value="${searchQuery}" 
          style="flex: 1; margin-top: 5px; height: 45px;"/>
   <button id="search-button">
-    <img src="https://kang.cepu.us.kg/img/search.png" alt="menu" width="40">
+    <img src="https://bmkg.xyz/img/search.png" alt="menu" width="40">
   </button>
 </div>   ${searchQuery
                 ? `<button id="home-button" onclick="goToHomePage('${hostName}')">
-                  <img src="https://kang.cepu.us.kg/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
+                  <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
                 </button>`
                 : ''}            </div>            
             
