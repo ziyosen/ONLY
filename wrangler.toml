@@ -11,44 +11,44 @@ enabled = true
 
 
 [[routes]]
-pattern = "subapi.cepu.us.kg"
+pattern = "subapi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "goreng.cepu.us.kg"
+pattern = "goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.goreng.cepu.us.kg"
+pattern = "ava.game.naver.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.goreng.cepu.us.kg"
+pattern = "graph.instagram.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.goreng.cepu.us.kg"
+pattern = "quiz.int.vidio.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.goreng.cepu.us.kg"
+pattern = "live.iflix.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.goreng.cepu.us.kg"
+pattern = "support.zoom.us.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.goreng.cepu.us.kg"
+pattern = "blog.webex.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.goreng.cepu.us.kg"
+pattern = "investors.spotify.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.goreng.cepu.us.kg"
+pattern = "cache.netflix.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.goreng.cepu.us.kg"
+pattern = "zaintest.vuclip.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.goreng.cepu.us.kg"
+pattern = "ads.ruangguru.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.goreng.cepu.us.kg"
+pattern = "io.ruangguru.com.goreng.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.goreng.cepu.us.kg"
+pattern = "api.midtrans.com.goreng.cloudproxyip.my.id"
 custom_domain = true
