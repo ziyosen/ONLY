@@ -11,6 +11,12 @@ enabled = true
 
 
 [[routes]]
+pattern = "inputbugwildcard.cloudproxyip.my.id.winner.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
+pattern = "inputbugwildcard.cloudproxyip.my.id"
+custom_domain = true
+[[routes]]
 pattern = "subapi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
