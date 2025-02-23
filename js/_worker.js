@@ -174,7 +174,7 @@ export default {
       }
 
       
-      const myhost = 'goreng.cloudproxyip.my.id';
+      const myhost = 'winner.cloudproxyip.my.id';
       const myhostName = url.hostname;
       const type = url.searchParams.get('type') || 'mix';
       const tls = url.searchParams.get('tls') !== 'false';
@@ -947,7 +947,7 @@ function buildCountryFlag() {
 
     const url = new URL(request.url);
     const hostNameFromRequest = url.hostname;
-    const hostName = 'goreng.cloudproxyip.my.id';
+    const hostName = 'winner.cloudproxyip.my.id';
 // Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
