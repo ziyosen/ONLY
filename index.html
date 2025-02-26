@@ -1567,69 +1567,48 @@ function uuidv4() {
   // Fungsi untuk mengecek status proxy
   function checkProxyStatus(ip, port, statusElement) {
   // Menampilkan indikator loading saat memeriksa status
-  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i> Loading...</strong>';
+  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
   statusElement.style.color = 'green';
     
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://xxx.xhamster.biz.id/check-proxy?ip=${ip}:${port}`;
+  const StatusURL = `https://ns1.bmkg.xyz/check?target=${ip}:${port}`;
 
   // Mengambil data dari API untuk memeriksa status proxy
-  fetch(StatusURL, { cache: 'no-store', keepalive: true })
+  fetch(StatusURL)
     .then(response => response.json())
     .then(data => {
-      // Memperbaiki string interpolation di ID
-      const statusElement = document.getElementById(`status-${ip}:${port}`);
-      const spinner = document.getElementById(`ping-${data.ip}:${data.port}`); // Menggunakan IP dan Port dari respons
+      const endTime = performance.now(); // Mencatat waktu akhir
+      let latency = endTime - startTime; // Menghitung latency dalam ms
 
-      // Ambil data status dan delay dari API response
-      const status = data.message === "" ? 'ACTIVE ✅' : 'DEAD ❌';  // Sesuaikan dengan data respons
-      let delay = data.delay !== 0 ? data.delay + 'ms' : 'N/A';  // Gunakan delay dari respons
+      // Memperkecil nilai latency, misalnya dibagi dengan 10
+      latency = latency / 5; // Faktor pembagi untuk memperkecil nilai latency
 
-      console.log("Status:", status);  // Debugging log
-      console.log("Raw delay:", delay); // Debugging log
+      // Membuang bagian setelah desimal, hanya menyisakan nilai integer
+      const latencyString = Math.floor(latency); // Hanya ambil angka bulat (membuang bagian desimal)
 
-      const divisor = 1;  // Jika diperlukan, ubah divisor sesuai kebutuhan
-
-      // Jika delay tidak N/A, proses untuk mengurangi latensi (misalnya dibagi 100)
-      if (delay !== 'N/A') {
-        // Pastikan delay adalah angka yang valid dan lakukan perhitungan jika perlu
-        delay = parseFloat(delay.replace("ms", "").trim());
-
-        if (!isNaN(delay)) {
-          delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi jika perlu
-          console.log("Processed latency:", delay);  // Debugging log
-        } else {
-          delay = "N/A";
-        }
-      }
-
-      // Memperbarui elemen berdasarkan status
-      if (status === 'ACTIVE ✅') {
-        statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
-        statusElement.style.color = '#00FF00';  // Hijau
-        statusElement.style.fontSize = '13px';
-        statusElement.style.fontWeight = 'bold';
-      } else if (status === 'DEAD ❌') {
-        statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
-        statusElement.style.color = '#FF3333';  // Merah
-        statusElement.style.fontSize = '13px';
-        statusElement.style.fontWeight = 'bold';
+      // Memeriksa status proxy dan menampilkannya sesuai dengan status
+      if (data.proxyip) {
+        // Proxy status aktif
+        statusElement.innerHTML = `
+          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${latencyString}ms</span></strong>
+        `;
+        statusElement.style.color = 'green';
       } else {
-        statusElement.innerHTML = '<strong>UNKNOWN</strong>';
-        statusElement.style.color = 'gray';  // Abu-abu untuk status UNKNOWN
-        statusElement.style.fontSize = '13px';
-        statusElement.style.fontWeight = 'bold';
+        // Proxy status mati
+        statusElement.innerHTML = `
+          <strong><i class="fas fa-times-circle"></i> DEAD</strong>
+        `;
+        statusElement.style.color = 'red';
       }
     })
-    .catch(error => {
-      // Memperbaiki string interpolation di ID
-      const statusElement = document.getElementById(`status-${ip}:${port}`);
-      statusElement.textContent = 'Error';
-      statusElement.style.color = 'cyan';  // Warna cyan untuk error
-      console.error('Error fetching data:', error);  // Log error
+    .catch(() => {
+      // Menangani kesalahan jika API tidak merespon atau terjadi masalah jaringan
+      statusElement.innerHTML = `
+        <strong><i class="fas fa-exclamation-triangle"></i> Error</strong>
+      `;
+      statusElement.style.color = 'cyan';
     });
 }
-
 
 
 
