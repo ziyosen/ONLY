@@ -1591,22 +1591,24 @@ function uuidv4() {
       latency = Math.round(latency / 100); // Membagi dengan 100 dan membulatkan
 
       // Memeriksa status proxy dan menampilkannya sesuai dengan status
-      if (data.proxyip) {
-        // Proxy status aktif
-        let delay = data.delay || latency; // Menggunakan delay dari API jika ada
-        delay = `${delay}ms`;  // Menambahkan satuan ms pada latensi
+      let delay = data.delay || latency;  // Menggunakan delay dari API jika ada
+      delay = `${delay}ms`;  // Menambahkan satuan ms pada latensi
 
-        statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i>&nbsp;Active (${delay})</strong>
-        `;
-        statusElement.style.color = 'green';
-      } else {
-        // Proxy status mati
-        statusElement.innerHTML = `
-          <strong><i class="fas fa-times-circle"></i> DEAD</strong>
-        `;
-        statusElement.style.color = 'red';
+      let status = 'UNKNOWN';  // Default status
+      let color = 'gray';  // Default color
+
+      if (data.message === "") {
+        status = `ACTIVE ✅ (${delay})`;  // Status aktif jika message kosong
+        color = 'green';
+      } else if (data.message !== "") {
+        status = `DEAD ❌`;
+        color = 'red';
       }
+
+      // Memperbarui elemen status berdasarkan kondisi
+      statusElement.innerHTML = `<strong><i class="fas fa-bolt"></i>&nbsp;${status}</strong>`;
+      statusElement.style.color = color;
+
     })
     .catch(error => {
       console.error("Error saat mengambil data:", error); // Log error untuk debugging
@@ -1618,6 +1620,7 @@ function uuidv4() {
       statusElement.style.color = 'orange'; // Menggunakan warna orange untuk status "Tidak Tersedia"
     });
 }
+
 
 
 
