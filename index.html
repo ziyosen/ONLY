@@ -1571,25 +1571,31 @@ function uuidv4() {
   statusElement.style.color = 'green';
     
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://xxx.xhamster.biz.id/check-proxy?ip=${ip}:${port}`; // Pastikan URL API benar
+  const StatusURL = `https://xxx.xhamster.biz.id/check-proxy?ip=${ip}:${port}`; // URL API yang tepat
+  
+  console.log("Memulai pengecekan status proxy:", StatusURL); // Log URL untuk debug
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
-    .then(response => response.json())
+    .then(response => {
+      console.log("Status Respons API:", response.status); // Log status code API
+      return response.json();
+    })
     .then(data => {
+      console.log("Data Respons API:", data); // Log data yang diterima dari API
+
       const endTime = performance.now(); // Mencatat waktu akhir
       let latency = endTime - startTime; // Menghitung latency dalam ms
 
       // Memperkecil nilai latency, misalnya dibagi dengan 100
       latency = Math.round(latency / 100); // Membagi dengan 100 dan membulatkan
 
-      // Memeriksa apakah data delay ada
-      let delay = data.delay || latency; // Gunakan data.delay jika tersedia, jika tidak gunakan latency yang dihitung
-      delay = `${delay}ms`;  // Menambahkan satuan ms pada latensi
-
       // Memeriksa status proxy dan menampilkannya sesuai dengan status
       if (data.proxyip) {
         // Proxy status aktif
+        let delay = data.delay || latency; // Menggunakan delay dari API jika ada
+        delay = `${delay}ms`;  // Menambahkan satuan ms pada latensi
+
         statusElement.innerHTML = `
           <strong><i class="fas fa-bolt"></i>&nbsp;Active (${delay})</strong>
         `;
@@ -1602,7 +1608,9 @@ function uuidv4() {
         statusElement.style.color = 'red';
       }
     })
-    .catch(() => {
+    .catch(error => {
+      console.error("Error saat mengambil data:", error); // Log error untuk debugging
+
       // Menangani kesalahan jika API tidak merespon atau terjadi masalah jaringan
       statusElement.innerHTML = `
         <strong><i class="fas fa-exclamation-triangle"></i> Proxy Tidak Tersedia</strong>
@@ -1610,6 +1618,7 @@ function uuidv4() {
       statusElement.style.color = 'orange'; // Menggunakan warna orange untuk status "Tidak Tersedia"
     });
 }
+
 
 
 
