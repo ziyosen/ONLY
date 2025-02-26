@@ -1605,9 +1605,9 @@ function uuidv4() {
     .catch(() => {
       // Menangani kesalahan jika API tidak merespon atau terjadi masalah jaringan
       statusElement.innerHTML = `
-        <strong><i class="fas fa-exclamation-triangle"></i> Error</strong>
+        <strong><i class="fas fa-exclamation-triangle"></i> Proxy Tidak Tersedia</strong>
       `;
-      statusElement.style.color = 'cyan';
+      statusElement.style.color = 'orange'; // Menggunakan warna orange untuk status "Tidak Tersedia"
     });
 }
 
