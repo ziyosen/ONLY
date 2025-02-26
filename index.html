@@ -1567,11 +1567,11 @@ function uuidv4() {
   // Fungsi untuk mengecek status proxy
   function checkProxyStatus(ip, port, statusElement) {
   // Menampilkan indikator loading saat memeriksa status
-  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
+  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i> Loading...</strong>';
   statusElement.style.color = 'green';
     
   const startTime = performance.now(); // Mencatat waktu awal
-  const StatusURL = `https://ns1.bmkg.xyz/check?target=${ip}:${port}`;
+  const StatusURL = `https://xxx.xhamster.biz.id/check?ip=${ip}:${port}`; // Pastikan URL API benar
 
   // Mengambil data dari API untuk memeriksa status proxy
   fetch(StatusURL)
@@ -1580,17 +1580,18 @@ function uuidv4() {
       const endTime = performance.now(); // Mencatat waktu akhir
       let latency = endTime - startTime; // Menghitung latency dalam ms
 
-      // Memperkecil nilai latency, misalnya dibagi dengan 10
-      latency = latency / 100; // Faktor pembagi untuk memperkecil nilai latency
+      // Memperkecil nilai latency, misalnya dibagi dengan 100
+      latency = Math.round(latency / 100); // Membagi dengan 100 dan membulatkan
 
-      // Membuang bagian setelah desimal, hanya menyisakan nilai integer
-      const latencyString = Math.floor(latency); // Hanya ambil angka bulat (membuang bagian desimal)
+      // Memeriksa apakah data delay ada
+      let delay = data.delay || latency; // Gunakan data.delay jika tersedia, jika tidak gunakan latency yang dihitung
+      delay = `${delay}ms`;  // Menambahkan satuan ms pada latensi
 
       // Memeriksa status proxy dan menampilkannya sesuai dengan status
       if (data.proxyip) {
         // Proxy status aktif
         statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${latencyString}ms</span></strong>
+          <strong><i class="fas fa-bolt"></i>&nbsp;Active (${delay})</strong>
         `;
         statusElement.style.color = 'green';
       } else {
@@ -1609,6 +1610,7 @@ function uuidv4() {
       statusElement.style.color = 'cyan';
     });
 }
+
 
 
 
