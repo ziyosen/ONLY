@@ -1565,7 +1565,8 @@ function uuidv4() {
   .catch(error => console.error("Error fetching proxy data:", error));
 
   // Fungsi untuk mengecek status proxy
-  function checkProxyStatus(ip, port, statusElement) {
+  // Fungsi untuk mengecek status proxy
+function checkProxyStatus(ip, port, statusElement) {
   statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
   statusElement.style.color = 'green';
 
@@ -1573,15 +1574,28 @@ function uuidv4() {
   const StatusURL = `https://apites.bmkg.xyz/check?ip=${ip}:${port}`;
 
   fetch(StatusURL)
-    .then(response => response.json())
+    .then(response => {
+      // Cek apakah response berhasil
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
       const endTime = performance.now();
       let latency = endTime - startTime;
-      const latencyString = Math.floor(latency / 100);
+      const latencyString = Math.floor(latency);
+
+      // Log data untuk debugging
+      console.log("Response data:", data);
 
       if (data.proxyip) {
         statusElement.innerHTML = `
-          <strong><i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">${latencyString}ms</span></strong>
+          <strong><i class="fas fa-bolt"></i>&nbsp;Proxy Active: <span style="color: gold;">${data.delay}</span></strong><br>
+          <strong>IP:</strong> ${data.ip}<br>
+          <strong>Location:</strong> ${data.city}, ${data.country}<br>
+          <strong>ISP:</strong> ${data.isp}<br>
+          <strong>ASN:</strong> ${data.asn}
         `;
         statusElement.style.color = 'green';
       } else {
@@ -1591,7 +1605,8 @@ function uuidv4() {
         statusElement.style.color = 'red';
       }
     })
-    .catch(() => {
+    .catch(error => {
+      console.error("Error fetching proxy data:", error);
       statusElement.innerHTML = `
         <strong><i class="fas fa-exclamation-triangle"></i> Error</strong>
       `;
