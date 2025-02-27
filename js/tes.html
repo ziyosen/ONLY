@@ -1566,67 +1566,68 @@ function uuidv4() {
 
   // Fungsi untuk mengecek status proxy
   function checkProxyStatus(ip, port, statusElement) {
-  // Display loading status
-  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i> Loading...</strong>';
+  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
   statusElement.style.color = 'green';
 
   const startTime = performance.now();
   const StatusURL = `https://apites.bmkg.xyz/check?ip=${ip}:${port}`;
 
+  // Fungsi untuk mengecek status proxy
+function checkProxyStatus(ip, port, statusElement) {
+  // Tampilkan status loading sementara
+  statusElement.innerHTML = '<strong><i class="fas fa-spinner fa-spin loading-icon"></i>Loading...</strong>';
+  statusElement.style.color = 'green';
+
+  const startTime = performance.now();
   
-fetch(StatusURL, { cache: 'no-store', keepalive: true })
-        .then(response => response.json())
-        .then(data => {
-            const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.ip + ':' + data.port); // Menggunakan IP dan Port dari respons
+  fetch(`https://apites.bmkg.xyz/check?ip=${ip}:${port}`, { cache: 'no-store', keepalive: true })
+    .then(response => response.json())
+    .then(data => {
+        // Ambil data status dan delay dari API response
+        const status = data.message === "" ? 'ACTIVE ✅' : 'DEAD ❌';
+        let delay = data.delay !== 0 ? `${data.delay}ms` : 'N/A';
 
-            // Ambil data status dan delay dari API response
-            const status = data.message === "" ? 'ACTIVE ✅' : 'DEAD ❌';  // Sesuaikan dengan data respons
-            let delay = data.delay !== 0 ? data.delay + 'ms' : 'N/A';  // Gunakan delay dari respons
+        console.log("Status:", status);
+        console.log("Raw delay:", delay);
 
-            console.log("Status:", status);  // Debugging log
-            console.log("Raw delay:", delay); // Debugging log
+        const divisor = 1;
 
-            const divisor = 1;  // Jika diperlukan, ubah divisor sesuai kebutuhan
-
-            // Jika delay tidak N/A, proses untuk mengurangi latensi (misalnya dibagi 100)
-            if (delay !== 'N/A') {
-                // Pastikan delay adalah angka yang valid dan lakukan perhitungan jika perlu
-                delay = parseFloat(delay.replace("ms", "").trim());
-
-                if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi jika perlu
-                    console.log("Processed latency:", delay);  // Debugging log
-                } else {
-                    delay = "N/A";
-                }
-            }
-
-            // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
-                statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
-                statusElement.style.color = '#00FF00';  // Hijau
-                statusElement.style.fontSize = '13px';
-                statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD ❌') {
-                statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
-                statusElement.style.color = '#FF3333';  // Merah
-                statusElement.style.fontSize = '13px';
-                statusElement.style.fontWeight = 'bold';
+        // Jika delay tidak 'N/A', proses latensi
+        if (delay !== 'N/A') {
+            delay = parseFloat(delay.replace("ms", "").trim());
+            if (!isNaN(delay)) {
+                delay = Math.round(delay / divisor) + "ms";
+                console.log("Processed latency:", delay);
             } else {
-                statusElement.innerHTML = '<strong>UNKNOWN</strong>';
-                statusElement.style.color = 'gray';  // Abu-abu untuk status UNKNOWN
-                statusElement.style.fontSize = '13px';
-                statusElement.style.fontWeight = 'bold';
+                delay = "N/A";
             }
-        })
-        .catch(error => {
-            const statusElement = document.getElementById('status-${ipPort}');
-            statusElement.textContent = 'Error';
-            statusElement.style.color = 'cyan';  // Warna cyan untuk error
-            console.error('Error fetching data:', error);  // Log error
-        });
+        }
+
+        // Memperbarui status di halaman
+        if (status === 'ACTIVE ✅') {
+            statusElement.innerHTML = `<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(${delay})</span>`;
+            statusElement.style.color = '#00FF00';  // Hijau
+        } else if (status === 'DEAD ❌') {
+            statusElement.innerHTML = `<strong><i class="fas fa-times-circle"></i> DEAD</strong>`;
+            statusElement.style.color = '#FF3333';  // Merah
+        } else {
+            statusElement.innerHTML = '<strong>UNKNOWN</strong>';
+            statusElement.style.color = 'gray';  // Abu-abu
+        }
+
+        // Styling untuk font dan ukuran
+        statusElement.style.fontSize = '13px';
+        statusElement.style.fontWeight = 'bold';
+
+    })
+    .catch(error => {
+        // Menangani error dan menampilkan pesan error
+        statusElement.textContent = 'Error';
+        statusElement.style.color = 'cyan';  // Warna cyan untuk error
+        console.error('Error fetching data:', error);
+    });
 }
+
 
 
 
