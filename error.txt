@@ -1,1 +1,4 @@
-Error checking 212.113.101.61:8443: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 146.103.49.209:2053: 500 Server Error: Internal Server Error for url: https://api.bmkg.xyz/check?ip=146.103.49.209:2053
+Error checking 153.174.24.218:24759: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 112.222.87.59:17777: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=112.222.87.59:17777
+Error checking 14.54.57.232:30070: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
