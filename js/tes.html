@@ -13,46 +13,21 @@
             padding: 0;
         }
         /* CSS untuk ikon caret kiri dan kanan */
-.icon {
-  font-family: 'Arial', sans-serif; /* Ganti dengan font ikon jika diperlukan */
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  text-align: center;
-  line-height: 16px;
-  font-size: 16px;
-}
 
-/* Ikon caret kanan */
-.icon--caret-right::before {
-  content: '\2192'; /* Unicode untuk panah kanan */
-}
-
-/* Ikon caret kiri */
-.icon--caret-left::before {
-  content: '\2190'; /* Unicode untuk panah kiri */
-}
-
-/* Gaya teks terbalik (inverted) */
-.text-inverted {
-  color: white; /* Ganti warna sesuai kebutuhan */
-  background-color: black; /* Ganti warna latar sesuai kebutuhan */
-  padding: 2px;
-  border-radius: 4px;
-}
 
         .navbar {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding-top: 60px;
-            transition: left 0.3s;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-        }
+    position: fixed;
+    top: 0;
+    left: -150px; /* Mengurangi jarak kiri untuk navbar */
+    width: 150px; /* Lebar navbar lebih kecil */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding-top: 50px; /* Padding atas yang lebih kecil */
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
         .navbar a {
             display: block;
             color: white;
