@@ -135,7 +135,9 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
         function toggleNavbar() {
             const navbar = document.getElementById("navbar");
             const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
 
+		
             if (navbarOpen) {
                 navbar.style.left = "-250px";
                 img.src = "https://bmkg.xyz/img/buka.png"; 
