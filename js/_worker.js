@@ -876,18 +876,7 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
 }
   
     
-        .navbar {
-    position: fixed;
-    top: 0;
-    left: -100px; /* Mengurangi jarak kiri untuk navbar */
-    width: 100px; /* Lebar navbar lebih kecil */
-    height: 100%;
-    background: rgba(0, 0, 0, 0.0);
-    color: white;
-    padding-top: 50px; /* Padding atas yang lebih kecil */
-    transition: left 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.0);
-}
+        
 
         .navbartedjo {
     position: fixed;
@@ -935,7 +924,7 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
             text-align: justify;
         }
 	    .toggle-btn img {
-            width: 25px; /* Ukuran gambar lebih kecil */
+            width: 20px; /* Ukuran gambar lebih kecil */
             height: 150px; /* Ukuran gambar lebih kecil */
         }
 
