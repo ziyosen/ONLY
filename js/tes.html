@@ -43,7 +43,7 @@
             position: fixed;
             top: 0;
             left: -250px;
-            width: 250px;
+            width: 50px;
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
             color: white;
@@ -63,9 +63,9 @@
         .toggle-btn {
             position: absolute;
             top: 50%;
-            left: 100%;
+            left: 50%;
             transform: translateY(-50%);
-            background: blue;
+            background: ;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -92,7 +92,7 @@
 <body>
 
     <div class="navbar" id="navbar">
-        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">></button>
+        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">▷</button>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Services</a>
@@ -130,10 +130,10 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
 
             if (navbarOpen) {
                 navbar.style.left = "-250px";
-                menuBtn.innerHTML = ">";
+                menuBtn.innerHTML = "▷";
             } else {
                 navbar.style.left = "0";
-                menuBtn.innerHTML = "<";
+                menuBtn.innerHTML = "◁";
             }
 
             navbarOpen = !navbarOpen;
