@@ -1,9 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar dengan Tombol Panah</title>
+       <link href="https://media.flaticon.com/dist/css/fi-style.540d79b83e4761a7b349.css" rel="stylesheet" type="text/css"/>
+
+<!--[if lt IE 10]>
+<script>var ie = true;</script>
+<link rel="stylesheet" type="text/css" href="https://media.flaticon.com/css/ie.css">
+<![endif]-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -92,7 +99,8 @@
 <body>
 
     <div class="navbar" id="navbar">
-        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">▷</button>
+        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">▷	<i class="icon icon--caret-right text-inverted"></i>
+		</button>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Services</a>
