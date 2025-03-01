@@ -400,34 +400,7 @@ function mamangenerateHTML() {
   }
 }
 
-.loading-icon {
-  font-size: 40px;
-  animation: rotate 1s linear infinite;
-  color: #f00; /* default color */
-}
 
-.loading-icon:before {
-  content: '110'; /* spinner icon */
-  font-family: 'FontAwesome';
-  color: red;
-  animation: spinColors 1.2s linear infinite;
-}
-
-@keyframes spinColors {
-  0% { color: red; }
-  25% { color: yellow; }
-  50% { color: green; }
-  75% { color: blue; }
-  100% { color: purple; }
-}
-      .spinner {
-  border: 4px solid #f3f3f3; /* Light grey */
-  border-top: 4px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-}
 
       * {
         margin: 0;
@@ -515,7 +488,7 @@ function mamangenerateHTML() {
                 0 0 30px rgba(0, 123, 255, 0.8),
                 0 0 40px rgba(0, 123, 255, 0.8);
     }
-    header, footer {
+    header,  footer {
       box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
       background-color: ;
       color: white;
@@ -539,67 +512,7 @@ function mamangenerateHTML() {
       bottom: 0;
     }
     
-      .wildcard-dropdown {
-  display: flex;
-  margin-bottom: 5px;
-  margin: 3px;
-  justify-content: center; /* Posisi elemen di tengah */
-  align-items: center; /* Posisi vertikal di tengah */
-  gap: 0.5rem; /* Jarak antar elemen */
-  margin: 0.8rem auto; /* Jarak vertikal */
-  width: 100%; /* Ambil seluruh lebar */
-  max-width: 100%; /* Hindari pembatasan */
-  padding: 0.8rem; /* Tambahkan padding */
-  box-sizing: border-box; /* Padding termasuk dalam ukuran elemen */
-}
-
-.wildcard-dropdown select {
-  margin-bottom: 5px;
-  margin: 3px;
-  flex: 1; /* Setiap dropdown mengambil ruang secara proporsional */
-  max-width: 50%; /* Batasi lebar dropdown agar tidak terlalu besar */
-  min-width: 100px; /* Tambahkan batas minimum untuk dropdown */
-}
-
-@media (min-width: 768px) {
-  .wildcard-dropdown select {
-    max-width: 300px; /* Pada layar besar, tetapkan batas lebar dropdown */
-  }
-}
-
-      select {
-        width: 100%;
-        max-width: 200px; /* Lebar box lebih kecil */
-        padding: 0.4rem 0.6rem; /* Sesuaikan padding */
-        font-size: 0.8rem; /* Ukuran teks lebih kecil */
-        color: var(--light);
-        background: rgba(0, 255, 136, 0.05);
-        border: 2px solid rgba(0, 255, 136, 0.3);
-        border-radius: 10px;
-        box-shadow: var(--glow);
-        outline: none;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        appearance: none; /* Hilangkan panah default */
-        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23e0ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M6 9l6 6 6-6"%3E%3C/path%3E%3C/svg%3E');
-        background-position: right 10px center;
-        background-repeat: no-repeat;
-        background-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      select:hover {
-        border-color: var(--primary);
-        box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-      }
-
-      select:focus {
-        border-color: var(--secondary);
-        background: rgba(0, 255, 136, 0.1);
-        box-shadow: 0 0 20px var(--secondary);
-      }
+  
 
       .button-style {
     padding: 0.6rem 1rem; /* Ukuran padding */
@@ -653,52 +566,29 @@ function mamangenerateHTML() {
       }
 
 
-     .menu {
-  display: flex; /* Mengubah elemen menjadi flexbox */
-  align-items: center; /* Memposisikan gambar dan teks di tengah secara vertikal */
-  margin-left: 5px; /* Memberikan jarak 5px dari tepi kiri */
-  margin-bottom: 5px; /* Jarak antar elemen */
-  padding: 5px; /* Memberikan ruang dalam */
-  border-radius: 5px; /* Lengkungan sudut untuk setiap elemen */
-}
-
-.menu a {
-  font-family: 'Rajdhani', sans-serif;
-  text-decoration: none; /* Menghapus garis bawah pada teks */
-  display: flex;
-  align-items: center; /* Memastikan gambar dan teks sejajar secara vertikal */
-}
-
-.menu img {
-  margin-right: 5px; /* Jarak antara gambar dan teks */
-}
-.menu:nth-child(odd) {
-  color: #fff; /* Warna teks untuk baris ganjil */
-  background-color: rgba(239, 80, 0, 0.87); /* Warna latar belakang untuk baris ganjil */
-}
-
-.menu:nth-child(even) {
-  color: #fff; /* Warna teks untuk baris genap */
-  background-color: rgba(3, 117, 1, 0.87); /* Warna latar belakang untuk baris genap */
-}
+  
 
       .container {
   background-color: rgba(0, 0, 0, 0.82);
-  flex: 1;
-  padding-top: 20px; /* To avoid content being hidden under the header */
-  padding-bottom: 20px;
-  margin-top: 95px;
-  margin-bottom: 50px; /* To avoid content being hidden under the footer */
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+/* Menambahkan margin-left agar konten tidak terhalang navbar */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbar */
+    margin-right: auto;
 
   /* Tambahkan efek glow */
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
@@ -709,107 +599,8 @@ function mamangenerateHTML() {
   margin-right: auto;
 }
 
-/* Offset ke kiri untuk layar besar (desktop) */
-@media (min-width: 768px) {
-  .container, .content {
-    margin-left: auto; /* Sesuaikan offset ke kiri */
-    margin-right: auto;
-  }
-}
-      .quantum-card {
-  width: 100%;
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    margin-bottom: 0px;
-    border: 1px solid #000; /* Border dengan warna abu-abu */
-    border-radius: 10px; /* Membuat sudut melengkung */
-    padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
 
-}
-
-@media (min-width: 768px) {
-  .quantum-card {
-    margin: 0 2rem; /* Tambahkan lebih banyak ruang pada layar besar */
-  }
-}
-
-      @keyframes cardFloat {
-        0%, 100% { transform: translateY(0) rotateX(0); }
-        50% { transform: translateY(-10px) rotateX(2deg); }
-      }
-
-
-      .quantum-title { 
-      font-family: 'Rajdhani', sans-serif;
-      padding-top: 10px; /* To avoid content being hidden under the header */
-      margin-top: 10px;
-      color: black;
-            text-align: center;
-            font-size: 10vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
     
-         background: linear-gradient(45deg, var(--accent), var(--secondary), var(--dark));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px #000;
-        position: relative;
-        animation: titlePulse 3s ease-in-out infinite;
-    }
-
-      @keyframes titlePulse {
-        0%, 100% { transform: scale(1); filter: brightness(1); }
-        50% { transform: scale(1.02); filter: brightness(1.2); }
-     }
-
-      .quantum-title1 {
-        color: black;
-            text-align: center;
-            font-size: 4vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-      }
-
-      .search-quantum {
-        position: relative;
-        margin-top: 0.1rem;
-        margin-bottom: 0.3rem;
-      }
-
-      #search-bar {
-    padding: 2px;
-      width: 80%;
-      max-width: 100%;
-      margin-bottom: 5px;
-      margin-top: 7px;
-      margin: 2px;
-      padding-top: 7px;
-      font-size: 3vw; /* Ukuran font diperbesar */
-    color: var(--light); /* Warna teks */
-    background: rgba(0, 255, 136, 0.05); /* Latar belakang */
-    border: 2px solid rgba(0, 255, 136, 0.3); /* Warna border */
-    border-radius: 5px; /* Sudut tidak terlalu bulat */
-    transition: all 0.3s ease; /* Efek transisi */
-}
-
-      #search-bar:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-        background: rgba(0, 255, 136, 0.1);
-      }
 
       .quantum-table {
       border-collapse: separate;
@@ -897,89 +688,7 @@ function mamangenerateHTML() {
         font-size: 1.2rem;
       }
 
-      .quantum-pagination {
-        display: flex;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-top: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .quantum-pagination a {
-        padding: 0.8rem 1.5rem;
-        background: rgba(0, 255, 136, 0.1);
-        color: var(--primary);
-        text-decoration: none;
-        border-radius: 12px;
-        border: 1px solid rgba(0, 255, 136, 0.3);
-        transition: all 0.3s ease;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        min-width: 45px;
-        text-align: center;
-      }
-
-      .quantum-pagination a:hover,
-      .quantum-pagination a.active {
-        background: var(--primary);
-        color: var(--dark);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.2);
-      }
-
-      .quantum-toast {
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        padding: 1rem 2rem;
-        background: var(--primary);
-        color: var(--dark);
-        border-radius: 12px;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: 600;
-        box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
-        transform: translateY(100%);
-        opacity: 0;
-        animation: toastSlide 0.3s forwards;
-        z-index: 1000;
-      }
-
-      @keyframes toastSlide {
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      /* Mobile Responsiveness */
-      @media (max-width: 768px) {
-        .quantum-containera {
-          padding: 0.5rem;
-          margin: 0.5rem;
-        }
-        
-        .quantum-card {
-          padding: 1rem;
-          margin: 0;
-          width: 100%;
-          border-radius: 10px;
-          max-width: 100%;
-        }
-    
-        .quantum-title {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-    
-        #search-bar {
-          margin-bottom: 5px;
-          margin: 2px;
-           margin-top: 7px;
-          padding: 10px; 1px;
-          padding-top: 7px;
-          font-size: 10px;
-        }
-    
+  
         .table-wrapper {
           margin: 0.5rem 0;
           padding: 0;
@@ -1000,34 +709,7 @@ function mamangenerateHTML() {
           font-size: 0.8rem;
         }
      
-        .quantum-pagination {
-          gap: 0.5rem;
-          flex-wrap: wrap;
-        }
-    
-        .quantum-pagination a {
-          padding: 0.5rem 0.7rem;
-          font-size: 0.7rem;
-          min-width: 30px;
-        }
-    
-        .quantum-toast {
-          left: 1rem;
-          right: 1rem;
-          bottom: 1rem;
-          text-align: center;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .quantum-card {
-          padding: 0.5rem;
-          max-width: 100%;
-        }
-    
-        .quantum-title {
-          font-size: 1.5rem;
-        }
+      
     
         .table-wrapper {
           margin: 0.5rem -0.5rem;
@@ -1070,177 +752,6 @@ function mamangenerateHTML() {
     font-size: 12px; /* Ukuran font untuk teks konten */
 }
 
-.button, .button1, .button2, .button3  {
-      white-space: nowrap; /* Mencegah teks melipat */
-     position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      padding: 10px 10px;
-      margin: 10px 5px;
-      border: 0px solid #fff;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-
-    /* Button Colors */
-    .button1 { 
-      margin: 10px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: green;
-      color: #fff;
-      cursor: pointer;
-      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      
-    }
-    .button2 { 
-      margin: 10px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: rgba(14, 116, 255, 0.97);
-      color: #fff;
-      cursor: pointer;
-      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      
-    }
-    .button3 { 
-      margin: 10px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: rgba(255, 61, 68, 0.97);
-      color: #fff;
-      cursor: pointer;
-      position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-      
-    }
-    /* Hover Effects */
-    .button:hover { background-color: #2980b9; border: 1px solid rgba(197, 51, 6, 0.89); border-radius: 8px; }
-    
-    /* Click Effects */
-    .button:active {
-      transform: scale(0.95);
-      border: 2px solid #333;
-    }
-
-    /* Shadow/Glow Effects */
-    .button, .button1, .button2, .button3  {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-    }
-    .button:hover {
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-
-  
-
-.button6 {
-      margin : 5px;
-      padding: 5px;
-      border: px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 0px;
-      border-radius: 0px;
-      background-color: ;
-      color: #fff;
-      cursor: pointer;
-    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-    }
-    .button7 {
-      margin: 5px;
-      padding: 10px 10px;
-      border: 0px solid rgba(183, 43, 0, 0.97); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      border-radius: 5px;
-      background-color: #cde033;
-      color: #000;
-      cursor: pointer;
-    position: relative; /* Pastikan tombol berada di atas elemen lainnya */
-  z-index: 2; /* Tingkatkan prioritas tombol */
-  pointer-events: auto; /* Aktifkan interaksi pointer */
-
-    }
-    .popup-content {
-      background-color: rgba(0, 0, 0, 0.82);
-      padding: 20px;
-      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
-      border-radius: 5px;
-      text-align: center;
-    
-      position: relative;
-  z-index: 1000; /* Pastikan elemen ini berada di atas */
-  pointer-events: auto;
-    }
-    
-    .popupnav-content {
-      background-color: rgba(0, 0, 0, 0.82);
-      padding: 10px;
-      border: 0px solid rgba(197, 51, 6, 0.89); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      text-align: center;
-    
-      position: relative;
-  z-index: 1000; /* Pastikan elemen ini berada di atas */
-  pointer-events: auto;
-    }
-    
-    .popupnav {
-    display: none; /* Popup disembunyikan secara default */
-    position: fixed;
-    left: 0; /* Memposisikan popup di sebelah kiri */
-    top: 0;
-    width: 300px; /* Tentukan lebar popup */
-    height: 100%; /* Menjaga tinggi popup penuh */
-    background-color: ;
-    justify-content: left;
-    align-items: center;
-    z-index: 100;
-    pointer-events: auto;
-    animation: slideInLeft 0.5s forwards; /* Animasi popup muncul dari kiri */
-    color: #fff;
-            text-align: left;
-            font-size: 15px;
-            font-weight: bold;
-            text-shadow: 
-                0 0 4px rgba(0, 123, 255, 0.8),
-                0 0 6px rgba(0, 123, 255, 0.8),
-                0 0 8px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 15px rgba(0, 123, 255, 0.8);
-    
-    }
-
-/* Animasi untuk popup masuk dari kiri */
-@keyframes slideInLeft {
-    from {
-        left: -100%; /* Popup dimulai di luar layar di sebelah kiri */
-    }
-    to {
-        left: 0; /* Popup bergerak masuk ke kiri layar */
-    }
-}
 
 
     .rainbow-text {
@@ -1248,31 +759,6 @@ function mamangenerateHTML() {
       font-weight: bold;
       animation: rainbow 2s infinite;
     }
-
-    .flag-container {
-  display: flex;
-  justify-content: center; /* Menjajarkan konten secara horizontal */
-  align-items: center; /* Menjajarkan konten secara vertikal */
-  height: 100%; /* Atur tinggi sesuai kebutuhan */
-  text-align: center; /* Opsional, untuk memastikan teks sejajar */
-  gap: 8px; /* Jarak antara teks dan ikon */
-}
-
-
-.flag-circle {
-  display: inline-block;
-  width: 30px; /* Sesuaikan ukuran */
-  height: 30px; /* Sama dengan lebar untuk bentuk bulat */
-  border-radius: 50%; /* Membuat elemen berbentuk bulat */
-  background-size: cover; /* Menutupi area lingkaran */
-  background-position: center; /* Memusatkan gambar */
-  overflow: hidden; /* Mencegah isi keluar dari lingkaran */
-}
-
-.flag-icon {
-  display: inline-block;
-}
-
 
 
       * {
@@ -1282,10 +768,7 @@ function mamangenerateHTML() {
         font-family: 'Space Grotesk', sans-serif;
       }
     /* Animasi Loading */
- .loading-icon {
-    color: #4CAF50; /* Warna untuk ikon spinner */
-    font-size: 30px;
-}
+
 
 .loading-text {
     font-size: 18px;
@@ -1334,22 +817,7 @@ function mamangenerateHTML() {
     
     
     
-    body1 { font-family: Arial, sans-serif; text-align: center; }
-       
-  1header, f1ooter {
-      background-color: #45a049;
-      color: white;
-      padding: 10px 0;
-      text-align: center;
-  }
-  1header 1h1, 1footer 1p {
-      margin: 0;
-  }
-  .1container {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      margin: 10px;
-      padding: 10px;
+    
   }
 input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
         button { padding: 8px 8px; background-color: green; color: white; border: none; cursor: pointer; 
@@ -1407,12 +875,115 @@ input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
   animation: moveColors 5s linear infinite;
 }
   
-    </style>
+    
+        .navbar {
+    position: fixed;
+    top: 0;
+    left: -100px; /* Mengurangi jarak kiri untuk navbar */
+    width: 100px; /* Lebar navbar lebih kecil */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.0);
+    color: white;
+    padding-top: 50px; /* Padding atas yang lebih kecil */
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.0);
+}
+
+        .navbartedjo {
+    position: fixed;
+    top: 0;
+    left: -100px;
+    width: 100px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Bisa sesuaikan opasitasnya */
+    color: white;
+    padding-top: 50px;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Tambahkan z-index tinggi */);
+}
+
+        .navbartedjo a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .navbartedjo a:hover {
+            background: #575757;
+        }
+        .toggle-btn {
+            position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    padding: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: left 0.3s;
+    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+        }
+        
+        p {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            text-align: justify;
+        }
+	    .toggle-btn img {
+            width: 25px; /* Ukuran gambar lebih kecil */
+            height: 150px; /* Ukuran gambar lebih kecil */
+        }
+
+</style>
 </head>
+<script>
+        let navbartedjoOpen = false;
+
+        function toggleNavbar() {
+            const navbartedjo = document.getElementById("navbartedjo");
+            const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
+
+		
+            if (navbartedjoOpen) {
+                navbartedjo.style.left = "-100px";
+                img.src = "https://bmkg.xyz/img/buka.png"; 
+            } else {
+                navbartedjo.style.left = "0";
+                img.src = "https://bmkg.xyz/img/tutup.png"; 
+            }
+
+            navbartedjoOpen = !navbartedjoOpen;
+        }
+    </script>
 <body>
+
 <header>
 <h1>Proxy Checker</h1>
 </header>
+
+<div class="navbartedjo" id="navbartedjo">
+        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
+        <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
+  </a></span>
+        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;"></a></span>
+        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="50" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="50"></a></span>
+        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
+" alt="menu" width="50"></a></span>
+        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50"></a></span>
+    </div>
 <div class="container">
   <div style="display: flex; justify-content: space-between;">
     <input type="text" id="ipInput" placeholder="Input IP:Port(192.168.1.1:443)">
