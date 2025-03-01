@@ -99,7 +99,8 @@
 <body>
 
     <div class="navbar" id="navbar">
-        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">▷
+        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+      
 		</button>
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -138,10 +139,10 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
 
             if (navbarOpen) {
                 navbar.style.left = "-250px";
-                menuBtn.innerHTML = "▷";
+                img.src = "https://bmkg.xyz/img/buka.png"; 
             } else {
                 navbar.style.left = "0";
-                menuBtn.innerHTML = "◁";
+                img.src = "https://bmkg.xyz/img/tutup.png"; 
             }
 
             navbarOpen = !navbarOpen;
