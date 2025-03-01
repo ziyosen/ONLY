@@ -327,7 +327,7 @@ body111 {
     top: 0;
     left: -100px;
     width: 100px;
-    background: rgba(0, 0, 0, 0.9); /* Latar belakang dengan transparansi */
+    background: rgba(0, 0, 0, 0);
     color: white;
     padding: 0;
     transition: left 0.3s;
@@ -337,25 +337,24 @@ body111 {
     flex-direction: column; /* Menyusun item secara vertikal */
     justify-content: center; /* Menempatkan item di tengah secara vertikal */
     align-items: center; /* Menempatkan item di tengah secara horizontal */
-    padding: 10px 0; /* Memberikan ruang antara item dan tepi navbar */
-    min-height: 100px; /* Memastikan navbar memiliki tinggi minimum agar item tetap di tengah */
+    height: 100vh; /* Membuat navbar setinggi 100% viewport */
 }
 
 
 
-      .navbartedjo99 {
-    position: fixed;
-    top: 0;
-    left: -100px;
-    width: 100px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Bisa sesuaikan opasitasnya */
-    color: white;
-    padding: 0;
-    transition: left 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0);
-    z-index: 999; /* Tambahkan z-index tinggi */);
-}
+
+      .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    }
 
         .navbartedjo a {
             display: block;
@@ -1115,7 +1114,8 @@ body111 {
 
   <div class="navbartedjo" id="navbartedjo">
         <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
-        <div style="display: flex; flex-direction: column; align-items: center;">
+       <div class="navbarconten">
+	  <div style="display: flex; flex-direction: column; align-items: center;">
   <span>
     <a href="https://wa.me/6281335135082" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
       <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
@@ -1144,6 +1144,7 @@ body111 {
   </span>
 </div>
 </div>
+	  </div>
   <main class="content">
 
     
