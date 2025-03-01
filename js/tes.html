@@ -18,14 +18,14 @@
         .navbar {
     position: fixed;
     top: 0;
-    left: -130px; /* Mengurangi jarak kiri untuk navbar */
+    left: -100px; /* Mengurangi jarak kiri untuk navbar */
     width: 150px; /* Lebar navbar lebih kecil */
     height: 100%;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.0);
     color: white;
     padding-top: 50px; /* Padding atas yang lebih kecil */
     transition: left 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.0);
 }
 
         .navbar a {
@@ -114,7 +114,7 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
 
 		
             if (navbarOpen) {
-                navbar.style.left = "-130px";
+                navbar.style.left = "-100px";
                 img.src = "https://bmkg.xyz/img/buka.png"; 
             } else {
                 navbar.style.left = "0";
