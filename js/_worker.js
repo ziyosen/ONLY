@@ -347,7 +347,7 @@ async function handleCheck(paramss) {
       latitude: "Unknown",
       regionCode: "Unknown",
       isp: "Unknown",
-      message: ` ${ip}:${port}: ERROR ❌`
+      message: ` ${ip}:${port}: DEAD❌`
     };
     return new Response(JSON.stringify(errorData, null, 2), {
       headers: { "Content-Type": "application/json" }
