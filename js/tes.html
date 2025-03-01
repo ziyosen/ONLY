@@ -84,11 +84,11 @@ body {
         /* CSS untuk ikon caret kiri dan kanan */
 
 
-        .navbartedjo {
+        .navbar {
     position: fixed;
     top: 0;
-    left: -100px; /* Mengurangi jarak kiri untuk navbartedjo */
-    width: 100px; /* Lebar navbartedjo lebih kecil */
+    left: -100px; /* Mengurangi jarak kiri untuk navbar */
+    width: 100px; /* Lebar navbar lebih kecil */
     height: 100%;
     background: rgba(0, 0, 0, 0.0);
     color: white;
@@ -97,13 +97,13 @@ body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.0);
 }
 
-        .navbartedjo a {
+        .navbar a {
             display: block;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
         }
-        .navbartedjo a:hover {
+        .navbar a:hover {
             background: #575757;
         }
         .toggle-btn {
@@ -234,7 +234,7 @@ body {
 <header>
 <h1>NAVBAR</h1>
 </header>
-    <div class="navbartedjo" id="navbartedjo">
+    <div class="navbar" id="navbar">
         <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></button>
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -267,23 +267,23 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
    <h2> <p>&copy; 2025 NAVBAR. All rights reserved.</p></h2>
 </footer>
     <script>
-        let navbartedjoOpen = false;
+        let navbarOpen = false;
 
         function toggleNavbar() {
-            const navbartedjo = document.getElementById("navbartedjo");
+            const navbar = document.getElementById("navbar");
             const menuBtn = document.getElementById("menu-btn");
             const img = menuBtn.querySelector('img');
 
 		
-            if (navbartedjoOpen) {
-                navbartedjo.style.left = "-100px";
+            if (navbarOpen) {
+                navbar.style.left = "-100px";
                 img.src = "https://bmkg.xyz/img/buka.png"; 
             } else {
-                navbartedjo.style.left = "0";
+                navbar.style.left = "0";
                 img.src = "https://bmkg.xyz/img/tutup.png"; 
             }
 
-            navbartedjoOpen = !navbartedjoOpen;
+            navbarOpen = !navbarOpen;
         }
     </script>
 
