@@ -15,11 +15,11 @@
         /* CSS untuk ikon caret kiri dan kanan */
 
 
-        .navbar {
+        .navbar-tedjo {
     position: fixed;
     top: 0;
-    left: -100px; /* Mengurangi jarak kiri untuk navbar */
-    width: 100px; /* Lebar navbar lebih kecil */
+    left: -100px; /* Mengurangi jarak kiri untuk navbar-tedjo */
+    width: 100px; /* Lebar navbar-tedjo lebih kecil */
     height: 100%;
     background: rgba(0, 0, 0, 0.0);
     color: white;
@@ -28,13 +28,13 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.0);
 }
 
-        .navbar a {
+        .navbar-tedjo a {
             display: block;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
         }
-        .navbar a:hover {
+        .navbar-tedjo a:hover {
             background: #575757;
         }
         .toggle-btn {
@@ -72,7 +72,7 @@
 </head>
 <body>
 
-    <div class="navbar" id="navbar">
+    <div class="navbar-tedjo" id="navbar-tedjo">
         <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></button>
         <a href="#">Home</a>
         <a href="#">About</a>
@@ -103,23 +103,23 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
     </div>
 
     <script>
-        let navbarOpen = false;
+        let navbar-tedjoOpen = false;
 
         function toggleNavbar() {
-            const navbar = document.getElementById("navbar");
+            const navbar-tedjo = document.getElementById("navbar-tedjo");
             const menuBtn = document.getElementById("menu-btn");
             const img = menuBtn.querySelector('img');
 
 		
-            if (navbarOpen) {
-                navbar.style.left = "-100px";
+            if (navbar-tedjoOpen) {
+                navbar-tedjo.style.left = "-100px";
                 img.src = "https://bmkg.xyz/img/buka.png"; 
             } else {
-                navbar.style.left = "0";
+                navbar-tedjo.style.left = "0";
                 img.src = "https://bmkg.xyz/img/tutup.png"; 
             }
 
-            navbarOpen = !navbarOpen;
+            navbar-tedjoOpen = !navbar-tedjoOpen;
         }
     </script>
 
