@@ -92,7 +92,7 @@
 <body>
 
     <div class="navbar" id="navbar">
-        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><i class="icon icon--caret-right text-inverted"></i></button>
+        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">></button>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Services</a>
@@ -130,10 +130,10 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
 
             if (navbarOpen) {
                 navbar.style.left = "-150px";
-                menuBtn.innerHTML = "<i class="icon icon--caret-right text-inverted"></i>";
+                menuBtn.innerHTML = ">";
             } else {
-                navbar.style.left = "30";
-                menuBtn.innerHTML = "<i class="icon icon--caret-left text-inverted"></i>";
+                navbar.style.left = "0";
+                menuBtn.innerHTML = "<";
             }
 
             navbarOpen = !navbarOpen;
