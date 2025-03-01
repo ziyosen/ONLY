@@ -10,6 +10,35 @@
             margin: 0;
             padding: 0;
         }
+        /* CSS untuk ikon caret kiri dan kanan */
+.icon {
+  font-family: 'Arial', sans-serif; /* Ganti dengan font ikon jika diperlukan */
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  font-size: 16px;
+}
+
+/* Ikon caret kanan */
+.icon--caret-right::before {
+  content: '\2192'; /* Unicode untuk panah kanan */
+}
+
+/* Ikon caret kiri */
+.icon--caret-left::before {
+  content: '\2190'; /* Unicode untuk panah kiri */
+}
+
+/* Gaya teks terbalik (inverted) */
+.text-inverted {
+  color: white; /* Ganti warna sesuai kebutuhan */
+  background-color: black; /* Ganti warna latar sesuai kebutuhan */
+  padding: 2px;
+  border-radius: 4px;
+}
+
         .navbar {
             position: fixed;
             top: 0;
@@ -63,7 +92,7 @@
 <body>
 
     <div class="navbar" id="navbar">
-        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">➡</button>
+        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><i class="icon icon--caret-right text-inverted"></i></button>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Services</a>
@@ -100,11 +129,11 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
             const menuBtn = document.getElementById("menu-btn");
 
             if (navbarOpen) {
-                navbar.style.left = "-250px";
-                menuBtn.innerHTML = "➡";
+                navbar.style.left = "-150px";
+                menuBtn.innerHTML = "<i class="icon icon--caret-right text-inverted"></i>";
             } else {
-                navbar.style.left = "0";
-                menuBtn.innerHTML = "⬅";
+                navbar.style.left = "30";
+                menuBtn.innerHTML = "<i class="icon icon--caret-right text-inverted"></i>";
             }
 
             navbarOpen = !navbarOpen;
