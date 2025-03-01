@@ -87,14 +87,15 @@ body {
         .navbar {
     position: fixed;
     top: 0;
-    left: -100px; /* Mengurangi jarak kiri untuk navbar */
-    width: 100px; /* Lebar navbar lebih kecil */
+    left: -100px;
+    width: 100px;
     height: 100%;
-    background: rgba(0, 0, 0, 0.0);
+    background: rgba(0, 0, 0, 0.9); /* Bisa sesuaikan opasitasnya */
     color: white;
-    padding-top: 50px; /* Padding atas yang lebih kecil */
+    padding-top: 50px;
     transition: left 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.0);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Tambahkan z-index tinggi */
 }
 
         .navbar a {
@@ -107,37 +108,42 @@ body {
             background: #575757;
         }
         .toggle-btn {
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0);
-            color: red;
-            border: none;
-            padding: 0px 0px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 20px;
-            transition: left 0.3s;
-        }
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    padding: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: left 0.3s;
+    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+}
         .content  {
   background-color: rgba(0, 0, 0, 0.82);
-  flex: 1;
-  padding-top: 20px; /* To avoid content being hidden under the header */
-  padding-bottom: 20px;
-  margin-top: 95px;
-  margin-bottom: 50px; /* To avoid content being hidden under the footer */
-  padding-left: 10px;
-  padding-right: 10px;
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 
+/* Menambahkan margin-left agar konten tidak terhalang navbar */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbar */
+    margin-right: auto;
+		
   /* Tambahkan efek glow */
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
               0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
