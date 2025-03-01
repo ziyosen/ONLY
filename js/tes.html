@@ -7,11 +7,80 @@
     <title>Navbar dengan Tombol Panah</title>
        
     <style>
-        body {
-            font-family: Arial, sans-serif;
+
+:root {
+        --primary: #00ff88;
+        --secondary: #00ffff;
+        --accent: #ff00ff;
+        --dark: #080c14;
+        --darker: #040608;
+        --light: #e0ffff;
+            --color-primary: #00ff88;
+            --color-secondary: #00ffff;
+            --color-background: #0a0f1a;
+            --color-card: rgba(15, 22, 36, 0.95);
+            --color-text: #e0f4f4;
+            --transition: all 0.3s ease;
+            
+        --card-bg: rgba(8, 12, 20, 0.95);
+        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
+      }
+      
+      @keyframes rainbow {
+      0% { color: red; }
+      14% { color: black; }
+      28% { color: black; }
+      42% { color: green; }
+      57% { color: blue; }
+      71% { color: indigo; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
+    @keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            outline: none;
         }
+
+
+	    
+body {	    
+        background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+  background-size: 300% 300%; /* Untuk animasi gradient */
+  color: #fff; /* Teks putih agar kontras */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
+  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
+}
+
+/* Animasi untuk background */
+@keyframes rainbowBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes moveColors {
+  100% {
+    background-position: -200%; /* Mulai dari luar kiri */
+  }
+  0% {
+    background-position: 200%; /* Bergerak ke kanan */
+  }
+}
+
         /* CSS untuk ikon caret kiri dan kanan */
 
 
@@ -51,13 +120,104 @@
             font-size: 20px;
             transition: left 0.3s;
         }
-        .content {
-            padding: 20px;
-            text-align: center;
-        }
+        .content  {
+  background-color: rgba(0, 0, 0, 0.82);
+  flex: 1;
+  padding-top: 20px; /* To avoid content being hidden under the header */
+  padding-bottom: 20px;
+  margin-top: 95px;
+  margin-bottom: 50px; /* To avoid content being hidden under the footer */
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  /* Tambahkan efek glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+  
+  /* Default untuk HP */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Offset ke kiri untuk layar besar (desktop) */
+@media (min-width: 768px) {
+  .container, .content {
+    margin-left: auto; /* Sesuaikan offset ke kiri */
+    margin-right: auto;
+  }
+}
         h1 {
-            margin-top: 50px;
-        }
+      font-family: 'Rajdhani', sans-serif;
+      padding-top: 10px; /* To avoid content being hidden under the header */
+      margin-top: 10px;
+      color: black;
+            text-align: center;
+            font-size: 9vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    
+         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px #000;
+        position: relative;
+        animation: titlePulse 3s ease-in-out infinite;
+    }
+
+      @keyframes titlePulse {
+        0%, 100% { transform: scale(1); filter: brightness(1); }
+        50% { transform: scale(1.02); filter: brightness(1.2); }
+      }
+    
+    h2 {
+      color: black;
+            text-align: center;
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    }
+    header,  footer {
+      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
+      background-color: ;
+      color: white;
+      text-align: center;
+      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      padding: 0 20px;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      right: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+    
         p {
             max-width: 800px;
             margin: 20px auto;
@@ -71,7 +231,9 @@
     </style>
 </head>
 <body>
-
+<header>
+<h1>NAVBAR</h1>
+</header>
     <div class="navbartedjo" id="navbartedjo">
         <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></button>
         <a href="#">Home</a>
@@ -101,7 +263,9 @@ Navbar sekarang menggunakan tombol panah yang diposisikan di tengah vertikal. To
 
         </p>
     </div>
-
+<footer>
+   <h2> <p>&copy; 2025 NAVBAR. All rights reserved.</p></h2>
+</footer>
     <script>
         let navbartedjoOpen = false;
 
