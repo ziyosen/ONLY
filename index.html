@@ -322,7 +322,55 @@ body111 {
 }
 
      
-     
+      .navbartedjo {
+    position: fixed;
+    top: 0;
+    left: -100px;
+    width: 100px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* Bisa sesuaikan opasitasnya */
+    color: white;
+    padding-top: 50px;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Tambahkan z-index tinggi */);
+}
+
+        .navbartedjo a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .navbartedjo a:hover {
+            background: #575757;
+        }
+        .toggle-btn {
+            position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    padding: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: left 0.3s;
+    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+        }
+        
+        p {
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            text-align: justify;
+        }
+	    .toggle-btn img {
+            width: 20px; /* Ukuran gambar lebih kecil */
+            height: 150px; /* Ukuran gambar lebih kecil */
+        }
      
      .quantum-title {
         font-family: 'Rajdhani', sans-serif;
@@ -1020,10 +1068,47 @@ body111 {
     
 
     
+<script>
+        let navbartedjoOpen = false;
 
+        function toggleNavbar() {
+            const navbartedjo = document.getElementById("navbartedjo");
+            const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
+
+		
+            if (navbartedjoOpen) {
+                navbartedjo.style.left = "-100px";
+                img.src = "https://bmkg.xyz/img/buka.png"; 
+            } else {
+                navbartedjo.style.left = "0";
+                img.src = "https://bmkg.xyz/img/tutup.png"; 
+            }
+
+            navbartedjoOpen = !navbartedjoOpen;
+        }
+    </script>
   <header>
 <h1>FREE CF PROXY LIFETIME</h1>
     </header>
+
+  <div class="navbartedjo" id="navbartedjo">
+        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div>
+        <span><a href="https://wa.me/6281335135082" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
+  </a></span>
+        <span><button onclick="showPopup('sub-link')" style="background: transparent; border: none; padding: 0;">
+         <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="50" style="margin-top: 5px;"></button></span>
+        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="50" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="https://t.me/seaker877" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="50"></a></span>
+        <span><a href="https://t.me/kcepu_bot" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
+" alt="menu" width="50"></a></span>
+        <span><a href="/" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50"></a></span>
+    </div>
   <main class="content">
 
     
