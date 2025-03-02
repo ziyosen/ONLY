@@ -48,6 +48,61 @@
       100% { color: red; }
     }
 
+	       
+      @keyframes rainbow {
+      0% { color: red; }
+      14% { color: black; }
+      28% { color: black; }
+      42% { color: green; }
+      57% { color: blue; }
+      71% { color: indigo; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
+    @keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-icon {
+  font-size: 40px;
+  animation: rotate 1s linear infinite;
+  color: #f00; /* default color */
+}
+
+.loading-icon:before {
+  content: '\f110'; /* spinner icon */
+  font-family: 'FontAwesome';
+  color: red;
+  animation: spinColors 1.2s linear infinite;
+}
+
+@keyframes spinColors {
+  0% { color: red; }
+  25% { color: yellow; }
+  50% { color: green; }
+  75% { color: blue; }
+  100% { color: purple; }
+}
+      .spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Space Grotesk', sans-serif;
+      }
     .rainbow-text {
       font-size: 15px;
       font-weight: bold;
