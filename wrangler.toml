@@ -11,7 +11,7 @@ enabled = true
 
 
 [[routes]]
-pattern = "inputbugwildcard.cloudproxyip.my.id.winner.cloudproxyip.my.id"
+pattern = "inputbugwildcard.cloudproxyip.my.id.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
 pattern = "inputbugwildcard.cloudproxyip.my.id"
@@ -20,44 +20,44 @@ custom_domain = true
 pattern = "subapi.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "winner.cloudproxyip.my.id"
+pattern = "loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ava.game.naver.com.winner.cloudproxyip.my.id"
+pattern = "ava.game.naver.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "graph.instagram.com.winner.cloudproxyip.my.id"
+pattern = "graph.instagram.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "quiz.int.vidio.com.winner.cloudproxyip.my.id"
+pattern = "quiz.int.vidio.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "live.iflix.com.winner.cloudproxyip.my.id"
+pattern = "live.iflix.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "support.zoom.us.winner.cloudproxyip.my.id"
+pattern = "support.zoom.us.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "blog.webex.com.winner.cloudproxyip.my.id"
+pattern = "blog.webex.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investors.spotify.com.winner.cloudproxyip.my.id"
+pattern = "investors.spotify.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "cache.netflix.com.winner.cloudproxyip.my.id"
+pattern = "cache.netflix.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "zaintest.vuclip.com.winner.cloudproxyip.my.id"
+pattern = "zaintest.vuclip.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "ads.ruangguru.com.winner.cloudproxyip.my.id"
+pattern = "ads.ruangguru.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "io.ruangguru.com.winner.cloudproxyip.my.id"
+pattern = "io.ruangguru.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "api.midtrans.com.winner.cloudproxyip.my.id"
+pattern = "api.midtrans.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "investor.fb.com.winner.cloudproxyip.my.id"
+pattern = "investor.fb.com.loss.cloudproxyip.my.id"
 custom_domain = true
