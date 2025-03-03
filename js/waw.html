@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Perbaikan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #00ff88;
+            --secondary: #00ffff;
+            --dark: #080c14;
+            --light: #e0ffff;
+        }
+
+        body {
+            background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+
+
+      .navbar {
+    position: fixed;
+    top: 0;
+    left: -80px;
+    width: 80px;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 0;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0);
+    z-index: 999;
+    display: flex;
+    flex-direction: column; /* Menyusun item secara vertikal */
+    justify-content: center; /* Menempatkan item di tengah secara vertikal */
+    align-items: center; /* Menempatkan item di tengah secara horizontal */
+    height: 100vh; /* Membuat navbarr setinggi 100% viewport */
+}
+        /* Navbar */
+        .navbar1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 0;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 10px 10px 0;
+            transform: translateX(-100%);
+        }
+
+                .navbar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        .navbar a:hover {
+            background: #575757;
+        }
+        .navbar a img {
+            width: 10px;
+        }
+  .toggle-btn1 {
+            position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0);
+    color: red;
+    border: none;
+    padding: 0px 0px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: left 0.3s;
+z-index: 1001;
+    /* Pastikan tombol menu di atas navbarr */
+        }
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+            border-radius: 50%;
+transition: left 0.3s;
+        }
+
+        toggle-btn img {
+            width: 10px; /* Ukuran gambar lebih kecil */
+            height: 10px; /* Ukuran gambar lebih kecil */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="title">Website Saya</h1>
+</header>
+
+<!-- Tombol Toggle -->
+<button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+</button>
+
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+    <a href="#"><img src="https://bmkg.xyz/img/home.png" alt="menu"></a>
+    <a href="#"><img src="https://bmkg.xyz/img/api.png" alt="menu"></a>
+    <a href="#"><img src="https://bmkg.xyz/img/vpn.png" alt="menu"></a>
+</div>
+
+<script>
+            let navbarOpen = false;
+
+        function toggleNavbar() {
+            const navbar = document.getElementById("navbar");
+            const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
+
+		
+            if (navbarOpen) {
+                navbar.style.left = "-80px";
+                img.src = "https://bmkg.xyz/img/buka.png"; 
+            } else {
+                navbar.style.left = "0";
+                img.src = "https://bmkg.xyz/img/tutup.png"; 
+            }
+
+            navbarOpen = !navbarOpen;
+        }
+</script>
+
+</body>
+</html>
