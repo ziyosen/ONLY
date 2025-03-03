@@ -12,7 +12,7 @@ def check_proxy(row, api_url_template):
         data = response.json()
 
         message = data.get("message", "").strip().upper()
-if "ACTIVE ✅" in message:
+if "ACTIVE" in message:
             print(f"{ip}:{port} is ALIVE")
             return (row, None)  # Kembalikan seluruh baris jika aktif
         else:
