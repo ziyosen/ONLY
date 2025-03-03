@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Perbaikan</title>
+    <title>Navbar & Konten</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -47,7 +47,7 @@
 
         .navbar a {
             display: block;
-            margin: 10px 0;
+            margin: 15px 0;
         }
 
         .navbar a img {
@@ -58,19 +58,49 @@
         .toggle-btn {
             position: fixed;
             top: 50%;
-            left: 10px;
+            left: 0px;
             transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.8);
             border: none;
             cursor: pointer;
             z-index: 1001;
-            padding: 5px;
+            padding: 8px;
             border-radius: 50%;
+            transition: left 0.3s ease-in-out;
         }
 
         .toggle-btn img {
             width: 30px;
-            height: auto;
+        }
+
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show + .toggle-btn {
+            left: 80px;
+        }
+
+        /* Konten Utama */
+        .content {
+            margin-left: 50px;
+            padding: 10px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -80,16 +110,32 @@
     <h1 class="title">Website Saya</h1>
 </header>
 
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+    <a href="#"><img src="https://bmkg.xyz/img/home.png" alt="Home"></a>
+    <a href="#"><img src="https://bmkg.xyz/img/api.png" alt="API"></a>
+    <a href="#"><img src="https://bmkg.xyz/img/vpn.png" alt="VPN"></a>
+</div>
+
 <!-- Tombol Toggle -->
 <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
     <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
 </button>
 
-<!-- Navbar -->
-<div class="navbar" id="navbar">
-    <a href="#"><img src="https://bmkg.xyz/img/home.png" alt="menu"></a>
-    <a href="#"><img src="https://bmkg.xyz/img/api.png" alt="menu"></a>
-    <a href="#"><img src="https://bmkg.xyz/img/vpn.png" alt="menu"></a>
+<!-- Konten Utama -->
+<div class="content">
+    <h1>Selamat Datang di Website Saya</h1>
+    <p>Ini adalah contoh halaman dengan navbar yang dapat dibuka dan ditutup. Tombol menu akan mengikuti posisi navbar saat dibuka.</p>
+
+    <div class="card">
+        <h2>Fitur Utama</h2>
+        <p>Website ini memiliki fitur navbar interaktif, konten responsif, dan tampilan modern dengan animasi smooth.</p>
+    </div>
+
+    <div class="card">
+        <h2>Teknologi yang Digunakan</h2>
+        <p>Halaman ini menggunakan HTML, CSS, Tailwind, dan JavaScript untuk interaksi dinamis.</p>
+    </div>
 </div>
 
 <script>
