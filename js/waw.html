@@ -21,27 +21,8 @@
             font-family: Arial, sans-serif;
         }
 
-
-
-      .navbar {
-    position: fixed;
-    top: 0;
-    left: -80px;
-    width: 80px;
-    background: rgba(0, 0, 0, 0);
-    color: white;
-    padding: 0;
-    transition: left 0.3s;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0);
-    z-index: 999;
-    display: flex;
-    flex-direction: column; /* Menyusun item secara vertikal */
-    justify-content: center; /* Menempatkan item di tengah secara vertikal */
-    align-items: center; /* Menempatkan item di tengah secara horizontal */
-    height: 100vh; /* Membuat navbarr setinggi 100% viewport */
-}
         /* Navbar */
-        .navbar1 {
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
@@ -60,37 +41,22 @@
             transform: translateX(-100%);
         }
 
-                .navbar a {
+        .navbar.show {
+            transform: translateX(0);
+        }
+
+        .navbar a {
             display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
+            margin: 10px 0;
         }
-        .navbar a:hover {
-            background: #575757;
-        }
+
         .navbar a img {
-            width: 10px;
+            width: 40px;
         }
-  .toggle-btn1 {
-            position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0);
-    color: red;
-    border: none;
-    padding: 0px 0px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 20px;
-    transition: left 0.3s;
-z-index: 1001;
-    /* Pastikan tombol menu di atas navbarr */
-        }
+
         /* Tombol Toggle */
         .toggle-btn {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 10px;
             transform: translateY(-50%);
@@ -100,12 +66,11 @@ z-index: 1001;
             z-index: 1001;
             padding: 5px;
             border-radius: 50%;
-transition: left 0.3s;
         }
 
-        toggle-btn img {
-            width: 10px; /* Ukuran gambar lebih kecil */
-            height: auto; /* Ukuran gambar lebih kecil */
+        .toggle-btn img {
+            width: 30px;
+            height: auto;
         }
     </style>
 </head>
@@ -128,24 +93,18 @@ transition: left 0.3s;
 </div>
 
 <script>
-            let navbarOpen = false;
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
 
-        function toggleNavbar() {
-            const navbar = document.getElementById("navbar");
-            const menuBtn = document.getElementById("menu-btn");
-            const img = menuBtn.querySelector('img');
-
-		
-            if (navbarOpen) {
-                navbar.style.left = "-80px";
-                img.src = "https://bmkg.xyz/img/buka.png"; 
-            } else {
-                navbar.style.left = "0";
-                img.src = "https://bmkg.xyz/img/tutup.png"; 
-            }
-
-            navbarOpen = !navbarOpen;
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
         }
+    }
 </script>
 
 </body>
