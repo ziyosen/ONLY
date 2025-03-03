@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FREE | CF | PROXY | LIFETIME</title>
-    <meta name="description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="keywords" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="author" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="robots" content="FREE | CF | PROXY | LIFETIME">
-
-    <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
-    <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -137,17 +116,7 @@
     }
     
 
-        .card {
-            width: 100%;
-            margin-top: 10px;
-            padding-top: 10px; /* To avoid content being hidden under the header */
-            max-width: 500px;
-            padding: 2rem;
-            align-items: center;
-  position: relative;
-  z-index: 1;
-            
-        }
+
 
        
         .title {
@@ -258,8 +227,8 @@
     position: relative;
     z-index: 1;
 
-/* Menambahkan margin-left agar konten tidak terhalang navbar */
-    margin-left: 110px; /* Jarak sesuai dengan lebar navbar */
+/* Menambahkan margin-left agar konten tidak terhalang navbarr */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbarr */
     margin-right: auto;
 
   /* Tambahkan efek glow */
@@ -285,7 +254,7 @@
               0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
 
     }
-      .navbartedjo877 {
+      .navbar {
     position: fixed;
     top: 0;
     left: -80px;
@@ -300,19 +269,19 @@
     flex-direction: column; /* Menyusun item secara vertikal */
     justify-content: center; /* Menempatkan item di tengah secara vertikal */
     align-items: center; /* Menempatkan item di tengah secara horizontal */
-    height: 100vh; /* Membuat navbar setinggi 100% viewport */
+    height: 100vh; /* Membuat navbarr setinggi 100% viewport */
 }
 
-        .navbartedjo877 a {
+        .navbar a {
             display: block;
             color: white;
             text-decoration: none;
             padding: 10px 20px;
         }
-        .navbartedjo877 a:hover {
+        .navbar a:hover {
             background: #575757;
         }
-        .toggle-btn1 {
+        .toggle-btn {
             position: absolute;
     top: 50%;
     left: 100%;
@@ -325,7 +294,7 @@
     border-radius: 5px;
     font-size: 20px;
     transition: left 0.3s;
-    z-index: 1000; /* Pastikan tombol menu di atas navbar */
+    z-index: 1000; /* Pastikan tombol menu di atas navbarr */
         }
         
         p {
@@ -343,27 +312,27 @@
 </head>
 <body><header><h1 class="title">${namaWeb}</h1></header>
 <script>
-        let navbartedjo877Open = false;
+        let navbarOpen = false;
 
         function toggleNavbar1() {
-            const navbartedjo877 = document.getElementById("navbartedjo877");
-            const menuBtn1 = document.getElementById("menu-btn1");
-            const img = menuBtn1.querySelector('img');
+            const navbar = document.getElementById("navbar");
+            const menuBtn = document.getElementById("menu-btn");
+            const img = menuBtn.querySelector('img');
 
 		
-            if (navbartedjo877Open) {
-                navbartedjo877.style.left = "-80px";
+            if (navbarOpen) {
+                navbar.style.left = "-80px";
                 img.src = "https://bmkg.xyz/img/buka.png"; 
             } else {
-                navbartedjo877.style.left = "0";
+                navbar.style.left = "0";
                 img.src = "https://bmkg.xyz/img/tutup.png"; 
             }
 
-            navbartedjo877Open = !navbartedjo877Open;
+            navbarOpen = !navbarOpen;
         }
     </script>
-<div class="navbartedjo877" id="navbartedjo877">
-        <div class="toggle-btn1" id="menu-btn1" onclick="toggleNavbar1()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div><div class="navbarconten">
+<div class="navbar" id="navbar">
+        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar1()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div><div class="navbarconten">
         <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
     <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
   </a></span>
