@@ -44,31 +44,7 @@
         --glow: 0 0 20px rgba(0, 255, 136, 0.3);
       }
       
-      @keyframes rainbow {
-      0% { color: red; }
-      14% { color: black; }
-      28% { color: black; }
-      42% { color: green; }
-      57% { color: blue; }
-      71% { color: indigo; }
-      85% { color: violet; }
-      100% { color: red; }
-    }
-    @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
+  
 
         body {
   background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
@@ -173,28 +149,7 @@
             
         }
 
-        .container1 {
-            background: var(--color-card);
-            border-radius: 16px;
-            padding-top: 20px; /* To avoid content being hidden under the header */
-  padding-bottom: 20px;
-  margin-top: 95px;
-  margin-bottom: 50px; /* To avoid content being hidden under the footer */
-  padding-left: 10px;
-  padding-right: 10px;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: var(--transition);
-            /* Tambahkan efek glow */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-  
-  /* Default untuk HP */
-  margin-left: auto;
-  margin-right: auto;
-        }
-
+       
         .title {
             text-align: center;
             color: var(--color-primary);
@@ -427,7 +382,7 @@
     <div class="container">
         <div class="card">
 
-<center><div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
+<center>
                <div style="display: flex; align-items: center; gap: 5px;">
   <a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
     <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="50">
@@ -760,7 +715,7 @@
                 </div>
             </div>
         </div>
-    </div></center>
+    </center>
 <footer>
    <h2> &copy; 2025 ${namaWeb}.</h2>
 </footer>
