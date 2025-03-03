@@ -359,7 +359,7 @@
     <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
     </div></div><center>
     <div class="container">
-        <div class="card">
+        
 
 <center>
 <br/>             <form id="subLinkForm">
@@ -428,124 +428,6 @@
 <footer>
    <h2> &copy; 2025 ${namaWeb}.</h2>
 </footer>
-    <script>
-        // Performance optimization: Use event delegation and minimize DOM queries
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('subLinkForm');
-            const loadingEl = document.getElementById('loading');
-            const resultEl = document.getElementById('result');
-            const generatedLinkEl = document.getElementById('generated-link');
-            const copyLinkBtn = document.getElementById('copyLink');
-            const openLinkBtn = document.getElementById('openLink');
-            const errorMessageEl = document.getElementById('error-message');
-            const appSelect = document.getElementById('app');
-            const configTypeSelect = document.getElementById('configType');
 
-            // Cached selectors to minimize DOM lookups
-            const elements = {
-                app: document.getElementById('app'),
-                bug: document.getElementById('bug'),
-                configType: document.getElementById('configType'),
-                tls: document.getElementById('tls'),
-                wildcard: document.getElementById('wildcard'),
-                country: document.getElementById('country'),
-                limit: document.getElementById('limit')
-            };
-
-            // App and config type interaction
-            appSelect.addEventListener('change', () => {
-                const selectedApp = appSelect.value;
-                const shadowsocksOption = configTypeSelect.querySelector('option[value="shadowsocks"]');
-                
-                if (selectedApp === 'surfboard') {
-                    configTypeSelect.value = 'trojan';
-                    configTypeSelect.querySelector('option[value="trojan"]').selected = true;
-                    shadowsocksOption.disabled = true;
-                } else {
-                    shadowsocksOption.disabled = false;
-                }
-            });
-
-            // Form submission handler
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                // Reset previous states
-                loadingEl.style.display = 'block';
-                resultEl.style.display = 'none';
-                errorMessageEl.textContent = '';
-
-                try {
-                    // Validate inputs
-                    const requiredFields = ['bug', 'limit'];
-                    for (let field of requiredFields) {
-                        if (!elements[field].value.trim()) {
-                            throw new Error(\`Harap isi \${field === 'bug' ? 'Bug' : 'Jumlah Config'}\`);
-                        }
-                    }
-
-                    // Construct query parameters
-                    const params = new URLSearchParams({
-                        type: elements.configType.value,
-                        bug: elements.bug.value.trim(),
-                        tls: elements.tls.value,
-                        wildcard: elements.wildcard.value,
-                        limit: elements.limit.value,
-                        ...(elements.country.value !== 'all' && { country: elements.country.value })
-                    });
-
-                    // Generate full link (replace with your actual domain)
-                    const generatedLink = \`/api/\${elements.app.value}?\${params.toString()}\`;
-
-                    // Simulate loading (remove in production)
-                    await new Promise(resolve => setTimeout(resolve, 500));
-
-                    // Update UI
-                    loadingEl.style.display = 'none';
-                    resultEl.style.display = 'block';
-                    generatedLinkEl.textContent = \`https://\${window.location.hostname}\${generatedLink}\`;
-
-                    // Copy link functionality
-                    copyLinkBtn.onclick = async () => {
-    try {
-        const link = 'https://' + window.location.hostname + generatedLink;
-        await navigator.clipboard.writeText(link);
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            width: '270px',
-            text: 'Link berhasil disalin ke clipboard!',
-            background: 'rgba(6, 18, 67, 0.70)',
-                        color: 'white',
-                        timer: 1500,
-                        showConfirmButton: false
-        });
-    } catch (error) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal!',
-            text: 'Gagal menyalin link.',
-            confirmButtonText: 'Coba Lagi',
-        });
-        console.error(error);
-    }
-};
-
-
-                    // Open link functionality
-                    openLinkBtn.onclick = () => {
-                        window.open(generatedLink, '_self');
-                    };
-
-                } catch (error) {
-                    // Error handling
-                    loadingEl.style.display = 'none';
-                    errorMessageEl.textContent = error.message;
-                    console.error(error);
-                }
-            });
-        });
-    </script>
 </body>
 </html>
