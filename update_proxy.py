@@ -11,12 +11,12 @@ def check_proxy(row, api_url_template):
         response.raise_for_status()
         data = response.json()
 
-        status = data.get("status", "").strip().upper()
-        if "ACTIVE" in status:
-            print(f"{ip}:{port} is ALIVE")
+        message = data.get("message", "").strip().upper()
+if "ACTIVE ✅" in message:
+            print(f"{ip}:{port} is ALIVE ✅")
             return (row, None)  # Kembalikan seluruh baris jika aktif
         else:
-            print(f"{ip}:{port} is DEAD")
+            print(f"{ip}:{port} is DEAD ❌")
             return (None, None)
     except requests.exceptions.RequestException as e:
         error_message = f"Error checking {ip}:{port}: {e}"
