@@ -3,23 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar & Konten</title>
+    <title>FREE | CF | PROXY | LIFETIME</title>
+    <meta name="description" content="FREE | CF | PROXY | LIFETIME">
+    <meta name="keywords" content="FREE | CF | PROXY | LIFETIME">
+    <meta name="author" content="FREE | CF | PROXY | LIFETIME">
+    <meta name="robots" content="FREE | CF | PROXY | LIFETIME">
+
+    <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
+    <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
+    <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
+    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
+    <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
+    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --primary: #00ff88;
-            --secondary: #00ffff;
-            --dark: #080c14;
-            --light: #e0ffff;
-        }
+          :root {
+        --primary: #00ff88;
+        --secondary: #00ffff;
+        --accent: #ff00ff;
+        --dark: #080c14;
+        --darker: #040608;
+        --light: #e0ffff;
+            --color-primary: #00ff88;
+            --color-secondary: #00ffff;
+            --color-background: #0a0f1a;
+            --color-card: rgba(15, 22, 36, 0.95);
+            --color-text: #e0f4f4;
+            --transition: all 0.3s ease;
+            
+        --card-bg: rgba(8, 12, 20, 0.95);
+        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
+      }
+      
+  
 
         body {
-            background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+  background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+  background-size: 300% 300%; /* Untuk animasi gradient */
+  color: #fff; /* Teks putih agar kontras */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
+  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
+}
+
+/* Animasi untuk background */
+@keyframes rainbowBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes moveColors {
+  100% {
+    background-position: -200%; /* Mulai dari luar kiri */
+  }
+  0% {
+    background-position: 200%; /* Bergerak ke kanan */
+  }
+}
+       h1 {
+      font-family: 'Rajdhani', sans-serif;
+      padding-top: 10px; /* To avoid content being hidden under the header */
+      margin-top: 10px;
+      color: black;
+            text-align: center;
+            font-size: 9vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    
+         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px #000;
+        position: relative;
+        animation: titlePulse 3s ease-in-out infinite;
+    }
+
+      @keyframes titlePulse {
+        0%, 100% { transform: scale(1); filter: brightness(1); }
+        50% { transform: scale(1.02); filter: brightness(1.2); }
+      }
+    
+    h2 {
+      color: black;
+            text-align: center;
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    }
+    header, footer {
+      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
+      background-color: ;
+      color: white;
+      text-align: center;
+      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      padding: 0 20px;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      right: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+    
+
 
         /* Navbar */
         .navbar {
