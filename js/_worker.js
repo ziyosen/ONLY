@@ -4248,6 +4248,8 @@ proxy-groups:
   disable-udp: true
   proxies:
   - BEST-PING
+  - LOAD-BALANCE
+  - FALLBACK
 ${bmkg}- name: ADS
   type: select
   disable-udp: false
@@ -4256,6 +4258,16 @@ ${bmkg}- name: ADS
   - INTERNET
 - name: BEST-PING
   type: url-test
+  url: https://detectportal.firefox.com/success.txt
+  interval: 60
+  proxies:
+${bmkg}- name: FALLBACK
+  type: fallback
+  url: https://detectportal.firefox.com/success.txt
+  interval: 60
+  proxies:
+${bmkg}- name: LOAD-BALANCE
+  type: load-balance
   url: https://detectportal.firefox.com/success.txt
   interval: 60
   proxies:
