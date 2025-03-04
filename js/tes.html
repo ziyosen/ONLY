@@ -234,6 +234,7 @@
     margin-bottom: 0px;
     border: 1px solid #000; /* Border dengan warna abu-abu */
     border-radius: 10px; /* Membuat sudut melengkung */
+    align-items: center;
     padding: 0px; /* Memberi jarak antara border dan konten */
     background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
@@ -248,6 +249,9 @@
 
 <!-- Navbar -->
 <div class="navbar" id="navbar">
+        <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+</button>
     <div class="navbarconten">
     <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
     <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
@@ -267,9 +271,7 @@
 </div>
 
 <!-- Tombol Toggle -->
-<button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
-    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
-</button>
+
 
 <!-- Konten Utama -->
 <div class="container">
