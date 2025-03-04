@@ -1324,6 +1324,7 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="configType">Tipe Config</label>
                     <select id="configType" class="form-control" required>
+                        <option value="mix">MIX</option>
                         <option value="vless">VLESS</option>
                         <option value="trojan">TROJAN</option>
                         <option value="ss">SHADOWSOCKS</option>
