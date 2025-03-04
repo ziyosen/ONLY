@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
           :root {
@@ -115,21 +114,7 @@
       bottom: 0;
     }
     
-
-        .card {
-            width: 100%;
-            margin-top: 10px;
-            padding-top: 10px; /* To avoid content being hidden under the header */
-            max-width: 500px;
-            padding: 2rem;
-            align-items: center;
-  position: relative;
-  z-index: 1;
-            
-        }
-
-       
-        .title {
+  .title {
             text-align: center;
             color: var(--color-primary);
             margin-bottom: 1.5rem;
@@ -137,90 +122,69 @@
             font-weight: 700;
         }
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
+       
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-text);
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: rgba(0, 255, 136, 0.05);
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            border-radius: 8px;
-            color: var(--color-text);
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--color-secondary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--color-primary);
-            color: var(--color-background);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background: var(--color-secondary);
-        }
-
-        .result {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(0, 255, 136, 0.1);
-            border-radius: 8px;
-            word-break: break-all;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            color: var(--color-primary);
-            margin-top: 1rem;
-        }
-
-        .copy-btns {
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 100vh;
+            background: ;
+            color: white;
+            padding: 10px 0px;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
             display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 10px 10px 0;
+            transform: translateX(-100%);
         }
 
-        .copy-btn {
-            background: rgba(0, 255, 136, 0.2);
-            color: var(--color-primary);
-            padding: 0.5rem;
+        .navbar.show {
+            transform: translateX(0);
+        }
+
+        .navbar a {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .navbar a img {
+            width: 40px;
+        }
+
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: fixed;
+            top: 60%;
+            left: 0px;
+            transform: translateY(-50%);
+            background: ;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
+            cursor: pointer;            
+            justify-content: center;
+            z-index: 1001;
+            padding: 0px;
+            border-radius: 50%;
+            transition: left 0.3s ease-in-out;
         }
 
-        .copy-btn:hover {
-            background: rgba(0, 255, 136, 0.3);
+        .toggle-btn img {
+            width: 18px;
         }
 
-        #error-message {
-            color: #ff4444;
-            text-align: center;
-            margin-top: 1rem;
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show + .toggle-btn {
+            left: 80px;
         }
-     .container {
-  background-color: rgba(0, 0, 0, 0.82);
+
+        /* Konten Utama */
+        .container {
+              background-color: rgba(0, 0, 0, 0.82);
     flex: 1;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -248,11 +212,23 @@
   /* Default untuk HP */
   margin-left: auto;
   margin-right: auto;
-}
+        }
 
 
-    
-       .navbarconten {
+
+          .card {
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 10px; /* To avoid content being hidden under the header */
+            max-width: 500px;
+            padding: 2rem;
+            align-items: center;
+  position: relative;
+  z-index: 1;
+            
+        }
+
+         .navbarconten {
     width: 100%;
     overflow-x: auto; /* Mengaktifkan scroll horizontal */
     margin-bottom: 0px;
@@ -264,91 +240,16 @@
               0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
 
     }
-      .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 80px;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 0;
-            transition: transform 0.3s ease-in-out;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0 10px 10px 0;
-            transform: translateX(-100%);
-        }
-
-        .navbar.show {
-            transform: translateX(0);
-        }
-
-        .navbar a {
-            display: block;
-            margin: 15px 0;
-        }
-
-        .navbar a img {
-            width: 40px;
-        }
-        .toggle-btn {
-            position: fixed;
-            top: 50%;
-            left: 0px;
-            transform: translateY(-50%);
-            background: ;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0px;
-            border-radius: 50%;
-            transition: left 0.3s ease-in-out;
-        }
-        
-        p {
-            max-width: 800px;
-            margin: 20px auto;
-            line-height: 1.6;
-            text-align: justify;
-        }
-	    .toggle-btn img {
-            width: 20px;
-        }
-
-        /* Saat navbar terbuka, tombol ikut bergeser */
-        .navbar.show + .toggle-btn {
-            left: 80px;
-        }
-</style>
+    </style>
 </head>
-<body><header><h1 class="title">${namaWeb}</h1></header>
-<script>
-        let navbarOpen = false;
+<body>
 
-        function toggleNavbar1() {
-            const navbar = document.getElementById("navbar");
-            const menuBtn = document.getElementById("menu-btn");
-            const img = menuBtn.querySelector('img');
+<header><h1 class="title">${namaWeb}</h1></header>
 
-		
-            if (navbarOpen) {
-                navbar.style.left = "-80px";
-                img.src = "https://bmkg.xyz/img/buka.png"; 
-            } else {
-                navbar.style.left = "0";
-                img.src = "https://bmkg.xyz/img/tutup.png"; 
-            }
-
-            navbarOpen = !navbarOpen;
-        }
-    </script>
+<!-- Navbar -->
 <div class="navbar" id="navbar">
-        <div class="toggle-btn" id="menu-btn" onclick="toggleNavbar1()"><img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu"></div><div class="navbarconten">
-        <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <div class="navbarconten">
+    <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
     <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
   </a></span>
         <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
@@ -362,12 +263,21 @@
 " alt="menu" width="40"></a></span>
         <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
     <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
-    </div></div><center>
-    <div class="container">
-        
+    </div>
+</div>
 
-<center>
-<br/>             <form id="subLinkForm">
+<!-- Tombol Toggle -->
+<button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+</button>
+
+<!-- Konten Utama -->
+<div class="container">
+    <h1>Selamat Datang di Website Saya</h1>
+    <p>Ini adalah contoh halaman dengan navbar yang dapat dibuka dan ditutup. Tombol menu akan mengikuti posisi navbar saat dibuka.</p>
+
+    <div class="card">
+        <br/>             <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
                     <select id="app" class="form-control" required>
@@ -378,33 +288,6 @@
                         <option value="singbox">SINGBOX</option>
                         <option value="surfboard">SURFBOARD</option>
                         <option value="husi">HUSI</option>
-                    </select>
-                </div>
-
-
-
-                <div class="form-group">
-                    <label for="configType">Tipe Config</label>
-                    <select id="configType" class="form-control" required>
-                        <option value="vless">VLESS</option>
-                        <option value="trojan">TROJAN</option>
-                        <option value="ss">SHADOWSOCKS</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="tls">TLS/NTLS</label>
-                    <select id="tls" class="form-control">
-                        <option value="true">TLS 443</option>
-                        <option value="false">NTLS 80</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="wildcard">Wildcard</label>
-                    <select id="wildcard" class="form-control">
-                        <option value="false">OFF</option>
-                        <option value="true">ON</option>
                     </select>
                 </div>
 
@@ -428,11 +311,27 @@
                     <button id="openLink" class="copy-btn">Buka Link</button>
                 </div>
             </div>
-        </div>
-    </center>
+    </div>
+
+    
+</div>
 <footer>
    <h2> &copy; 2025 ${namaWeb}.</h2>
 </footer>
+<script>
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
 
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
+        }
+    }
+</script>
+    
 </body>
 </html>
