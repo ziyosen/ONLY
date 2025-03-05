@@ -3205,7 +3205,7 @@ function buildCountryFlag() {
     <img src="https://bmkg.xyz/img/search.png" alt="menu" width="40">
   </button>
 </div>   ${searchQuery
-                ? `<button id="home-button" onclick="goToHomePage('${serverku}')">
+                ? `<button id="home-button" onclick="goToHomePage('${pagehost}')">
                   <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
                 </button>`
                 : ''}            </div>            
