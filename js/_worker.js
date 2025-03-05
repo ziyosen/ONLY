@@ -176,13 +176,13 @@ export default {
       }
 
       
-      const myhost = url.hostname;
-      const myhostName = url.hostname;
+      const serverku = url.hostname;
+      const serverkuName = url.hostname;
       const type = url.searchParams.get('type') || 'mix';
       const tls = url.searchParams.get('tls') !== 'false';
       const wildcard = url.searchParams.get('wildcard') === 'true';
-      const bugs = url.searchParams.get('bug') || myhost;
-      const wildcrd = wildcard ? `${bugs}.${serverku}` : myhost;
+      const bugs = url.searchParams.get('bug') || serverku;
+      const wildcrd = wildcard ? `${bugs}.${serverku}` : serverku;
       const country = url.searchParams.get('country');
       const limit = parseInt(url.searchParams.get('limit'), 10); // Ambil nilai limit
       let configs;
@@ -1839,8 +1839,8 @@ function buildCountryFlag() {
     };
 
     const url = new URL(request.url);
-    const hostNameFromRequest = url.hostname;
-    const hostName = url.hostname;
+    const serverkuFromRequest = url.hostname;
+    const serverku = url.hostname;
 // Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
@@ -1882,8 +1882,8 @@ function buildCountryFlag() {
     const tableRows = visibleConfigs
       .map((config) => {
         const uuid = generateUUIDv4();
-        const wildcard = selectedWildcard || hostName;
-        const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${serverku}` : hostName;
+        const wildcard = selectedWildcard || serverku;
+        const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${serverku}` : serverku;
         const url = new URL(request.url);
        const BASE_URL = `https://${url.hostname}`; 
        const CHECK_API = `${BASE_URL}/check-proxy?ip=`; 
@@ -3299,7 +3299,7 @@ function buildCountryFlag() {
           window.location.href = url.toString();
         };
 
-        function goToHomePage(hostName) {
+        function goToHomePage(serverku) {
           const homeURL = \`https://\${serverku}/\`;
           window.location.href = homeURL;
         }
