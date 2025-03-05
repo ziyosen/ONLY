@@ -3204,11 +3204,7 @@ function buildCountryFlag() {
   <button id="search-button">
     <img src="https://bmkg.xyz/img/search.png" alt="menu" width="40">
   </button>
-</div>   ${searchQuery
-                ? `<button id="home-button" onclick="goToHomePage('${pagehost}')">
-                  <img src="https://bmkg.xyz/img/home.png" alt="menu" width="50" style="margin-top: 5px;">
-                </button>`
-                : ''}            </div>            
+</div></div>            
             
             <div class="wildcard-dropdown">
   <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
