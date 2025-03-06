@@ -400,10 +400,10 @@ custom_domain = true
 pattern = "investor.fb.com.loss.cloudproxyip.my.id"
 custom_domain = true
 [[routes]]
-pattern = "inputbugwildcard.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg.loss.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "bugskti.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg.loss.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
 [[routes]]
-pattern = "inputbugwildcard.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
+pattern = "bugskti.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
 custom_domain = true
 [[routes]]
 pattern = "subapi.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg"
