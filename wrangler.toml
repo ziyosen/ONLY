@@ -314,6 +314,46 @@ custom_domain = true
 [[routes]]
 pattern = "web.bmkg.xyz"
 custom_domain = true
+
+[[routes]]
+pattern = "ava.game.naver.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.web.bmkg.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.web.bmkg.xyz"
+custom_domain = true
 [[routes]]
 pattern = "subapi.cloudproxyip.my.id"
 custom_domain = true
