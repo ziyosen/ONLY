@@ -8,7 +8,300 @@ enabled = true
 
 [observability.logs]
 enabled = true
-
+[[routes]]
+pattern = "free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.xhamster.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.turah.my.id"
+custom_domain = true
+[[routes]]
+pattern = "free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.ndeso.xyz"
+custom_domain = true
+[[routes]]
+pattern = "free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.ndeso.web.id"
+custom_domain = true
+[[routes]]
+pattern = "free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.kere.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.cepu.us.kg"
+custom_domain = true
+[[routes]]
+pattern = "free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ava.game.naver.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "graph.instagram.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "quiz.int.vidio.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "live.iflix.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "support.zoom.us.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "blog.webex.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investors.spotify.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "cache.netflix.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "zaintest.vuclip.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "ads.ruangguru.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "io.ruangguru.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "api.midtrans.com.free-cf.najah.biz.id"
+custom_domain = true
+[[routes]]
+pattern = "investor.fb.com.free-cf.najah.biz.id"
+custom_domain = true
 [[routes]]
 pattern = "sublink.bmkg.xyz"
 custom_domain = true
