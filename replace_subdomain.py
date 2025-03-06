@@ -29,7 +29,7 @@ def replace_subdomain_in_toml(toml_file, new_subdomain, old_subdomain):
 
     updated_lines = []
     for line in lines:
-        # Hanya mengganti subdomain yang sesuai (contoh: xxx.cloudproxyip.my.id) dengan subdomain baru
+        # Hanya mengganti subdomain yang sesuai (contoh: xxx.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg) dengan subdomain baru
         if old_subdomain in line:
             line = re.sub(r'\b' + re.escape(old_subdomain) + r'\b', new_subdomain, line)
         updated_lines.append(line)
@@ -42,8 +42,8 @@ def replace_subdomain_in_worker_js(worker_js_file, new_subdomain, old_subdomain)
     with open(worker_js_file, 'r') as file:
         content = file.read()
 
-    # Hanya mengganti subdomain yang sesuai (contoh: xxx.cloudproxyip.my.id) dengan subdomain baru
-    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.cloudproxyip\.my\.id', new_subdomain + '.cloudproxyip.my.id', content)
+    # Hanya mengganti subdomain yang sesuai (contoh: xxx.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg) dengan subdomain baru
+    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.zifxoyfpuf0uf0ycphcoyf0684wd\.us\.kg', new_subdomain + '.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg', content)
 
     with open(worker_js_file, 'w') as file:
         file.write(updated_content)
@@ -53,8 +53,8 @@ def replace_subdomain_in_html(html_file, new_subdomain, old_subdomain):
     with open(html_file, 'r') as file:
         content = file.read()
 
-    # Hanya mengganti subdomain yang sesuai (contoh: xxx.cloudproxyip.my.id) dengan subdomain baru
-    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.cloudproxyip\.my\.id', new_subdomain + '.cloudproxyip.my.id', content)
+    # Hanya mengganti subdomain yang sesuai (contoh: xxx.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg) dengan subdomain baru
+    updated_content = re.sub(r'\b' + re.escape(old_subdomain) + r'\.zifxoyfpuf0uf0ycphcoyf0684wd\.us\.kg', new_subdomain + '.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg', content)
 
     with open(html_file, 'w') as file:
         file.write(updated_content)
