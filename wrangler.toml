@@ -9,7 +9,9 @@ enabled = true
 [observability.logs]
 enabled = true
 
-
+[[routes]]
+pattern = "sublink.bmkg.xyz"
+custom_domain = true
 [[routes]]
 pattern = "inputbugwildcard.cloudproxyip.my.id.loss.cloudproxyip.my.id"
 custom_domain = true
