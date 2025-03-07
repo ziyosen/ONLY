@@ -1909,12 +1909,12 @@ function buildCountryFlag() {
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://Free-CF-Proxy-LifeTime@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=tls&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=tls&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -2001,12 +2001,12 @@ function buildCountryFlag() {
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://Free-CF-Proxy-LifeTime@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=none&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=none&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -4029,7 +4029,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   server: ${bug}
   port: 443
   type: trojan
-  password: Free-CF-Proxy-LifeTime
+  password: ${UUIDS}
   udp: true
   skip-cert-verify: true
   network: ws
@@ -4046,7 +4046,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   server: ${bug}
   port: ${ports}
   cipher: none
-  password: Free-CF-Proxy-LifeTime
+  password: ${UUIDS}
   udp: true
   plugin: v2ray-plugin
   plugin-opts:
@@ -4079,7 +4079,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   server: ${bug}
   port: 443
   type: trojan
-  password: Free-CF-Proxy-LifeTime
+  password: ${UUIDS}
   udp: true
   skip-cert-verify: true
   network: ws
@@ -4093,7 +4093,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   server: ${bug}
   port: ${ports}
   cipher: none
-  password: Free-CF-Proxy-LifeTime
+  password: ${UUIDS}
   udp: true
   plugin: v2ray-plugin
   plugin-opts:
@@ -4375,7 +4375,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     if (type === 'trojan') {
       bmkg+= `${ispName}🔐,`
       conf += `
-${ispName}🔐 = trojan, ${bug}, 443, password = Free-CF-Proxy-LifeTime, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName}🔐 = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
   return `#### BY : FREE CF PROXY #### 
@@ -4819,7 +4819,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🔐",${snio}
@@ -4843,7 +4843,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
@@ -4881,7 +4881,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🔐",${snio}
@@ -4902,7 +4902,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
@@ -5193,7 +5193,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
-      "password": "Free-CF-Proxy-LifeTime",${snio}
+      "password": "${UUIDS}",${snio}
       "multiplex": {
         "protocol": "smux",
         "max_streams": 32
@@ -5216,7 +5216,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
@@ -5250,7 +5250,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
-      "password": "Free-CF-Proxy-LifeTime",${snio}
+      "password": "${UUIDS}",${snio}
       "multiplex": {
         "protocol": "smux",
         "max_streams": 32
@@ -5270,7 +5270,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
@@ -5529,7 +5529,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🔐",${snio}
@@ -5553,7 +5553,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
@@ -5591,7 +5591,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
         "max_streams": 32,
         "protocol": "smux"
       },
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
       "tag": "${ispName}🔐",${snio}
@@ -5612,7 +5612,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
-      "password": "Free-CF-Proxy-LifeTime",
+      "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
       "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
     },`;
@@ -5872,25 +5872,25 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://Free-CF-Proxy-LifeTime\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
       } else {
-        conf += `trojan://Free-CF-Proxy-LifeTime\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
         conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `trojan://Free-CF-Proxy-LifeTime\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
         conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `trojan://Free-CF-Proxy-LifeTime\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     }
   }
@@ -5979,25 +5979,25 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
       } else {
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
       } else {
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
         conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🦊\n`;
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
       } else {
         conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
-        conf += `trojan://Free-CF-Proxy-LifeTime@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
-        conf += `ss://${btoa(`none:Free-CF-Proxy-LifeTime`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
       }
     }
   }
