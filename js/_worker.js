@@ -5970,7 +5970,7 @@ pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang dipro
 console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
 
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
-    const UUIDS = generateUUIDv4();
+    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
     const information = encodeURIComponent(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
     if (type === 'vless') {
       if (tls) {
