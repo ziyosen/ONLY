@@ -1,2 +1,5 @@
-Error checking 141.98.234.14:2053: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
-Error checking 45.144.48.158:8443: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=45.144.48.158:8443
+Error checking 195.206.242.95:8443: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 195.201.47.191:2087: 409 Client Error: Conflict for url: https://api.bmkg.xyz/check?ip=195.201.47.191:2087
+Error checking 57.129.137.242:8443: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Error checking 5.144.181.250:2053: 502 Server Error: Bad Gateway for url: https://api.bmkg.xyz/check?ip=5.144.181.250:2053
+Error checking 59.11.32.103:11850: HTTPSConnectionPool(host='api.bmkg.xyz', port=443): Max retries exceeded with url: /check?ip=59.11.32.103:11850 (Caused by SSLError(SSLError(1, '[SSL: TLSV1_ALERT_DECODE_ERROR] tlsv1 alert decode error (_ssl.c:1028)')))
