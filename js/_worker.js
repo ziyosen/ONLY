@@ -1,7 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
 const proxyListURL = 'https://bmkg.xyz/update_proxyip.txt';
-const serverku = 'bxie84k3ndk.zifxoyfpuf0uf0ycphcoyf0684wd.us.kg'
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
 const telegramku = 'https://t.me/seaker877'
@@ -75,13 +74,12 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      const myurl = "api.ndeso.xyz"; //ganti dg url api yg baru
       const upgradeHeader = request.headers.get("Upgrade");
-      const CHECK_API_BASE = `https://${myurl}`;
-      const CHECK_API = `${CHECK_API_BASE}/check?ip=`; // Endpoint API check proxy di worker yang sama
-
+      const CHECK_API_BASE = "https://api.bmkg.xyz"; // Get base URL from secrets
+      const CHECK_API = `${CHECK_API_BASE}/check?ip=`;
+      
       // Handle IP check
-      if (url.pathname === "/check-proxy") {
+      if (url.pathname === "/check") {
         const ip = url.searchParams.get("ip");
 
         if (!ip) {
@@ -125,26 +123,22 @@ export default {
       );
 
       if (upgradeHeader === "websocket") {
-    // Match path dengan format /Free-CF-Proxy/CC atau /Free-CF-Proxy/CCangka
-    const pathMatch = url.pathname.match(/^\/Free-CF-Proxy-([A-Z]{2})(\d+)?$/);
+        // Match path dengan format /CC atau /CCangka
+        const pathMatch = url.pathname.match(/^\/([A-Z]{2})(\d+)?$/);
 
-    if (pathMatch) {
-        const countryCode = pathMatch[1];
-        const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
+        if (pathMatch) {
+          const countryCode = pathMatch[1];
+          const index = pathMatch[2] ? parseInt(pathMatch[2], 10) - 1 : null;
 
-        console.log(`Country Code: ${countryCode}, Index: ${index}`);
+          console.log(`Country Code: ${countryCode}, Index: ${index}`);
 
-        // Ambil proxy berdasarkan country code
-        const proxies = await getProxyList(env);
-        const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
+          // Ambil proxy berdasarkan country code
+          const proxies = await getProxyList(env);
+          const filteredProxies = proxies.filter((proxy) => proxy.country === countryCode);
 
-        if (filteredProxies.length === 0) {
+          if (filteredProxies.length === 0) {
             return new Response(`No proxies available for country: ${countryCode}`, { status: 404 });
-        }
-
-        // Lanjutkan proses koneksi WebSocket
-
-
+          }
 
           let selectedProxy;
 
@@ -166,7 +160,7 @@ export default {
         }
 
         // Match path dengan format ip:port atau ip=port
-        const ipPortMatch = url.pathname.match(/^\/Free-CF-Proxy-(.+[:=-]\d+)$/);
+        const ipPortMatch = url.pathname.match(/^\/(.+[:=-]\d+)$/);
 
         if (ipPortMatch) {
           proxyIP = ipPortMatch[1].replace(/[=:-]/, ":"); // Standarisasi menjadi ip:port
@@ -176,7 +170,7 @@ export default {
       }
 
       
-      const myhost = `${serverku}`;
+      const myhost = url.hostname;
       const myhostName = url.hostname;
       const type = url.searchParams.get('type') || 'mix';
       const tls = url.searchParams.get('tls') !== 'false';
@@ -215,18 +209,9 @@ export default {
         case "/api":
           return new Response(await handleSubRequest(url.hostname), { headers: { 'Content-Type': 'text/html' } });
           
-          
-          break;
-case "/proxy":
-  return new Response(await mamangenerateHTML(), { headers: { 'Content-Type': 'text/html' } });
-  break;
-case "/proxy/check":
-  const paramss = url.searchParams;
-  return await handleCheck(paramss);
-  break;
-          }
-          
-          return new Response(configs);
+      }
+
+      return new Response(configs);
     } catch (err) {
       return new Response(`An error occurred: ${err.toString()}`, {
         status: 500,
@@ -234,627 +219,6 @@ case "/proxy/check":
     }
   },
 };
-
-
-          
-
-      
-
-
-
-
-
-async function handleCheck(paramss) {
-  const ipPort = paramss.get("ip");
-
-  if (!ipPort) {
-    return new Response("Parameter 'ip' diperlukan dalam format ip:port", { status: 400 });
-  }
-
-  const [ip, port] = ipPort.split(":");
-  if (!ip || !port) {
-    return new Response("Format IP:PORT tidak valid", { status: 400 });
-  }
-
-  const apiUrl = `https://p01--boiling-frame--kw6dd7bjv2nr.code.run/check?ip=${ip}&port=${port}&host=speed.cloudflare.com&tls=true`;
-
-  try {
-    const startTime = Date.now();
-    const apiResponse = await fetch(apiUrl);
-    const endTime = Date.now();
-    let latency = endTime - startTime;
-    latency = Math.round(latency / 100) + "ms";
-
-    const result = await apiResponse.json();
-    
-    const flags = {
-      "AD": "🇦🇩", "AE": "🇦🇪", "AF": "🇦🇫", "AG": "🇦🇬", "AI": "🇦🇮", "AL": "🇦🇱", "AM": "🇦🇲", "AO": "🇦🇴",
-      "AR": "🇦🇷", "AT": "🇦🇹", "AU": "🇦🇺", "AW": "🇦🇼", "AZ": "🇦🇿", "BA": "🇧🇦", "BB": "🇧🇧", "BD": "🇧🇩",
-      "BE": "🇧🇪", "BF": "🇧🇫", "BG": "🇧🇬", "BH": "🇧🇭", "BI": "🇧🇮", "BJ": "🇧🇯", "BN": "🇧🇳", "BO": "🇧🇴",
-      "BR": "🇧🇷", "BS": "🇧🇸", "BT": "🇧🇹", "BW": "🇧🇼", "BY": "🇧🇾", "BZ": "🇧🇿", "CA": "🇨🇦", "CD": "🇨🇩",
-      "CF": "🇨🇫", "CG": "🇨🇬", "CH": "🇨🇭", "CI": "🇨🇮", "CL": "🇨🇱", "CM": "🇨🇲", "CN": "🇨🇳", "CO": "🇨🇴",
-      "CR": "🇨🇷", "CU": "🇨🇺", "CV": "🇨🇻", "CY": "🇨🇾", "CZ": "🇨🇿", "DE": "🇩🇪", "DJ": "🇩🇯", "DK": "🇩🇰",
-      "DM": "🇩🇲", "DO": "🇩🇴", "DZ": "🇩🇿", "EC": "🇪🇨", "EE": "🇪🇪", "EG": "🇪🇬", "ER": "🇪🇷", "ES": "🇪🇸",
-      "ET": "🇪🇹", "FI": "🇫🇮", "FJ": "🇫🇯", "FM": "🇫🇲", "FR": "🇫🇷", "GA": "🇬🇦", "GB": "🇬🇧", "GD": "🇬🇩",
-      "GE": "🇬🇪", "GH": "🇬🇭", "GM": "🇬🇲", "GN": "🇬🇳", "GQ": "🇬🇶", "GR": "🇬🇷", "GT": "🇬🇹", "GW": "🇬🇼",
-      "GY": "🇬🇾", "HN": "🇭🇳", "HR": "🇭🇷", "HT": "🇭🇹", "HU": "🇭🇺", "ID": "🇮🇩", "IE": "🇮🇪", "IL": "🇮🇱",
-      "IN": "🇮🇳", "IQ": "🇮🇶", "IR": "🇮🇷", "IS": "🇮🇸", "IT": "🇮🇹", "JM": "🇯🇲", "JO": "🇯🇴", "JP": "🇯🇵",
-      "KE": "🇰🇪", "KG": "🇰🇬", "KH": "🇰🇭", "KI": "🇰🇮", "KM": "🇰🇲", "KN": "🇰🇳", "KP": "🇰🇵", "KR": "🇰🇷",
-      "KW": "🇰🇼", "KZ": "🇰🇿", "LA": "🇱🇦", "LB": "🇱🇧", "LC": "🇱🇨", "LI": "🇱🇮", "LK": "🇱🇰", "LR": "🇱🇷",
-      "LS": "🇱🇸", "LT": "🇱🇹", "LU": "🇱🇺", "LV": "🇱🇻", "LY": "🇱🇾", "MA": "🇲🇦", "MC": "🇲🇨", "MD": "🇲🇩",
-      "ME": "🇲🇪", "MG": "🇲🇬", "MH": "🇲🇭", "MK": "🇲🇰", "ML": "🇲🇱", "MM": "🇲🇲", "MN": "🇲🇳", "MR": "🇲🇷",
-      "MT": "🇲🇹", "MU": "🇲🇺", "MV": "🇲🇻", "MW": "🇲🇼", "MX": "🇲🇽", "MY": "🇲🇾", "MZ": "🇲🇿", "NA": "🇳🇦",
-      "NE": "🇳🇪", "NG": "🇳🇬", "NI": "🇳🇮", "NL": "🇳🇱", "NO": "🇳🇴", "NP": "🇳🇵", "NR": "🇳🇷", "NZ": "🇳🇿",
-      "OM": "🇴🇲", "PA": "🇵🇦", "PE": "🇵🇪", "PG": "🇵🇬", "PH": "🇵🇭", "PK": "🇵🇰", "PL": "🇵🇱", "PT": "🇵🇹",
-      "PW": "🇵🇼", "PY": "🇵🇾", "QA": "🇶🇦", "RO": "🇷🇴", "RU": "🇷🇺", "RW": "🇷🇼", "SA": "🇸🇦", "SB": "🇸🇧",
-      "SC": "🇸🇨", "SD": "🇸🇩", "SE": "🇸🇪", "SG": "🇸🇬", "SI": "🇸🇮", "SK": "🇸🇰", "SL": "🇸🇱", "SM": "🇸🇲",
-      "SN": "🇸🇳", "SO": "🇸🇴", "SR": "🇸🇷", "SS": "🇸🇸", "ST": "🇸🇹", "SV": "🇸🇻", "SY": "🇸🇾", "SZ": "🇸🇿",
-      "TD": "🇹🇩", "TG": "🇹🇬", "TH": "🇹🇭", "TJ": "🇹🇯", "TL": "🇹🇱", "TM": "🇹🇲", "TN": "🇹🇳", "TO": "🇹🇴",
-      "TR": "🇹🇷", "TT": "🇹🇹", "TV": "🇹🇻", "TZ": "🇹🇿", "UA": "🇺🇦", "UG": "🇺🇬", "US": "🇺🇸", "UY": "🇺🇾",
-      "UZ": "🇺🇿", "VA": "🇻🇦", "VC": "🇻🇨", "VE": "🇻🇪", "VN": "🇻🇳", "VU": "🇻🇺", "WF": "🇼🇫", "WS": "🇼🇸",
-      "YE": "🇾🇪", "ZA": "🇿🇦", "ZM": "🇿🇲", "ZW": "🇿🇼"
-    };
-
-    const countryCode = result.country?.split(" ")[0] || "Unknown";
-    const countryFlag = flags[countryCode] || "🏳️";
-
-    const responseData = {
-      proxy: result.origin || "Unknown",
-      port: parseInt(port, 10) || 0,
-      proxyip: result.proxyip || false,
-      delay: latency || 0,
-      ip: result.ip || "Unknown",
-      colo: result.colo || "Unknown",
-      longitude: result.longitude || "Unknown",
-      httpProtocol: result.httpProtocol || "Unknown",
-      continent: result.continent || "Unknown",
-      asn: result.asn || 0,
-      country: `${countryCode} ${countryFlag}` || "Unknown 🏳️",
-      vpn: result.proxyip || "false",
-      city: result.city || "Unknown",
-      timezone: result.timezone || "Unknown",
-      postalCode: result.postalCode || "Unknown",
-      region: result.region || "Unknown",
-      latitude: result.tlsVersion || "Unknown",
-      regionCode: result.regionCode || "Unknown",
-      isp: result.asOrganization || "Unknown",
-      message: ` ${ip}:${port}: ACTIVE ✅`
-    };
-
-    const jsonData = JSON.stringify(responseData, null, 2);
-    
-    return new Response(jsonData, {
-      headers: { "Content-Type": "application/json" }
-    });
-    
-  } catch (error) {
-    const errorData = {
-      proxy: "Unknown",
-      port: parseInt(port, 10) || 0,
-      proxyip: false,
-      delay: "0ms",
-      ip: ip || "Unknown",
-      colo: "Unknown",
-      longitude: "Unknown",
-      httpProtocol: "Unknown",
-      continent: "Unknown",
-      asn: 0,
-      country: "Unknown 🏳️",
-      vpn: "false",
-      city: "Unknown",
-      timezone: "Unknown",
-      postalCode: "Unknown",
-      region: "Unknown",
-      latitude: "Unknown",
-      regionCode: "Unknown",
-      isp: "Unknown",
-      message: ` ${ip}:${port}: DEAD ❌`
-    };
-    return new Response(JSON.stringify(errorData, null, 2), {
-      headers: { "Content-Type": "application/json" }
-    });
-  }
-}
-
-
-function mamangenerateHTML() {
-  return `<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy Checker</title>
-    <meta property="og:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://kere.us.kg/img/botvpn.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:type" content="website">
-    <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
-    <style>
-          :root {
-        --primary: #00ff88;
-        --secondary: #00ffff;
-        --accent: #ff00ff;
-        --dark: #080c14;
-        --darker: #040608;
-        --light: #e0ffff;
-        --card-bg: rgba(8, 12, 20, 0.95);
-        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
-      }
-      
-      @keyframes rainbow {
-      0% { color: red; }
-      14% { color: black; }
-      28% { color: black; }
-      42% { color: green; }
-      57% { color: blue; }
-      71% { color: indigo; }
-      85% { color: violet; }
-      100% { color: red; }
-    }
-    @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Space Grotesk', sans-serif;
-      }
-
-      body {
-  background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
-        background-size: cover;
-        justify-content: center;
-        align-items: center;
-  background-size: 300% 300%; /* Untuk animasi gradient */
-  color: #fff; /* Teks putih agar kontras */
-  margin: 0;
-  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
-  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
-}
-
-/* Animasi untuk background */
-@keyframes rainbowBackground {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes moveColors {
-  100% {
-    background-position: -200%; /* Mulai dari luar kiri */
-  }
-  0% {
-    background-position: 200%; /* Bergerak ke kanan */
-  }
-}
-
-.warna-text {
-  font-size: 20px;
-  font-weight: bold;
-  display: inline-block;
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
-  background-size: 200%;
-  color: transparent;
-  -webkit-background-clip: text;
-  animation: moveColors 5s linear infinite;
-}
-
-
-     h1 {
-      font-family: 'Rajdhani', sans-serif;
-      padding-top: 10px; /* To avoid content being hidden under the header */
-      margin-top: 10px;
-      color: black;
-            text-align: center;
-            font-size: 9vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-    
-         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px #000;
-        position: relative;
-        animation: titlePulse 3s ease-in-out infinite;
-    }
-
-      @keyframes titlePulse {
-        0%, 100% { transform: scale(1); filter: brightness(1); }
-        50% { transform: scale(1.02); filter: brightness(1.2); }
-      }
-    
-    h2 {
-      color: black;
-            text-align: center;
-            font-size: 4vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-    }
-    header,  footer {
-      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
-      background-color: ;
-      color: white;
-      text-align: center;
-      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      padding: 0 20px;
-      position: fixed;
-      width: 100%;
-      left: 0;
-      right: 2px;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    header {
-      top: 0;
-    }
-
-    footer {
-      bottom: 0;
-    }
-    
-  
-
-     
-
-     
-      .swal-popup-extra-small-text {
-    font-size: 12px; /* Ukuran font untuk seluruh pop-up */
-}
-
-.swal-title-extra-small-text {
-    font-size: 12px; /* Ukuran font untuk judul */
-    font-weight: bold;
-}
-
-.swal-content-extra-small-text {
-    font-size: 12px; /* Ukuran font untuk teks konten */
-}
-
-
-
-    .rainbow-text {
-      font-size: 15px;
-      font-weight: bold;
-      animation: rainbow 2s infinite;
-    }
-
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Space Grotesk', sans-serif;
-      }
-    /* Animasi Loading */
-
-
-.loading-text {
-    font-size: 18px;
-    color: #FF5722; /* Warna untuk teks 'Loading...' */
-    margin-left: 10px;
-    font-weight: bold; /* Menambahkan ketebalan pada teks */
-}
-    
-input[type="text"] { padding: 10px; width: 150px; margin-bottom: 15px; }
-        button { padding: 8px 8px; background-color: green; color: white; border: none; cursor: pointer; 
-        border: 0px solid green; /* Warna border */
-    border-radius: 5px; /* Sudut tidak terlalu bulat */
-    width: 80px; height: 37px;
-    margin: 2px;
-    }
-        
-        #loadinga { display: none; font-size: 18px; font-weight: bold; }
-    
-  table { margin: auto; border-collapse: collapse; width: 95%; max-width: 700px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: rgba(19, 17, 162, 0.78); color: white; }
-        td { padding: 8px 12px; }
-        input[type="text"] { padding: 10px;
-      width: 80%;
-      max-width: 150%;
-      margin-bottom: 5px;
-      margin-top: 10px;
-      margin: 2px;
-      padding-top: 10px;
-     */ font-size: 3vw; /* Ukuran font diperbesar */
-    color: var(--light); /* Warna teks */
-    background: rgba(0, 255, 136, 0.05); /* Latar belakang */
-    border: 2px solid rgba(0, 255, 136, 0.3); /* Warna border */
-    border-radius: 5px; /* Sudut tidak terlalu bulat */
-    transition: all 0.3s ease; /* Efek transisi */
- }
-        button { padding: 8px 8px; background-color: #green; color: white; border: none; cursor: pointer; 
-        border: 0px solid green; /* Warna border */
-    border-radius: 5px; /* Sudut tidak terlalu bulat */
-    width: 80px; height: 37px;
-    margin: 2px;
-    }
-        
-        #loading { display: none; font-size: 18px; font-weight: bold; }
-    
-    @keyframes moveColors {
-  100% {
-    background-position: -200%; /* Mulai dari luar kiri */
-  }
-  0% {
-    background-position: 200%; /* Bergerak ke kanan */
-  }
-}
-
-  #loading {
-  display: none; font-size: 20px; font-weight: bold;
-  
-  background: linear-gradient(90deg, red, orange, yellow, green, blue, purple);
-  background-size: 200%;
-  color: transparent;
-  -webkit-background-clip: text;
-  animation: moveColors 5s linear infinite;
-}
-  
-  
-    .container {
-  background-color: rgba(0, 0, 0, 0.82);
-    flex: 1;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 95px;
-    margin-bottom: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: column;
-    max-width: 960px;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-
-/* Menambahkan margin-left agar konten tidak terhalang navbar */
-    margin-left: 110px; /* Jarak sesuai dengan lebar navbar */
-    margin-right: auto;
-
-  /* Tambahkan efek glow */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-  
-  /* Default untuk HP */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-    
-       .navbarconten {
-    width: 100%;
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    margin-bottom: 0px;
-    border: 1px solid #000; /* Border dengan warna abu-abu */
-    border-radius: 10px; /* Membuat sudut melengkung */
-    padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-
-    }
-      .navbar {
-            position: fixed;
-            top: 50%;
-            left: -80px; /* Awalnya disembunyikan */
-            transform: translateY(-50%);
-            width: 80px;
-            background: ;
-            color: white;
-            padding: 10px 0;
-            transition: left 0.3s ease-in-out;
-            z-index: 1000;
-            border-radius: 0 10px 10px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Saat navbar terbuka */
-        .navbar.show {
-            left: 0;
-        }
-
-        .navbar a img {
-            width: 40px;
-        }
-        
-        .navbar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-        .navbar a:hover {
-            background: ;
-        }
-        
-        /* Tombol Toggle */
-        .toggle-btn {
-            position: absolute;
-            top: 50%;
-            right: -30px; /* Posisi tombol di tengah kanan navbar */
-            transform: translateY(-50%);
-            background: ;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 10px;
-            border-radius: 0 10px 10px 0;
-            transition: right 0.3s ease-in-out;
-        }
-
-        .toggle-btn img {
-            width: 20px; /* Ukuran gambar lebih kecil */
-            height: 150px; /* Ukuran gambar lebih kecil */
-        }
-
-        /* Saat navbar terbuka, tombol ikut bergeser */
-        .navbar.show .toggle-btn {
-            right: -29px;
-        }
-        
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>Proxy Checker</h1>
-</header>
-<script>
-    function toggleNavbar() {
-        const navbar = document.getElementById("navbar");
-        const menuBtn = document.getElementById("menu-btn").querySelector('img');
-
-        if (navbar.classList.contains("show")) {
-            navbar.classList.remove("show");
-            menuBtn.src = "https://bmkg.xyz/img/buka.png";
-        } else {
-            navbar.classList.add("show");
-            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
-        }
-    }
-</script>
-<div class="navbar" id="navbar">
-<div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
-    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
-</div>
-    <div class="navbarconten">
-   <center> <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40" style="margin-top: 5px;">
-  </a></span>
-        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
-  </a></span>
-        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
-" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
-" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-   </center> </div>
-</div>
-<div class="container">
-  <div style="display: flex; justify-content: space-between;">
-    <input type="text" id="ipInput" placeholder="Input IP:Port(192.168.1.1:443)">
-    <button onclick="checkProxy()">Check</button>
-
-</div>
-
-
-
-    <p id="loading">Loading...</p>
-    <br>
-    <table id="resultTable">
-    
-        <thead style="background-color:  color: white; border: none; padding: 10px 20px; ">
-          <tr>
-            <th>Key</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>ISP</td><td>-</td></tr>
-          <tr><td>IP</td><td>-</td></tr>          
-          <tr><td>Port</td><td>-</td></tr>
-          <tr><td>ASN</td><td>-</td></tr>
-          <tr><td>Country</td><td>-</td></tr>
-          <tr><td>City</td><td>-</td></tr>
-          <tr><td>VPN</td><td>-</td></tr>
-          <tr><td>Delay</td><td style="color: red; font-weight: bold;">-</td></tr>
-          <tr><td>Message</td><td style="font-weight: bold;">-</td></tr>
-        </tbody>
-    </table><center><br/>
-    <div style="display: flex; align-items: center; gap: 5px;">
-  </div></center><br/><br/>          
-    </div>
-    <footer>
-   <h2> &copy; 2025 Proxy Checker. All rights reserved.</h2>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        // Saat halaman dimuat, periksa jika ada data di localStorage
-        window.onload = function() {
-            const storedData = localStorage.getItem("proxyData");
-            if (storedData) {
-                const data = JSON.parse(storedData);
-                updateTable(data);
-            }
-        };
-
-        async function checkProxy() {
-            const ipPort = document.getElementById("ipInput").value;
-            if (!ipPort) {
-                Swal.fire({
-            icon: 'warning',
-            title: 'Peringatan!',
-            text: 'Masukkan IP:Port terlebih dahulu!',
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#4CAF50'
-        });
-                return;
-            }
-
-            document.getElementById("loading").style.display = "block";  // Menampilkan loading
-
-            const response = await fetch(\`/proxy/check?ip=\${encodeURIComponent(ipPort)}\`);
-            const data = await response.json();
-
-            // Simpan data ke localStorage
-            localStorage.setItem("proxyData", JSON.stringify(data));
-
-            updateTable(data);
-            document.getElementById("loading").style.display = "none";  // Menyembunyikan loading
-        }
-
-        function updateTable(data) {
-            const table = document.getElementById("resultTable");
-            const tbody = table.querySelector("tbody");
-
-            tbody.querySelectorAll("tr").forEach((row) => {
-                const key = row.querySelector("td").textContent;
-                const dataKey = key.toLowerCase();
-
-                if (data[dataKey]) {
-                    row.querySelectorAll("td")[1].textContent = data[dataKey] || "-";
-                }
-            });
-        }
-    </script>
-</body>
-</html>`;
-}
-
 
 // Helper function: Group proxies by country
 function groupBy(array, key) {
@@ -867,7 +231,7 @@ function groupBy(array, key) {
 async function handleSubRequest(hostnem) {
   const html = `
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -880,131 +244,65 @@ async function handleSubRequest(hostnem) {
     <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
     <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
     <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
+    <meta property="og:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <meta property="og:url" content="https://kere.us.kg/img/botvpn.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
     <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
+    <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-          :root {
-        --primary: #00ff88;
-        --secondary: #00ffff;
-        --accent: #ff00ff;
-        --dark: #080c14;
-        --darker: #040608;
-        --light: #e0ffff;
+        :root {
             --color-primary: #00ff88;
             --color-secondary: #00ffff;
             --color-background: #0a0f1a;
             --color-card: rgba(15, 22, 36, 0.95);
             --color-text: #e0f4f4;
             --transition: all 0.3s ease;
-            
-        --card-bg: rgba(8, 12, 20, 0.95);
-        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
-      }
-      
-  
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
 
         body {
-  background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
-        background-size: cover;
-        justify-content: center;
-        align-items: center;
-  background-size: 300% 300%; /* Untuk animasi gradient */
-  color: #fff; /* Teks putih agar kontras */
-  margin: 0;
-  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
-  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
-}
+            font-family: 'Inter', sans-serif;
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-/* Animasi untuk background */
-@keyframes rainbowBackground {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes moveColors {
-  100% {
-    background-position: -200%; /* Mulai dari luar kiri */
-  }
-  0% {
-    background-position: 200%; /* Bergerak ke kanan */
-  }
-}
-       h1 {
-      font-family: 'Rajdhani', sans-serif;
-      padding-top: 10px; /* To avoid content being hidden under the header */
-      margin-top: 10px;
-      color: black;
-            text-align: center;
-            font-size: 9vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-    
-         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px #000;
-        position: relative;
-        animation: titlePulse 3s ease-in-out infinite;
-    }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+        }
 
-      @keyframes titlePulse {
-        0%, 100% { transform: scale(1); filter: brightness(1); }
-        50% { transform: scale(1.02); filter: brightness(1.2); }
-      }
-    
-    h2 {
-      color: black;
-            text-align: center;
-            font-size: 4vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-    }
-    header, footer {
-      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
-      background-color: ;
-      color: white;
-      text-align: center;
-      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
-      border-radius: 10px;
-      padding: 0 20px;
-      position: fixed;
-      width: 100%;
-      left: 0;
-      right: 2px;
-      pointer-events: none;
-      z-index: 10;
-    }
+        .card {
+            background: var(--color-card);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: var(--transition);
+        }
 
-    header {
-      top: 0;
-    }
-
-    footer {
-      bottom: 0;
-    }
-    
-  .title {
+        .title {
             text-align: center;
             color: var(--color-primary);
             margin-bottom: 1.5rem;
@@ -1094,200 +392,15 @@ async function handleSubRequest(hostnem) {
             text-align: center;
             margin-top: 1rem;
         }
-
-     /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 50%;
-            left: -80px; /* Awalnya disembunyikan */
-            transform: translateY(-50%);
-            width: 80px;
-            background: ;
-            color: white;
-            padding: 10px 0;
-            transition: left 0.3s ease-in-out;
-            z-index: 1000;
-            border-radius: 0 10px 10px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Saat navbar terbuka */
-        .navbar.show {
-            left: 0;
-        }
-
-        .navbar a img {
-            width: 40px;
-        }
-        
-        .navbar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-        .navbar a:hover {
-            background: ;
-        }
-        
-        /* Tombol Toggle */
-        .toggle-btn {
-            position: absolute;
-            top: 50%;
-            right: -30px; /* Posisi tombol di tengah kanan navbar */
-            transform: translateY(-50%);
-            background: ;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 10px;
-            border-radius: 0 10px 10px 0;
-            transition: right 0.3s ease-in-out;
-        }
-
-        .toggle-btn img {
-            width: 20px; /* Ukuran gambar lebih kecil */
-            height: 150px; /* Ukuran gambar lebih kecil */
-        }
-
-        /* Saat navbar terbuka, tombol ikut bergeser */
-        .navbar.show .toggle-btn {
-            right: -29px;
-        }
-        
-
-        /* Konten Utama */
-        .container {
-              background-color: rgba(0, 0, 0, 0.82);
-    flex: 1;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-top: 95px;
-    margin-bottom: 50px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: column;
-    max-width: 960px;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-
-/* Menambahkan margin-left agar konten tidak terhalang navbarr */
-    margin-left: 110px; /* Jarak sesuai dengan lebar navbarr */
-    margin-right: auto;
-
-  /* Tambahkan efek glow */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-  
-  /* Default untuk HP */
-  margin-left: auto;
-  margin-right: auto;
-        }
-
-        h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-          .card {
-            width: 100%;
-            margin-top: 10px;
-            padding-top: 10px; /* To avoid content being hidden under the header */
-            max-width: 500px;
-            padding: 2rem;
-            align-items: center;
-  position: relative;
-  z-index: 1;
-            
-        }
-
-         .navbarconten {
-    width: 100%;
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    margin-bottom: 0px;
-    border: 1px solid #000; /* Border dengan warna abu-abu */
-    border-radius: 10px; /* Membuat sudut melengkung */
-    padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
-
-    }
-    
-     .quantum-title { 
-      font-family: 'Rajdhani', sans-serif;
-      padding-top: 10px; /* To avoid content being hidden under the header */
-      margin-top: 10px;
-      color: black;
-            text-align: center;
-            font-size: 10vw;
-            font-weight: bold;
-            text-shadow: 
-                0 0 5px rgba(0, 123, 255, 0.8),
-                0 0 10px rgba(0, 123, 255, 0.8),
-                0 0 20px rgba(0, 123, 255, 0.8),
-                0 0 30px rgba(0, 123, 255, 0.8),
-                0 0 40px rgba(0, 123, 255, 0.8);
-    
-         background: linear-gradient(45deg, var(--accent), var(--secondary), var(--dark));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px #000;
-        position: relative;
-        animation: titlePulse 3s ease-in-out infinite;
-    }
-
-      @keyframes titlePulse {
-        0%, 100% { transform: scale(1); filter: brightness(1); }
-        50% { transform: scale(1.02); filter: brightness(1.2); }
-     }
-
     </style>
 </head>
 <body>
-
-<header><h1 class="title">${namaWeb}</h1></header>
-
-<!-- Navbar -->
-<div class="navbar" id="navbar">
-<div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
-    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
-</div>
-    <div class="navbarconten">
-   <center> <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40" style="margin-top: 5px;">
-  </a></span>
-        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
-  </a></span>
-        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
-" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
-" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-   </center> </div>
-</div>
-<!-- Tombol Toggle -->
-
-<!-- Konten Utama -->
-<div class="container"><center><h1 class="quantum-title"><strong>Generate Sub Link<strong></h1></center>
-    <div class="card">
-        <br/>             <form id="subLinkForm">
+    <div class="container">
+        <div class="card">
+            <h1 class="title">${namaWeb}</h1>
+<center><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <button style="background-color: #cde033; color: black; border: none; padding: 6px 12px; cursor: pointer; font-family: 'Rajdhani', sans-serif; border-radius: 5px;">Home Page</button></a></center>
+                       <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
                     <select id="app" class="form-control" required>
@@ -1324,7 +437,6 @@ async function handleSubRequest(hostnem) {
                 <div class="form-group">
                     <label for="configType">Tipe Config</label>
                     <select id="configType" class="form-control" required>
-                        <option value="mix">MIX</option>
                         <option value="vless">VLESS</option>
                         <option value="trojan">TROJAN</option>
                         <option value="ss">SHADOWSOCKS</option>
@@ -1407,7 +519,7 @@ async function handleSubRequest(hostnem) {
     <option value="CU">Cuba</option>
     <option value="CY">Cyprus</option>
     <option value="CZ">Czech Republic</option>
-    <option value="CI">Côte d'Ivoire</option>
+    <option value="CI">CÃ´te d'Ivoire</option>
     <option value="DK">Denmark</option>
     <option value="DJ">Djibouti</option>
     <option value="DM">Dominica</option>
@@ -1522,11 +634,11 @@ async function handleSubRequest(hostnem) {
     <option value="PT">Portugal</option>
     <option value="PR">Puerto Rico</option>
     <option value="QA">Qatar</option>
-    <option value="RE">Réunion</option>
+    <option value="RE">RÃ©union</option>
     <option value="RO">Romania</option>
     <option value="RU">Russia</option>
     <option value="RW">Rwanda</option>
-    <option value="BL">Saint Barthélemy</option>
+    <option value="BL">Saint BarthÃ©lemy</option>
     <option value="SH">Saint Helena</option>
     <option value="KN">Saint Kitts and Nevis</option>
     <option value="LC">Saint Lucia</option>
@@ -1607,27 +719,9 @@ async function handleSubRequest(hostnem) {
                     <button id="openLink" class="copy-btn">Buka Link</button>
                 </div>
             </div>
+        </div>
     </div>
 
-    
-</div>
-<footer>
-   <h2> &copy; 2025 ${namaWeb}.</h2>
-</footer>
-<script>
-    function toggleNavbar() {
-        const navbar = document.getElementById("navbar");
-        const menuBtn = document.getElementById("menu-btn").querySelector('img');
-
-        if (navbar.classList.contains("show")) {
-            navbar.classList.remove("show");
-            menuBtn.src = "https://bmkg.xyz/img/buka.png";
-        } else {
-            navbar.classList.add("show");
-            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
-        }
-    }
-</script>
     <script>
         // Performance optimization: Use event delegation and minimize DOM queries
         document.addEventListener('DOMContentLoaded', () => {
@@ -1735,7 +829,7 @@ async function handleSubRequest(hostnem) {
 
                     // Open link functionality
                     openLinkBtn.onclick = () => {
-                        window.open(generatedLink, '_self');
+                        window.open(generatedLink, '_blank');
                     };
 
                 } catch (error) {
@@ -1760,8 +854,8 @@ async function handleWebRequest(request) {
         try {
             const response = await fetch(apiUrl);
             const text = await response.text();
-
-            let pathCounters = {}; // Menyimpan jumlah path per countryCode
+            
+            let pathCounters = {};
 
             const configs = text.trim().split('\n').map((line) => {
                 const [ip, port, countryCode, isp] = line.split(',');
@@ -1770,18 +864,11 @@ async function handleWebRequest(request) {
                     pathCounters[countryCode] = 1;
                 }
 
-                // Format path tanpa "/" sebelum angka
-                const path = `/Free-CF-Proxy-${countryCode}${pathCounters[countryCode]}`;
+                const path = `/${countryCode}${pathCounters[countryCode]}`;
                 pathCounters[countryCode]++;
 
-                return {
-                    ip,
-                    port,
-                    countryCode,
-                    isp,
-                    path,
-                    ipPort: `${ip}:${port}`
-                };
+                // **Perubahan Minimal:** Memastikan setiap path menyimpan `ip:port`
+                return { ip, port, countryCode, isp, path, ipPort: `${ip}-${port}` };
             });
 
             return configs;
@@ -1790,11 +877,6 @@ async function handleWebRequest(request) {
             return [];
         }
     };
-
-    // Panggil fungsi fetchConfigs untuk mendapatkan data
-    
-
-
 
    
 
@@ -1830,7 +912,7 @@ function buildCountryFlag() {
 }
 
     const getFlagEmoji = (countryCode) => {
-      if (!countryCode) return '🏳️';
+      if (!countryCode) return 'ð³ï¸';
       return countryCode
         .toUpperCase()
         .split('')
@@ -1840,7 +922,7 @@ function buildCountryFlag() {
 
     const url = new URL(request.url);
     const hostNameFromRequest = url.hostname;
-    const hostName = `${serverku}`;
+    const hostName = url.hostname;
 // Lakukan pemrosesan atau log lainnya tanpa respons ke klien
     const page = parseInt(url.searchParams.get('page')) || 1;
     const searchQuery = url.searchParams.get('search') || '';
@@ -1881,12 +963,12 @@ function buildCountryFlag() {
 
     const tableRows = visibleConfigs
       .map((config) => {
-        const uuid = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+        const uuid = generateUUIDv4();
         const wildcard = selectedWildcard || hostName;
         const modifiedHostName = selectedWildcard ? `${selectedWildcard}.${hostName}` : hostName;
         const url = new URL(request.url);
        const BASE_URL = `https://${url.hostname}`; 
-       const CHECK_API = `${BASE_URL}/check-proxy?ip=`; 
+       const CHECK_API = `${BASE_URL}/check?ip=`; 
         const ipPort = `${config.ip}:${config.port}`;
         const healthCheckUrl = `${CHECK_API}${ipPort}`;
 
@@ -1904,17 +986,17 @@ function buildCountryFlag() {
 
                     
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             VLESS
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:443?encryption=none&security=tls&sni=${modifiedHostName}&fp=randomized&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=tls&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:443?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}&security=tls&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -1926,24 +1008,23 @@ function buildCountryFlag() {
         .then(response => response.json())
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.ip + ':' + data.proxy); // Menggunakan IP dan Proxy dari respons
+            const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
 
-            // Ambil data status dan delay dari API response
-            const status = data.message.includes("ACTIVE ✅") ? 'ACTIVE ✅' : 'DEAD ❌';  // Cek status berdasarkan message
-            let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
+            // Ambil data status
+            const status = data.status || 'UNKNOWN';
+            let delay = data.delay || 'N/A';  // Ambil delay yang sudah diproses dari API
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", delay); // Debugging log
 
-            const divisor = 1;  // Jika diperlukan, ubah divisor sesuai kebutuhan
+            const divisor = 1;  // Ubah sesuai kebutuhan
 
-            // Jika delay tidak N/A, proses untuk mengurangi latensi (misalnya dibagi 100)
             if (delay !== 'N/A') {
-                // Pastikan delay adalah angka yang valid dan lakukan perhitungan jika perlu
+                // Hapus "ms" dan ubah menjadi angka
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi jika perlu
+                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
                     console.log("Processed latency:", delay);  // Debugging log
                 } else {
                     delay = "N/A";
@@ -1951,19 +1032,25 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
+            if (status === 'ACTIVE â') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD ❌') {
+            } else if (status === 'DEAD â') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else {
+            } else if (status === 'UNKNOWN') {
                 statusElement.innerHTML = '<strong>UNKNOWN</strong>';
                 statusElement.style.color = 'gray';  // Abu-abu untuk status UNKNOWN
+                statusElement.style.fontSize = '13px';
+                statusElement.style.fontWeight = 'bold';
+            } else {
+                // Jika status tidak dikenal
+                statusElement.innerHTML = '<strong>' + status + '</strong>';
+                statusElement.style.color = 'orange';  // Warna lain untuk status tidak dikenal
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             }
@@ -1975,8 +1062,6 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
-
-
 
 
         
@@ -1996,17 +1081,17 @@ function buildCountryFlag() {
                     <td class="proxy-status" id="status-${ipPort}"><strong><i class="fas fa-spinner fa-spin loading-icon"></i></strong><div class="warna-text">Loading...</div></td>
                     
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#bdc74d] to-[#bdc74d] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`vless://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path.toUpperCase())}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             VLESS
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path)}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#4dbcc7] to-[#4dbcc7] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`trojan://${uuid}@${wildcard}:80?path=${encodeURIComponent(config.path.toUpperCase())}&security=none&encryption=none&host=${modifiedHostName}&fp=randomized&type=ws&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             TROJAN
                         </button>
                     </td>
                     <td class="button-cell">
-                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path)}&security=none&sni=${modifiedHostName}#[${config.countryCode}]%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
+                        <button class="px-3 py-1 bg-gradient-to-r from-[#ff6e6e] to-[#ff6e6e] text-black font-semibold border-0 rounded-md transform transition hover:scale-105" onclick="copy('${`ss://${btoa(`none:${uuid}`)}%3D@${wildcard}:80?encryption=none&type=ws&host=${modifiedHostName}&path=${encodeURIComponent(config.path.toUpperCase())}&security=none&sni=${modifiedHostName}#(${config.countryCode})%20${config.isp.replace(/\s/g,'%20')}${getFlagEmoji(config.countryCode)}`}')">
                             Shadowsocks
                         </button>
                     </td>
@@ -2017,24 +1102,23 @@ function buildCountryFlag() {
         .then(response => response.json())
         .then(data => {
             const statusElement = document.getElementById('status-${ipPort}');
-            const spinner = document.getElementById('ping-' + data.ip + ':' + data.proxy); // Menggunakan IP dan Proxy dari respons
+            const spinner = document.getElementById('ping-' + data.proxy + ':' + data.port);
 
-            // Ambil data status dan delay dari API response
-            const status = data.message.includes("ACTIVE ✅") ? 'ACTIVE ✅' : 'DEAD ❌';  // Cek status berdasarkan message
-            let delay = data.delay !== "" ? data.delay : 'N/A';  // Gunakan delay dari respons, jika ada
+            // Ambil data status
+            const status = data.status || 'UNKNOWN';
+            let delay = data.delay || 'N/A';  // Ambil delay yang sudah diproses dari API
 
             console.log("Status:", status);  // Debugging log
             console.log("Raw delay:", delay); // Debugging log
 
-            const divisor = 1;  // Jika diperlukan, ubah divisor sesuai kebutuhan
+            const divisor = 1;  // Ubah sesuai kebutuhan
 
-            // Jika delay tidak N/A, proses untuk mengurangi latensi (misalnya dibagi 100)
             if (delay !== 'N/A') {
-                // Pastikan delay adalah angka yang valid dan lakukan perhitungan jika perlu
+                // Hapus "ms" dan ubah menjadi angka
                 delay = parseFloat(delay.replace("ms", "").trim());
 
                 if (!isNaN(delay)) {
-                    delay = Math.round(delay / divisor) + "ms";  // Perkecil latensi jika perlu
+                    delay = Math.round(delay / divisor) + ".ms";  // Perkecil latensi dan tambahkan satuan kembali
                     console.log("Processed latency:", delay);  // Debugging log
                 } else {
                     delay = "N/A";
@@ -2042,19 +1126,25 @@ function buildCountryFlag() {
             }
 
             // Memperbarui elemen berdasarkan status
-            if (status === 'ACTIVE ✅') {
+            if (status === 'ACTIVE â') {
                 statusElement.innerHTML = '<i class="fas fa-bolt"></i>&nbsp;<span style="color: gold;">(' + delay + ')</span>';
                 statusElement.style.color = '#00FF00';  // Hijau
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else if (status === 'DEAD ❌') {
+            } else if (status === 'DEAD â') {
                 statusElement.innerHTML = '<strong><i class="fas fa-times-circle"></i> DEAD</strong>';
                 statusElement.style.color = '#FF3333';  // Merah
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
-            } else {
+            } else if (status === 'UNKNOWN') {
                 statusElement.innerHTML = '<strong>UNKNOWN</strong>';
                 statusElement.style.color = 'gray';  // Abu-abu untuk status UNKNOWN
+                statusElement.style.fontSize = '13px';
+                statusElement.style.fontWeight = 'bold';
+            } else {
+                // Jika status tidak dikenal
+                statusElement.innerHTML = '<strong>' + status + '</strong>';
+                statusElement.style.color = 'orange';  // Warna lain untuk status tidak dikenal
                 statusElement.style.fontSize = '13px';
                 statusElement.style.fontWeight = 'bold';
             }
@@ -2066,8 +1156,6 @@ function buildCountryFlag() {
             console.error('Error fetching data:', error);  // Log error
         });
 </script>
-
-
 
 
 
@@ -2086,11 +1174,11 @@ function buildCountryFlag() {
     }
 
     const prevPage = page > 1
-      ? `<a href="?page=${page - 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">◁</a>`
+      ? `<a href="?page=${page - 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">â</a>`
       : '';
 
     const nextPage = page < totalPages
-      ? `<a href="?page=${page + 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">▷</a>`
+      ? `<a href="?page=${page + 1}&wildcard=${encodeURIComponent(selectedWildcard)}&configType=${encodeURIComponent(selectedConfigType)}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}" class="pagination-arrow">â·</a>`
       : '';
 
   return new Response(`
@@ -2108,16 +1196,16 @@ function buildCountryFlag() {
     <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
     <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
     <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
+    <meta property="og:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <meta property="og:url" content="https://kere.us.kg/img/botvpn.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
     <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
+    <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css">
       <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.1/css/all.css">
@@ -2526,6 +1614,18 @@ function buildCountryFlag() {
         50% { transform: scale(1.02); filter: brightness(1.2); }
      }
 
+      .quantum-title1 {
+        color: black;
+            text-align: center;
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+      }
 
       .search-quantum {
         position: relative;
@@ -2703,7 +1803,7 @@ function buildCountryFlag() {
           margin: 0.5rem;
         }
         
-        .quantum-cardww {
+        .quantum-card {
           padding: 1rem;
           margin: 0;
           width: 100%;
@@ -3076,144 +2176,37 @@ function buildCountryFlag() {
   }
 }
 
-       .navbarconten {
-    width: 100%;
-    overflow-x: auto; /* Mengaktifkan scroll horizontal */
-    margin-bottom: 0px;
-    border: 1px solid #000; /* Border dengan warna abu-abu */
-    border-radius: 10px; /* Membuat sudut melengkung */
-    padding: 0px; /* Memberi jarak antara border dan konten */
-    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
-              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
 
-    }
-     /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 50%;
-            left: -80px; /* Awalnya disembunyikan */
-            transform: translateY(-50%);
-            width: 80px;
-            background: ;
-            color: white;
-            padding: 10px 0;
-            transition: left 0.3s ease-in-out;
-            z-index: 1000;
-            border-radius: 0 10px 10px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Saat navbar terbuka */
-        .navbar.show {
-            left: 0;
-        }
-
-        .navbar a img {
-            width: 40px;
-        }
-
-        .navbar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-        }
-        .navbar a:hover {
-            background: ;
-        }
-        
-        /* Tombol Toggle */
-        .toggle-btn {
-            position: absolute;
-            top: 50%;
-            right: -30px; /* Posisi tombol di tengah kanan navbar */
-            transform: translateY(-50%);
-            background: ;
-            border: none;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 10px;
-            border-radius: 0 10px 10px 0;
-            transition: right 0.3s ease-in-out;
-        }
-
-        .toggle-btn img {
-            width: 20px; /* Ukuran gambar lebih kecil */
-            height: 150px; /* Ukuran gambar lebih kecil */
-        }
-
-        /* Saat navbar terbuka, tombol ikut bergeser */
-        .navbar.show .toggle-btn {
-            right: -29px;
-        }
-        
-
-</style>
+    </style>
 </head>
 <body>
 <header><h1 class="quantum-title">${namaWeb}</h1></header>
-<script>
-    function toggleNavbar() {
-        const navbar = document.getElementById("navbar");
-        const menuBtn = document.getElementById("menu-btn").querySelector('img');
-
-        if (navbar.classList.contains("show")) {
-            navbar.classList.remove("show");
-            menuBtn.src = "https://bmkg.xyz/img/buka.png";
-        } else {
-            navbar.classList.add("show");
-            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
-        }
-    }
-</script>
-<div class="navbar" id="navbar">
-<div class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
-    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
-</div>
-
-    <div class="navbarconten">
-   <center> <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40" style="margin-top: 5px;">
-  </a></span>
-        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
-    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
-  </a></span>
-        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
-" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
-" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
-   </center> </div>
-</div>
-<!-- Tombol Toggle -->
     <div class="quantum-container">
        <div class="search-quantum" style="display: flex; align-items: center; flex-direction: column;">
-              <div style="display: flex; align-items: center; gap: 5px;">
-  <input type="text" 
-         id="search-bar" 
-         placeholder="Search by IP, CountryCode, or ISP"
-         value="${searchQuery}" 
-         style="flex: 1; margin-top: 5px; height: 45px;"/>
-  <button id="search-button">
-    <img src="https://bmkg.xyz/img/search.png" alt="menu" width="40">
-  </button>
-</div></div>            
-            
-            <div class="wildcard-dropdown">
+              <div style="display: flex; width: 90%;"><button class="button7"><a href="/api">SUB LINK</a></button>
+                <input type="text" 
+                  id="search-bar" 
+                  placeholder="Search by IP, CountryCode, or ISP"
+                  value="${searchQuery}" 
+                  style="flex: 1; margin-top: 5px; height: 45px;"/>
+                <button id="search-button" class="button7">Search</button>
+              </div>
+              ${searchQuery
+                ? `<button id="home-button" class="bg-gradient-to-r from-[#13a101] to-[#13a101] text-[#ffffff] border-1 border-[#000] rounded-md px-3 py-2 text-sm transition duration-300 ease-in-out hover:bg-[#008080] hover:text-[#222222]" style="margin: 5px;" onclick="goToHomePage('${hostName}')">
+                  Home Page
+                </button>`
+                : ''}
+            </div>            
+            <div class="wildcard-dropdown"><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kere.us.kg/img/tele.png
+" alt="menu" width="50"></a>
   <select id="wildcard" name="wildcard" onchange="onWildcardChange(event)" style="width: 90px; height: 45px;">
     <option value="" ${!selectedWildcard ? 'selected' : ''}>No Wildcard</option>
     ${wildcards.map(w => `<option value="${w}" ${selectedWildcard === w ? 'selected' : ''}>${w}</option>`).join('')}
   </select>
   <select id="configType" name="configType" onchange="onConfigTypeChange(event)" style="width: 60px; height: 45px;">
     <option value="tls" ${selectedConfigType === 'tls' ? 'selected' : ''}>TLS</option>
-    <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select>
+    <option value="non-tls" ${selectedConfigType === 'non-tls' ? 'selected' : ''}>NON TLS</option> </select><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://kere.us.kg/img/bot.png
+" alt="menu" width="50"></a>
 </div>
 <div 
     class="w-full h-12 overflow-x-auto px-2 py-1 flex items-center space-x-2 shadow-lg bg-transparent border"
@@ -3250,7 +2243,7 @@ function buildCountryFlag() {
          
         </div>
     </div><footer class="footer">
-    <h2  class="quantum-title1">&copy; 2025 ${namaWeb}</h2>
+    <h2  class="quantum-title1"><p>&copy; 2025 ${namaWeb}</p></h2>
   </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
@@ -3499,9 +2492,7 @@ async function protocolSniffer(buffer) {
     }
   }
 
-  
-
-const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
+  const vlessDelimiter = new Uint8Array(buffer.slice(1, 17));
   // Hanya mendukung UUID v4
   if (arrayBufferToHex(vlessDelimiter).match(/^\w{8}\w{4}4\w{3}[89ab]\w{3}\w{12}$/)) {
     return "VLESS";
@@ -3932,46 +2923,20 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
@@ -3983,33 +2948,19 @@ async function generateClashSub(type, bug, wildcrd, tls, country = null, limit =
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n  servername: ${wildcrd}` : '';
     const snioo = tls ? `\n  cipher: auto` : '';
     if (type === 'vless') {
-      bmkg+= `  - ${ispName}🦊\n`
+      bmkg+= `  - ${ispName}\n`
       conf += `
-- name: ${ispName}🦊
+- name: ${ispName}
   server: ${bug}
   port: ${ports}
   type: vless
@@ -4019,13 +2970,13 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'trojan') {
-      bmkg+= `  - ${ispName}🔐\n`
+      bmkg+= `  - ${ispName}\n`
       conf += `
-- name: ${ispName}🔐
+- name: ${ispName}
   server: ${bug}
   port: 443
   type: trojan
@@ -4035,13 +2986,13 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}`;
     } else if (type === 'ss') {
-      bmkg+= `  - ${ispName}🛡️\n`
+      bmkg+= `  - ${ispName}\n`
       conf += `
-- name: ${ispName}🛡️
+- name: ${ispName}
   type: ss
   server: ${bug}
   port: ${ports}
@@ -4054,14 +3005,14 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     mux: false
     headers:
       custom: ${wildcrd}`;
     } else if (type === 'mix') {
-      bmkg+= `  - ${ispName}🦊\n  - ${ispName}🔐\n  - ${ispName}🛡️\n`;
+      bmkg+= `  - ${ispName} vless\n  - ${ispName} trojan\n  - ${ispName} ss\n`;
       conf += `
-- name: ${ispName}🦊
+- name: ${ispName} vless
   server: ${bug}
   port: ${ports}
   type: vless
@@ -4072,10 +3023,10 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   skip-cert-verify: true
   network: ws${snio}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}
-- name: ${ispName}🔐
+- name: ${ispName} trojan
   server: ${bug}
   port: 443
   type: trojan
@@ -4085,10 +3036,10 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
   network: ws
   sni: ${wildcrd}
   ws-opts:
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     headers:
       Host: ${wildcrd}
-- name: ${ispName}🛡️
+- name: ${ispName} ss
   type: ss
   server: ${bug}
   port: ${ports}
@@ -4101,13 +3052,13 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     tls: ${tls}
     skip-cert-verify: true
     host: ${wildcrd}
-    path: ${pathcfnegara}
+    path: /${proxyHost}-${proxyPort}
     mux: false
     headers:
       custom: ${wildcrd}`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 port: 7890
 socks-port: 7891
@@ -4245,8 +3196,6 @@ proxy-groups:
   disable-udp: true
   proxies:
   - BEST-PING
-  - LOAD-BALANCE
-  - FALLBACK
 ${bmkg}- name: ADS
   type: select
   disable-udp: false
@@ -4255,16 +3204,6 @@ ${bmkg}- name: ADS
   - INTERNET
 - name: BEST-PING
   type: url-test
-  url: https://detectportal.firefox.com/success.txt
-  interval: 60
-  proxies:
-${bmkg}- name: FALLBACK
-  type: fallback
-  url: https://detectportal.firefox.com/success.txt
-  interval: 60
-  proxies:
-${bmkg}- name: LOAD-BALANCE
-  type: load-balance
   url: https://detectportal.firefox.com/success.txt
   interval: 60
   proxies:
@@ -4303,46 +3242,20 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4352,33 +3265,19 @@ async function generateSurfboardSub(type, bug, wildcrd, tls, country = null, lim
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
+    const UUIDS = `${generateUUIDv4()}`;
     if (type === 'trojan') {
-      bmkg+= `${ispName}🔐,`
+      bmkg+= `${ispName},`
       conf += `
-${ispName}🔐 = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = ${pathcfnegara}, ws-headers = Host:"${wildcrd}"\n`;
+${ispName} = trojan, ${bug}, 443, password = ${UUIDS}, udp-relay = true, skip-cert-verify = true, sni = ${wildcrd}, ws = true, ws-path = /${proxyHost}:${proxyPort}, ws-headers = Host:"${wildcrd}"\n`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 [General]
 dns-server = system, 108.137.44.39, 108.137.44.9, puredns.org:853
@@ -4711,46 +3610,20 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -4760,30 +3633,16 @@ async function generateHusiSub(type, bug, wildcrd, tls, country = null, limit = 
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
-      bmkg+= `        "${ispName}🦊",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4796,21 +3655,21 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}🔐",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4822,33 +3681,33 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}🛡️",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispName}",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName}🛡️",\n`
+      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -4861,14 +3720,14 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊",${snio}
+      "tag": "${ispName} vless",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
@@ -4884,31 +3743,31 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐",${snio}
+      "tag": "${ispName} trojan",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispName} ss",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 {
   "dns": {
@@ -5089,46 +3948,20 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -5138,34 +3971,20 @@ async function generateSingboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "enabled": true,\n        "server_name": "${wildcrd}",\n        "insecure": true\n      },` : '';
     if (type === 'vless') {
-      bmkg+= `        "${ispName}🦊",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName}🦊",
+      "tag": "${ispName}",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5176,7 +3995,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -5185,11 +4004,11 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}🔐",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "trojan",
-      "tag": "${ispName}🔐",
+      "tag": "${ispName}",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5200,7 +4019,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -5208,24 +4027,24 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       }
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}🛡️",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispName}",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName}🛡️",\n`
+      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
       conf += `
     {
       "type": "vless",
-      "tag": "${ispName}🦊",
+      "tag": "${ispName} vless",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5236,7 +4055,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -5246,7 +4065,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "trojan",
-      "tag": "${ispName}🔐",
+      "tag": "${ispName} trojan",
       "domain_strategy": "ipv4_only",
       "server": "${bug}",
       "server_port": ${ports},
@@ -5257,7 +4076,7 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       },
       "transport": {
         "type": "ws",
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "headers": {
           "Host": "${wildcrd}"
         },
@@ -5266,17 +4085,17 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispName} ss",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 {
   "log": {
@@ -5409,7 +4228,7 @@ ${conf}
       "external_ui": "ui",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/gh-pages.zip",
       "external_ui_download_detour": "Internet",
-      "secret": "WONGKERE",
+      "secret": "bitzblack",
       "default_mode": "rule"
     }
   }
@@ -5421,46 +4240,20 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
@@ -5470,30 +4263,16 @@ async function generateNekoboxSub(type, bug, wildcrd, tls, country = null, limit
   
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
     const sanitize = (text) => text.replace(/[\n\r]+/g, "").trim(); // Hapus newline dan spasi ekstra
-    let ispName = sanitize(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+    let ispName = sanitize(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]} ${count ++}`);
+    const UUIDS = `${generateUUIDv4()}`;
     const ports = tls ? '443' : '80';
     const snio = tls ? `\n      "tls": {\n        "disable_sni": false,\n        "enabled": true,\n        "insecure": true,\n        "server_name": "${wildcrd}"\n      },` : '';
     if (type === 'vless') {
-      bmkg+= `        "${ispName}🦊",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -5506,21 +4285,21 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
       "uuid": "${UUIDS}"
     },`;
     } else if (type === 'trojan') {
-      bmkg+= `        "${ispName}🔐",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -5532,33 +4311,33 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐",${snio}
+      "tag": "${ispName}",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
     },`;
     } else if (type === 'ss') {
-      bmkg+= `        "${ispName}🛡️",\n`
+      bmkg+= `        "${ispName}",\n`
       conf += `
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispName}",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     } else if (type === 'mix') {
-      bmkg+= `        "${ispName}🦊",\n        "${ispName}🔐",\n        "${ispName} 🛡️",\n`
+      bmkg+= `        "${ispName} vless",\n        "${ispName} trojan",\n        "${ispName} ss",\n`
       conf += `
     {
       "domain_strategy": "ipv4_only",
@@ -5571,14 +4350,14 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "packet_encoding": "xudp",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🦊",${snio}
+      "tag": "${ispName} vless",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "vless",
@@ -5594,31 +4373,31 @@ console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${prox
       "password": "${UUIDS}",
       "server": "${bug}",
       "server_port": ${ports},
-      "tag": "${ispName}🔐",${snio}
+      "tag": "${ispName} trojan",${snio}
       "transport": {
         "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "${wildcrd}"
         },
         "max_early_data": 0,
-        "path": "${pathcfnegara}",
+        "path": "/${proxyHost}-${proxyPort}",
         "type": "ws"
       },
       "type": "trojan"
     },
     {
       "type": "shadowsocks",
-      "tag": "${ispName}🛡️",
+      "tag": "${ispName} ss",
       "server": "${bug}",
       "server_port": 443,
       "method": "none",
       "password": "${UUIDS}",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mux=0;path=${pathcfnegara};host=${wildcrd};tls=1"
+      "plugin_opts": "mux=0;path=/${proxyHost}-${proxyPort};host=${wildcrd};tls=1"
     },`;
     }
   }
-  return `#### BY : FREE CF PROXY #### 
+  return `#### BY : GEO PROJECT #### 
 
 {
   "dns": {
@@ -5791,107 +4570,66 @@ async function generateV2rayngSub(type, bug, wildcrd, tls, country = null, limit
     .split('\n')
     .filter(Boolean);
 
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
 
   let conf = '';
-  let count = 1;
 
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const countryCode = parts[2]; // Kode negara ISO
     const isp = parts[3]; // Informasi ISP
 
     // Gunakan teks Latin-1 untuk menggantikan emoji flag
     const countryText = `[${countryCode}]`; // Format bendera ke teks Latin-1
-    const ispInfo = `${countryText}=${count ++} ${isp}`;
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
+    const ispInfo = `${countryText} ${isp}`;
+    const UUIDS = `${generateUUIDv4()}`;
 
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
       } else {
-        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${ispInfo}\n`;
       } else {
-        conf += `vless://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `trojan://${UUIDS}\u0040${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `vless://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `trojan://${UUIDS}\u0040${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${ispInfo}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${ispInfo}\n`;
       }
     }
   }
@@ -5906,99 +4644,58 @@ async function generateV2raySub(type, bug, wildcrd, tls, country = null, limit =
   let ips = proxyList
     .split('\n')
     .filter(Boolean)
-  let pathCounters = {}; 
-
   if (country && country.toLowerCase() === 'random') {
- // Pilih data secara acak jika country = "random"
-    const randomOrder = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
-    ips = randomOrder;
-} else if (country) {
-    // Jika ada country code dengan format seperti Free-CF-Proxy-ID1, Free-CF-Proxy-ID2
-    const countryCodeMatch = country.match(/^Free-CF-Proxy-([A-Z]{2})(\d+)$/);
-    if (countryCodeMatch) {
-        const countryCodeFromParts = countryCodeMatch[1].toUpperCase(); // Contoh: "ID"
-        const index = parseInt(countryCodeMatch[2], 10) - 1; // Indeks berdasarkan angka setelah kode negara
-
-        // Filter berdasarkan country dan index
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase(); // Mendapatkan kode negara dari proxy
-                return lineCountry === countryCodeFromParts; // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-
-        // Jika ada index yang diberikan, pilih proxy pada indeks tersebut, jika tidak pilih yang pertama
-        ips = filteredIps[index] ? [filteredIps[index]] : filteredIps;
-    } else {
-        // Jika country tidak dalam format Free-CF-Proxy-ID1, Free-CF-Proxy-ID2 (hanya berdasarkan kode negara)
-        const filteredIps = ips.filter(line => {
-            const parts = line.split(',');
-            if (parts.length > 1) {
-                const lineCountry = parts[2].toUpperCase();
-                return lineCountry === country.toUpperCase(); // Bandingkan dengan country parameter
-            }
-            return false;
-        });
-        ips = filteredIps;
-    }
-}
-
-
+    // Pilih data secara acak jika country=random
+    ips = ips.sort(() => Math.random() - 0.5); // Acak daftar proxy
+  } else if (country) {
+    // Filter berdasarkan country jika bukan "random"
+    ips = ips.filter(line => {
+      const parts = line.split(',');
+      if (parts.length > 1) {
+        const lineCountry = parts[2].toUpperCase();
+        return lineCountry === country.toUpperCase();
+      }
+      return false;
+    });
+  }
   if (limit && !isNaN(limit)) {
     ips = ips.slice(0, limit); // Batasi jumlah proxy berdasarkan limit
   }
   let conf = '';
-  let count = 1;
   for (let line of ips) {
     const parts = line.split(',');
-const proxyHost = parts[0]; // IP
-const proxyPort = parts[1] || 443; // Port, jika tidak ada maka default ke 443
-
-// Gunakan nama variabel yang berbeda untuk menghindari duplikasi
-let countryCodeFromParts = parts[2]; // Mendapatkan kode negara dari proxy
-
-if (!pathCounters[countryCodeFromParts]) {
-    pathCounters[countryCodeFromParts] = 1; // Inisialisasi path per kode negara
-}
-
-// Membuat path sesuai dengan format '/Free-CF-Proxy-<countryCode><index>'
-const pathcfnegara = `/Free-CF-Proxy-${countryCodeFromParts}${pathCounters[countryCodeFromParts]}`;
-pathCounters[countryCodeFromParts]++; // Increment untuk setiap proxy yang diproses
-
-console.log(`Path: ${pathcfnegara}, Proxy Host: ${proxyHost}, Proxy Port: ${proxyPort}`);
-
+    const proxyHost = parts[0];
+    const proxyPort = parts[1] || 443;
     const emojiFlag = getEmojiFlag(line.split(',')[2]); // Konversi ke emoji bendera
-    const UUIDS = `aaaaaaa1-bbbb-4ccc-accc-eeeeeeeeeee1`;
-    const information = encodeURIComponent(`${emojiFlag}-[${line.split(',')[2]}]=${count ++}`);
+    const UUIDS = generateUUIDv4();
+    const information = encodeURIComponent(`${emojiFlag} (${line.split(',')[2]}) ${line.split(',')[3]}`);
     if (type === 'vless') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🦊\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'trojan') {
       if (tls) {
-        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
       } else {
-        conf += `trojan://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'ss') {
       if (tls) {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${information}\n`;
       }
     } else if (type === 'mix') {
       if (tls) {
-        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🦊\n`;
-        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=${pathcfnegara}#${information}🔐\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=tls&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `vless://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:443?encryption=none&security=tls&sni=${wildcrd}&fp=randomized&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:443?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=tls&sni=${wildcrd}#${information}\n`;
       } else {
-        conf += `vless://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🦊\n`;
-        conf += `trojan://${UUIDS}@${bug}:80?path=${pathcfnegara}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}🔐\n`;
-        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=${pathcfnegara}&security=none&sni=${wildcrd}#${information}🛡️\n`;
+        conf += `vless://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `trojan://${UUIDS}@${bug}:80?path=%2F${proxyHost}-${proxyPort}&security=none&encryption=none&host=${wildcrd}&fp=randomized&type=ws&sni=${wildcrd}#${information}\n`;
+        conf += `ss://${btoa(`none:${UUIDS}`)}%3D@${bug}:80?encryption=none&type=ws&host=${wildcrd}&path=%2F${proxyHost}-${proxyPort}&security=none&sni=${wildcrd}#${information}\n`;
       }
     }
   }
