@@ -9,57 +9,57 @@ enabled = true
 enabled = true
 
 [[routes]]
-pattern = "free-cf.ari-andika2.site"
+pattern = "admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "ava.game.naver.com.free-cf.ari-andika2.site"
+pattern = "ava.game.naver.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "graph.instagram.com.free-cf.ari-andika2.site"
+pattern = "graph.instagram.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "quiz.int.vidio.com.free-cf.ari-andika2.site"
+pattern = "quiz.int.vidio.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "live.iflix.com.free-cf.ari-andika2.site"
+pattern = "live.iflix.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "support.zoom.us.free-cf.ari-andika2.site"
+pattern = "support.zoom.us.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "blog.webex.com.free-cf.ari-andika2.site"
+pattern = "blog.webex.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "investors.spotify.com.free-cf.ari-andika2.site"
+pattern = "investors.spotify.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "cache.netflix.com.free-cf.ari-andika2.site"
+pattern = "cache.netflix.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "zaintest.vuclip.com.free-cf.ari-andika2.site"
+pattern = "zaintest.vuclip.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "ads.ruangguru.com.free-cf.ari-andika2.site"
+pattern = "ads.ruangguru.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "io.ruangguru.com.free-cf.ari-andika2.site"
+pattern = "io.ruangguru.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "api.midtrans.com.free-cf.ari-andika2.site"
+pattern = "api.midtrans.com.admin.ari-andika2.site"
 custom_domain = true
 
 [[routes]]
-pattern = "investor.fb.com.free-cf.ari-andika2.site"
+pattern = "investor.fb.com.admin.ari-andika2.site"
 custom_domain = true
