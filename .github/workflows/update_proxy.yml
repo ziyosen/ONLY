@@ -29,7 +29,7 @@ jobs:
     - name: Update proxy IP
       env:
         IP_FILE: 'proxyip.txt'
-        API_URL: 'https://api.bmkg.xyz/check?ip={ip}:{port}'
+        API_URL: 'https://proxy.ndeso.xyz/check?ip={ip}:{port}'
       run: python update_proxy.py
 
     - name: Ensure update_proxyip.txt exists
