@@ -27,7 +27,7 @@ def main():
     input_file = os.getenv('IP_FILE', 'proxyip.txt')
     update_file = 'update_proxyip.txt'
     error_file = 'error.txt'
-    api_url_template = os.getenv('API_URL', 'https://api.bmkg.xyz/check?ip={ip}:{port}')
+    api_url_template = os.getenv('API_URL', 'https://proxy.ndeso.xyz/check?ip={ip}:{port}')
 
     alive_proxies = []
     error_logs = []
